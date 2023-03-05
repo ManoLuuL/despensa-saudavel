@@ -1,0 +1,1 @@
+export { useAxiosInstance } from "./axios";
