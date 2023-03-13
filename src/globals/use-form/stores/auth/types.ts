@@ -1,4 +1,3 @@
-import { LoginViewModel } from "../../../../api/services/auth/view-models/login-view-model";
 import { User } from "./models/user";
 
 type AuthStoreProps = {
@@ -17,8 +16,6 @@ type AuthStoreActions = {
   getTenant(): string | null;
 
   clear(): void;
-
-  changeActiveCompany(activeCompany: LoginViewModel): void;
 };
 
 export type AuthStoreType = AuthStoreProps & AuthStoreActions;

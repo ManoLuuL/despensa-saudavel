@@ -5,7 +5,7 @@ import axios, {
 } from "axios";
 import { useCallback, useLayoutEffect, useMemo } from "react";
 import { useAuth } from "../../globals/use-form/stores/auth";
-import { DynamicObject } from "../../globals/use-form/utils/types";
+import { DynamicObject } from "../../globals/utils/types";
 import { BASE_API_URL } from "./consts";
 import { ApiResponse, UseAxiosInstanceProps } from "./types";
 
