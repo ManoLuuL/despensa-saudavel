@@ -1,19 +1,13 @@
-import { Dropdown } from "primereact/dropdown";
-import { Container } from "./components/atmos/container";
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/organism/Navbar";
 
 function App() {
   return (
-    <Container
-      content={
-        <>
-          <div className="grid">
-            <div className="col-6">
-              <Dropdown />
-            </div>
-          </div>
-        </>
-      }
-    />
+    <div>
+      <Navbar />
+      <h1>Inicio</h1>
+      <Outlet />
+    </div>
   );
 }
 

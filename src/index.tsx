@@ -9,11 +9,19 @@ import "primeicons/primeicons.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Inicio from "./pages/Inicio";
 import { LoginPage } from "./pages/Login";
+import ErrorPage from "./pages/page-404";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Inicio />,
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Inicio />,
+      },
+    ],
   },
   {
     path: "Login",
