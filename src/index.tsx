@@ -8,8 +8,8 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Inicio from "./pages/Inicio";
-import { LoginPage } from "./pages/Login";
 import ErrorPage from "./pages/page-404";
+import LoginPage from "./pages/Login/login-page";
 
 const router = createBrowserRouter([
   {
