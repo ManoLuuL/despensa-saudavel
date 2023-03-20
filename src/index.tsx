@@ -10,6 +10,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Inicio from "./pages/Inicio";
 import ErrorPage from "./pages/page-404";
 import LoginPage from "./pages/Login/login-page";
+import { ThemeProvider } from "styled-components";
+import { Theme } from "./styles";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +36,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider theme={Theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
 

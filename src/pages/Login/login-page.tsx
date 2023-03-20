@@ -1,26 +1,27 @@
 import { FC } from "react";
-import { ThemeProvider } from "styled-components";
 import { TextInput } from "../../components/molecules/inputs/text-input";
 import { Button } from "../../components/molecules/new-button";
 import { useForm } from "../../globals/use-form";
-import { Theme } from "../../styles";
-import { Container, LeftContent } from "./styles";
+import { Container, LeftContent, Wrapper } from "./styles";
 import { LoginFormType } from "./types";
+import img from "./assets/image-login.jpg";
 
-const LoginPage: FC = () => {
-  const { handleSubmit } = useForm<LoginFormType>();
+export const LoginPage: FC = () => {
+  const { controller, handleSubmit } = useForm<LoginFormType>();
 
   const onSubmit = () => {
     handleSubmit(async (data: LoginFormType) => {
       // const loginData = await login({
       //   ...data,
+      //   ip: ip ?? '',
+      //   language: 0
       // });
     });
   };
 
   return (
     <>
-      <ThemeProvider theme={Theme}>
+      <Wrapper>
         <Container>
           <div className="flex justify-content-start h-full main-content">
             <LeftContent className="flex flex-column h-full">
@@ -38,21 +39,33 @@ const LoginPage: FC = () => {
               >
                 <div className="col-12 flex flex-column gap-3">
                   <p className="col-12">Acesse para continuar</p>
-
-                  <TextInput name="Teste" />
-
-                  {/* <PasswordPreInput
-                    name="password"
+                  <TextInput
+                    name="email"
+                    label="E-mail"
                     controller={controller}
                     validationRules={{
-                      required: true
+                      required: true,
                     }}
-                  /> */}
+                  />
+                  <TextInput
+                    name="senha"
+                    controller={controller}
+                    validationRules={{
+                      required: true,
+                    }}
+                  />
 
                   <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
-                    <Button text="Esqueceu a senha" outlined={true} />
+                    <Button
+                      text="Esqueceu a senha"
+                      color="secondary"
+                      outlined={true}
+                      style={{
+                        marginRight: "25px",
+                      }}
+                    />
 
-                    <Button text="Acessar" type="submit" />
+                    <Button text="Acessar" type="submit" icon="login" />
                   </div>
                 </div>
               </form>
@@ -61,27 +74,17 @@ const LoginPage: FC = () => {
               className="hidden md:block col-5 p-0"
               style={{
                 borderRadius: "0 12px 12px 0",
-                // backgroundImage: `url(${randImage})`,
+                backgroundImage: `url(${img})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
+                height: "100%",
+                width: "100%",
               }}
             />
           </div>
         </Container>
-      </ThemeProvider>
-
-      {/* <Suspense fallback={<LoadPanel isLoading={true} target={`body`} />}>
-          {visibleForgotPassword && (
-            <ModalForgotPassword
-              onHide={() => setVisibleForgotPassword(false)}
-              onConfirmEmail={email => {
-                changePassEmail.current = email;
-                setVisibleResendEmail(true);
-              }}
-            />
-          )}
-        </Suspense> */}
+      </Wrapper>
     </>
   );
 };
