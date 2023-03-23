@@ -3,13 +3,13 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/themes/md-dark-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Inicio from "./pages/Inicio";
+import Inicio from "./pages/inicio";
 import ErrorPage from "./pages/page-404";
-import LoginPage from "./pages/Login/login-page";
+import LoginPage from "./pages/login/login-page";
 import { ThemeProvider } from "styled-components";
 import { Theme } from "./styles";
 

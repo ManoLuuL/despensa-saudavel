@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Button } from "../../../new-button";
+import { Button } from "../../../button";
 import { INPUT_BUTTONS_SIZE_IN_REM } from "../consts";
 import { InputButtonProps } from "./types";
 

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { ButtonHtmlAttributes, ButtonProps } from "../../../new-button/types";
+import { ButtonHtmlAttributes, ButtonProps } from "../../../button/types";
 
 export type InputButtonElementType = ButtonHtmlAttributes | undefined;
 

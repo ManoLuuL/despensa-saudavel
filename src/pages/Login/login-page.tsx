@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { TextInput } from "../../components/molecules/inputs/text-input";
-import { Button } from "../../components/molecules/new-button";
+import { Button } from "../../components/molecules/button";
 import { useForm } from "../../globals/use-form";
+import img from "./assets/image-login.jpg";
 import { Container, LeftContent, Wrapper } from "./styles";
 import { LoginFormType } from "./types";
-import img from "./assets/image-login.jpg";
 
 export const LoginPage: FC = () => {
   const { controller, handleSubmit } = useForm<LoginFormType>();
@@ -24,11 +24,7 @@ export const LoginPage: FC = () => {
       <Wrapper>
         <Container>
           <div className="flex justify-content-start h-full main-content">
-            <LeftContent className="flex flex-column h-full">
-              <div className="flex align-item-center justify-content-center mb-3">
-                {/* <img src={Logo} alt="logo" className="w-full" /> */}
-              </div>
-
+            <LeftContent className="flex flex-column h-full ">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -37,8 +33,10 @@ export const LoginPage: FC = () => {
                 noValidate={true}
                 className="flex justify-content-between flex-grow-1 flex-column"
               >
-                <div className="col-12 flex flex-column gap-3">
-                  <p className="col-12">Acesse para continuar</p>
+                <div className="col-12 flex flex-column gap-3 ">
+                  <p className="col-12" style={{ color: "black" }}>
+                    Acesse para continuar
+                  </p>
                   <TextInput
                     name="email"
                     label="E-mail"
@@ -49,6 +47,8 @@ export const LoginPage: FC = () => {
                   />
                   <TextInput
                     name="senha"
+                    type="password"
+                    label="Senha"
                     controller={controller}
                     validationRules={{
                       required: true,
@@ -65,7 +65,7 @@ export const LoginPage: FC = () => {
                       }}
                     />
 
-                    <Button text="Acessar" type="submit" icon="login" />
+                    <Button text="Acessar" type="submit" />
                   </div>
                 </div>
               </form>
