@@ -4,18 +4,14 @@ import { Button } from "../../components/molecules/button";
 import { useForm } from "../../globals/use-form";
 import img from "./assets/image-login.jpg";
 import { Container, LeftContent, Wrapper } from "./styles";
-import { LoginFormType } from "./types";
+import { EmailPreInput } from "../../components/molecules/pre-inputs/email-pre-input";
 
 export const LoginPage: FC = () => {
-  const { controller, handleSubmit } = useForm<LoginFormType>();
+  const { controller, handleSubmit } = useForm();
 
   const onSubmit = () => {
-    handleSubmit(async (data: LoginFormType) => {
-      // const loginData = await login({
-      //   ...data,
-      //   ip: ip ?? '',
-      //   language: 0
-      // });
+    handleSubmit((data) => {
+      console.log(data);
     });
   };
 
@@ -37,16 +33,9 @@ export const LoginPage: FC = () => {
                   <p className="col-12" style={{ color: "black" }}>
                     Acesse para continuar
                   </p>
+                  <EmailPreInput name="email" controller={controller} />
                   <TextInput
-                    name="email"
-                    label="E-mail"
-                    controller={controller}
-                    validationRules={{
-                      required: true,
-                    }}
-                  />
-                  <TextInput
-                    name="senha"
+                    name="password"
                     type="password"
                     label="Senha"
                     controller={controller}

@@ -1,4 +1,4 @@
-import { DefaultInputRef } from "../../components/molecules/inputs/common/types";
+import { DefaultInputRef } from "../../components/common/types";
 import { useForm } from "./use-form";
 
 export type UseFormProps<DataType> = {
@@ -10,6 +10,8 @@ export type UseFormProps<DataType> = {
   disableFocusFirstField?: boolean;
 
   focusField?: keyof DataType;
+
+  disableQueue?: boolean;
 
   onInitialValueSet?: {
     [key in keyof DataType]?: (
@@ -33,10 +35,21 @@ export type FieldType<DataType> = {
   ref: UseFormFieldRefType<DataType>;
 };
 
+export type QueueType<DataType> = {
+  name: keyof DataType;
+  action: (ref: UseFormFieldRefType<DataType>) => void;
+};
+
+export type AddFieldReturnType = {
+  hidden: boolean;
+  readOnly: boolean;
+} | null;
+
 export type AddField<DataType> = (
   name: keyof DataType,
-  ref: UseFormFieldRefType<DataType>
-) => void;
+  ref: UseFormFieldRefType<DataType>,
+  directiveName?: string
+) => AddFieldReturnType;
 
 export type Controller<DataType = unknown> = {
   addField: AddField<DataType>;
@@ -48,6 +61,12 @@ export type DynamicErrorType<DataType> = {
     message: string;
   };
 };
+
+export enum EnumFieldPermission {
+  Invisible = 0,
+  Readonly = 1,
+  Edit = 2,
+}
 
 export type HandleSubmitSuccessCallback<DataType> = (
   data: DataType

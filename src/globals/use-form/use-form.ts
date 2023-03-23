@@ -1,21 +1,25 @@
 import {
   AddField,
+  AddFieldReturnType,
   Controller,
   DynamicErrorType,
+  EnumFieldPermission,
   FieldType,
   HandleSubmitErrorCallback,
   HandleSubmitSuccessCallback,
+  QueueType,
   UseFormProps,
 } from "./types";
 import { useCallback, useMemo, useRef } from "react";
-import { LogUseFormError } from "./utils";
-import { DefaultInputRef } from "../../components/molecules/inputs/common/types";
+import { DefaultInputRef } from "../../components/common/types";
 
 export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
   const fields = useRef<FieldType<DataType>[]>([]);
+  const queue = useRef<QueueType<DataType>[]>([]);
 
   const addField: AddField<DataType> = useCallback(
-    (name, ref) => {
+    (name, ref, directiveName = name.toString()) => {
+      let ret: AddFieldReturnType | null = null;
       try {
         const oldField =
           fields.current.find((oldField) => oldField.name === name) ?? null;
@@ -42,6 +46,15 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
             ref.focus();
           }
 
+          const queuedActions = queue.current.filter(
+            (queued) => queued.name === name
+          );
+          if (queuedActions.length) {
+            queuedActions.forEach((queued) => {
+              queued.action(ref);
+            });
+          }
+
           fields.current.push({
             name,
             ref,
@@ -52,6 +65,8 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
       } catch (e) {
         console.error(e);
       }
+
+      return ret;
     },
     [props]
   );
@@ -63,26 +78,24 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
     [addField]
   );
 
-  const getField = useCallback((name: keyof DataType, supressError = false) => {
-    try {
-      const field = fields.current.find((field) => field.name === name);
+  const getField = useCallback(
+    (name: keyof DataType, supressError = false) => {
+      try {
+        const field = fields.current.find((field) => field.name === name);
 
-      if (!supressError && !field) {
-        throw new Error(
-          `Campo de nome ${name.toString()} não encontrado! Certifique-se que o campo possui a propriedade 'controller'.`
-        );
+        if (!field && (!!props?.disableQueue || !supressError)) {
+          throw new Error(
+            `Campo de nome ${name.toString()} não encontrado! Certifique-se que o campo possui a propriedade 'controller'.`
+          );
+        }
+
+        return field;
+      } catch (error) {
+        console.error(error);
       }
-
-      return field;
-    } catch (error) {
-      LogUseFormError({
-        methodName: "getField",
-        params: { name },
-        error,
-      });
-      return null;
-    }
-  }, []);
+    },
+    [props?.disableQueue]
+  );
 
   const getFieldRef = useCallback(
     <ValueType = unknown, FieldType = unknown>(name: keyof DataType) => {
@@ -100,12 +113,7 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
 
         return field;
       } catch (error) {
-        LogUseFormError({
-          methodName: "getField",
-          params: { name },
-          error,
-        });
-        return null;
+        console.error(error);
       }
     },
     [getField]
@@ -118,12 +126,7 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
       try {
         return !!getField(name, true);
       } catch (error) {
-        LogUseFormError({
-          methodName: "getField",
-          params: { name },
-          error,
-        });
-        return null;
+        console.error(error);
       }
     },
     [getField]
@@ -135,12 +138,14 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
         const field = getField(name);
 
         if (field) field?.ref.setValue(newValue);
+        else {
+          queue.current.push({
+            name,
+            action: (ref) => ref.setValue(newValue),
+          });
+        }
       } catch (error) {
-        LogUseFormError({
-          methodName: "setValue",
-          params: { name, newValue },
-          error,
-        });
+        console.error(error);
       }
     },
     [getField]
@@ -154,12 +159,7 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
         if (field) return field.ref.getValue() as DataType[Key];
         return null;
       } catch (error) {
-        LogUseFormError({
-          methodName: "getValue",
-          params: { name },
-          error,
-        });
-        return null;
+        console.error(error);
       }
     },
     [getField]
@@ -171,12 +171,14 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
         const field = getField(name);
 
         if (field) field.ref.clearValue();
+        else {
+          queue.current.push({
+            name,
+            action: (ref) => ref.clearValue(),
+          });
+        }
       } catch (error) {
-        LogUseFormError({
-          methodName: "clearError",
-          params: { name },
-          error,
-        });
+        console.error(error);
       }
     },
     [getField]
@@ -188,12 +190,14 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
         const field = getField(name);
 
         if (field) field.ref.setError(error);
+        else {
+          queue.current.push({
+            name,
+            action: (ref) => ref.setError(error),
+          });
+        }
       } catch (error) {
-        LogUseFormError({
-          methodName: "setError",
-          params: { name, error },
-          error,
-        });
+        console.error(error);
       }
     },
     [getField]
@@ -205,12 +209,14 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
         const field = getField(name);
 
         if (field) field.ref.clearError();
+        else {
+          queue.current.push({
+            name,
+            action: (ref) => ref.clearError(),
+          });
+        }
       } catch (error) {
-        LogUseFormError({
-          methodName: "clearError",
-          params: { name },
-          error,
-        });
+        console.error(error);
       }
     },
     [getField]
@@ -224,12 +230,7 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
         if (field) return field?.ref?.getError();
         return null;
       } catch (error) {
-        LogUseFormError({
-          methodName: "getError",
-          params: { name },
-          error,
-        });
-        return null;
+        console.error(error);
       }
     },
     [getField]
@@ -244,12 +245,7 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
       });
       return values;
     } catch (error) {
-      LogUseFormError({
-        methodName: "getAllValues",
-        params: {},
-        error,
-      });
-      return null;
+      console.error(error);
     }
   }, [getValue]);
 
@@ -268,12 +264,7 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
         });
         return null;
       } catch (error) {
-        LogUseFormError({
-          methodName: "setAllValues",
-          params: { values },
-          error,
-        });
-        return null;
+        console.error(error);
       }
     },
     [setValue]
@@ -284,14 +275,15 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
       try {
         const field = getField(name);
         if (field) return await field.ref.validate();
+        else {
+          queue.current.push({
+            name,
+            action: (ref) => ref.validate(),
+          });
+        }
         return null;
       } catch (error) {
-        LogUseFormError({
-          methodName: "validateField",
-          params: { name },
-          error,
-        });
-        return null;
+        console.error(error);
       }
     },
     [getField]
@@ -309,22 +301,31 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
         const values: DataType = {} as DataType;
 
         let errorField: FieldType<DataType> | null = null;
+        for (const field of fields.current) {
+          const value = field.ref.getValue() as DataType[keyof DataType];
+
+          const error = await field.ref?.validate();
+          field.ref.setError(error ?? "");
+
+          if (error) {
+            errors[field.name] = {
+              value,
+              message: error,
+            };
+            if (!errorField) errorField = field;
+          }
+        }
 
         if (errorField) {
           await onError?.(errors);
-
+          errorField.ref.focus();
           return false;
         } else {
           await onSuccess?.({ ...values });
           return true;
         }
       } catch (error) {
-        LogUseFormError({
-          methodName: "handleSubmit",
-          params: { onSuccess, onError },
-          error,
-        });
-        return false;
+        console.error(error);
       }
     },
     []
