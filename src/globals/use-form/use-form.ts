@@ -3,7 +3,6 @@ import {
   AddFieldReturnType,
   Controller,
   DynamicErrorType,
-  EnumFieldPermission,
   FieldType,
   HandleSubmitErrorCallback,
   HandleSubmitSuccessCallback,
@@ -18,7 +17,7 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
   const queue = useRef<QueueType<DataType>[]>([]);
 
   const addField: AddField<DataType> = useCallback(
-    (name, ref, directiveName = name.toString()) => {
+    (name, ref) => {
       let ret: AddFieldReturnType | null = null;
       try {
         const oldField =

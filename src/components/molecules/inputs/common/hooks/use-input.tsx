@@ -100,17 +100,14 @@ export const useInput = <ValType, ControllerType>(
 
   return {
     inputId,
-
     value,
     error,
     Label,
-
     handleError,
     handleFocusIn,
     handleFocusOut,
     handleChange,
     handleValidate,
-
     styledProps,
   };
 };

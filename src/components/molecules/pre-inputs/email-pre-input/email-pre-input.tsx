@@ -18,7 +18,7 @@ export const EmailPreInput = <Controller = null,>(
   return (
     <TextInput
       {...props}
-      name={name}
+      name={name as Controller extends null ? string : keyof Controller}
       label={label}
       validationRules={{
         ...validationRules,

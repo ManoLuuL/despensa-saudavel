@@ -3,11 +3,14 @@ import { TextInput } from "../../components/molecules/inputs/text-input";
 import { Button } from "../../components/molecules/button";
 import { useForm } from "../../globals/use-form";
 import img from "./assets/image-login.jpg";
-import { Container, LeftContent, Wrapper } from "./styles";
 import { EmailPreInput } from "../../components/molecules/pre-inputs/email-pre-input";
+import { Container, LeftContent, Wrapper } from "./styles";
 
 export const LoginPage: FC = () => {
-  const { controller, handleSubmit } = useForm();
+  const { controller, handleSubmit } = useForm<{
+    email: string;
+    password: string;
+  }>();
 
   const onSubmit = () => {
     handleSubmit((data) => {

@@ -42,7 +42,7 @@ export type DefaultInputProps<
   ControllerType,
   KeyType = CustomInputName<ControllerType>
 > = DefaultElementProps & {
-  name: string;
+  name: KeyType;
   /** Descrição do campo */
   label?: string;
   /**
