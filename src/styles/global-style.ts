@@ -1,11 +1,10 @@
-import { createGlobalStyle } from 'styled-components';
-import { INPUT_PADDING_SIZE_IN_REM } from '../components/molecules/inputs/common/consts';
-import { Rotate360 } from './animations-keyframes';
+import { createGlobalStyle } from "styled-components";
+import { Rotate360 } from "./animations-keyframes";
 
 export const GlobalStyle = createGlobalStyle`
   * {
     font-family: 'Noto Sans', 'sans-serif';
-    font-size: ${p => p.theme.fontSizes.normal};
+    font-size: ${(p) => p.theme.fontSizes.normal};
 
     padding: 0;
     margin: 0;
@@ -32,10 +31,7 @@ export const GlobalStyle = createGlobalStyle`
         input{
           // o calc é necessário pois o fontSize é ignorado aqui, sendo assim, somar 0.2rem no top e no bottom deixa o input com o tamanho ideal
           // 1.8rem é utilizado pra espaçar o texto do input no icon se search da direita
-          padding: calc(${INPUT_PADDING_SIZE_IN_REM}rem + (${p =>
-  p.theme.fontSizes
-    .normal} / 3))  1.8rem calc(${INPUT_PADDING_SIZE_IN_REM}rem + (${p =>
-  p.theme.fontSizes.normal} / 3)) 0.75rem;
+          padding: 0.75rem
         }
       }
     }
@@ -67,21 +63,21 @@ export const GlobalStyle = createGlobalStyle`
 
     & > {
       .p-dialog-content {
-        border-top-right-radius: ${p => p.theme.borderRadii.lg} !important;
-        border-top-left-radius: ${p => p.theme.borderRadii.lg} !important;
+        border-top-right-radius: ${(p) => p.theme.borderRadii.lg} !important;
+        border-top-left-radius: ${(p) => p.theme.borderRadii.lg} !important;
       }
     }
   }
 
   .p-dialog {
     .p-dialog-header {
-      border-top-right-radius: ${p => p.theme.borderRadii.lg} !important;
-      border-top-left-radius: ${p => p.theme.borderRadii.lg} !important;
+      border-top-right-radius: ${(p) => p.theme.borderRadii.lg} !important;
+      border-top-left-radius: ${(p) => p.theme.borderRadii.lg} !important;
     }
 
     .p-dialog-content:last-of-type {
-      border-bottom-right-radius: ${p => p.theme.borderRadii.lg} !important;
-      border-bottom-left-radius: ${p => p.theme.borderRadii.lg} !important;
+      border-bottom-right-radius: ${(p) => p.theme.borderRadii.lg} !important;
+      border-bottom-left-radius: ${(p) => p.theme.borderRadii.lg} !important;
     }
   }
 

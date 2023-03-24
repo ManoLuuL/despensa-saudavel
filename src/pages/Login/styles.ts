@@ -6,10 +6,11 @@ export const LeftContent = styled.div`
 
   max-width: 760px;
   width: 100%;
-  display: flex;
+  height: 100%;
+  display: block;
   justify-content: center;
   align-items: center;
-  margin-bottom: 3rem;
+  margin-top: 6rem;
 `;
 
 export const Container = styled.div`
