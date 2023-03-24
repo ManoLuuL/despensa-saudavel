@@ -326,6 +326,7 @@ export const useForm = <DataType = never>(props?: UseFormProps<DataType>) => {
       } catch (error) {
         console.error(error);
       }
+      return false;
     },
     []
   );
