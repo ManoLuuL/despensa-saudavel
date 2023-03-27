@@ -1,32 +1,30 @@
 import { useFormik } from "formik";
 import { FC, Fragment, useState } from "react";
 import img from "./assets/image-login.jpg";
-import { Container, LeftContent, Wrapper } from "./styles";
+import {
+  ButtonsLogin,
+  Container,
+  LeftContent,
+  PasswordDiv,
+  Wrapper,
+} from "./styles";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import { Calendar } from "primereact/calendar";
 import { Password } from "primereact/password";
-import { Checkbox } from "primereact/checkbox";
 import { classNames } from "primereact/utils";
 import { Divider } from "primereact/divider";
 
 export type LoginForm = {
-  name: string;
   email: string;
   password: string;
-  date: Date | null;
-  accept: boolean;
 };
 
 export const LoginPage: FC = () => {
   const [formData, setFormData] = useState({});
   const [showMessage, setShowMessage] = useState(false);
   let LoginValues: LoginForm = {
-    name: "",
     email: "",
     password: "",
-    date: null,
-    accept: false,
   };
 
   const formik = useFormik({
@@ -34,26 +32,18 @@ export const LoginPage: FC = () => {
     validate: (data) => {
       let errors: Record<string, string> = {};
 
-      if (!data.name) {
-        errors.name = "Name is required.";
-      }
-
       if (!data.email) {
         errors.email = "Email is required.";
       } else if (
         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.email)
       ) {
-        errors.email = "Invalid email address. E.g. example@email.com";
+        errors.email =
+          "Endereço de E-mail invalido, verifique se preencheu corretamente!";
       }
 
       if (!data.password) {
-        errors.password = "Password is required.";
+        errors.password = "Senha é obrigatorio!";
       }
-
-      if (!data.accept) {
-        errors.accept = "You need to agree to the terms and conditions.";
-      }
-
       return errors;
     },
     onSubmit: (data) => {
@@ -65,25 +55,17 @@ export const LoginPage: FC = () => {
   });
 
   const isFormFieldValid = (name: string) =>
-    !!(formik.touched["name"] && formik.errors["name"]);
+    // @ts-ignore
+    !!(formik.touched[name] && formik.errors[name]);
   const getFormErrorMessage = (name: string) => {
     return (
       isFormFieldValid(name) && (
-        <small className="p-error">{formik.errors["name"]}</small>
+        //@ts-ignore
+        <small className="p-error">{formik.errors[name]}</small>
       )
     );
   };
 
-  const dialogFooter = (
-    <div className="flex justify-content-center">
-      <Button
-        label="OK"
-        className="p-button-text"
-        autoFocus
-        onClick={() => setShowMessage(false)}
-      />
-    </div>
-  );
   const passwordHeader = <h6>Pick a password</h6>;
   const passwordFooter = (
     <Fragment>
@@ -105,6 +87,7 @@ export const LoginPage: FC = () => {
           <div className="flex justify-content-start h-full main-content">
             <LeftContent>
               <div className="col-12 flex">
+                <h3 className="text-center">Login</h3>
                 <form
                   onSubmit={formik.handleSubmit}
                   className="flex justify-content-between flex-grow-1 flex-column"
@@ -139,7 +122,7 @@ export const LoginPage: FC = () => {
                     </span>
                     {getFormErrorMessage("email")}
                   </div>
-                  <div className="field" style={{ marginBottom: "1rem" }}>
+                  <PasswordDiv className="field">
                     <span
                       className="p-float-label"
                       style={{ display: "block" }}
@@ -156,6 +139,7 @@ export const LoginPage: FC = () => {
                         })}
                         header={passwordHeader}
                         footer={passwordFooter}
+                        width={"100%"}
                       />
                       <label
                         htmlFor="password"
@@ -167,17 +151,18 @@ export const LoginPage: FC = () => {
                       </label>
                     </span>
                     {getFormErrorMessage("password")}
-                  </div>
-                  <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
+                  </PasswordDiv>
+                  <ButtonsLogin className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
                     <Button
                       label="Esqueceu a senha"
+                      outlined
                       style={{
                         marginRight: "25px",
                       }}
                     />
 
                     <Button type="submit" label="Acessar" />
-                  </div>
+                  </ButtonsLogin>
                 </form>
               </div>
             </LeftContent>

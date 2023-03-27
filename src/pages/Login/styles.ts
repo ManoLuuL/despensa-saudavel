@@ -10,7 +10,7 @@ export const LeftContent = styled.div`
   display: block;
   justify-content: center;
   align-items: center;
-  margin-top: 6rem;
+  margin-top: 8rem;
 `;
 
 export const Container = styled.div`
@@ -45,4 +45,16 @@ export const Wrapper = styled.div`
     ${GetColorVariant("primary", "600")},
     ${GetColorVariant("primary", "900")}
   );
+`;
+
+export const PasswordDiv = styled.div`
+  margin-bottom: 1rem;
+  .p-inputtext.p-component.p-password-input {
+    width: 100%;
+  }
+`;
+
+export const ButtonsLogin = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
