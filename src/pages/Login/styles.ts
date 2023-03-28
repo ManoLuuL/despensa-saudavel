@@ -6,25 +6,19 @@ export const LeftContent = styled.div`
 
   max-width: 760px;
   width: 100%;
-  height: 100%;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  margin-top: 8rem;
+  margin-top: 10rem;
 `;
 
 export const Container = styled.div`
-  height: 40rem;
+  height: 50rem;
   border-radius: 12px;
 
   display: flex !important;
   justify-content: space-between;
-  background-color: white;
+  background-color: black;
 
   .main-content {
     width: 55rem;
-    display: flex !important;
-    justify-content: space-between;
     @media only screen and (max-width: ${(p) => p.theme.breakPoints.sm}) {
       width: 95vw;
     }
@@ -48,7 +42,6 @@ export const Wrapper = styled.div`
 `;
 
 export const PasswordDiv = styled.div`
-  margin-bottom: 1rem;
   .p-inputtext.p-component.p-password-input {
     width: 100%;
   }

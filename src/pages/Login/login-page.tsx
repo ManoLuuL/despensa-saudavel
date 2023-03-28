@@ -1,13 +1,7 @@
 import { useFormik } from "formik";
 import { FC, Fragment, useState } from "react";
-import img from "./assets/image-login.jpg";
-import {
-  ButtonsLogin,
-  Container,
-  LeftContent,
-  PasswordDiv,
-  Wrapper,
-} from "./styles";
+import img from "./assets/image.jpg";
+import { Container, LeftContent, PasswordDiv, Wrapper } from "./styles";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Password } from "primereact/password";
@@ -84,29 +78,28 @@ export const LoginPage: FC = () => {
     <>
       <Wrapper>
         <Container>
-          <div className="flex justify-content-start h-full main-content">
-            <LeftContent>
-              <div className="col-12 flex">
-                <h3 className="text-center">Login</h3>
+          <div
+            className="flex justify-content-start h-full main-content"
+            style={{ width: "105rem" }}
+          >
+            <LeftContent className="flex flex-column h-full">
+              <div className="flex align-item-center justify-content-center mb-3">
+                <h2>Pronto para cozinhar com o que tem em casa?</h2>
+              </div>
+              <div className="card">
                 <form
                   onSubmit={formik.handleSubmit}
                   className="flex justify-content-between flex-grow-1 flex-column"
                 >
-                  <div
-                    className="field col-12"
-                    style={{ marginBottom: "1rem" }}
-                  >
-                    <span
-                      className="p-float-label p-input-icon-right"
-                      style={{ display: "block" }}
-                    >
-                      <i className="pi pi-envelope w-full" />
+                  <div className="field">
+                    <span className="p-float-label p-input-icon-right w-full">
+                      <i className="pi pi-envelope" />
                       <InputText
                         id="email"
                         name="email"
+                        style={{ width: "100%" }}
                         value={formik.values.email}
                         onChange={formik.handleChange}
-                        style={{ width: "100%" }}
                         className={classNames({
                           "p-invalid": isFormFieldValid("email"),
                         })}
@@ -122,24 +115,20 @@ export const LoginPage: FC = () => {
                     </span>
                     {getFormErrorMessage("email")}
                   </div>
-                  <PasswordDiv className="field">
-                    <span
-                      className="p-float-label"
-                      style={{ display: "block" }}
-                    >
+                  <PasswordDiv className="field w-full">
+                    <span className="p-float-label">
                       <Password
                         id="password"
+                        style={{ width: "100%" }}
                         name="password"
                         value={formik.values.password}
                         onChange={formik.handleChange}
                         toggleMask
-                        style={{ width: "100%" }}
                         className={classNames({
                           "p-invalid": isFormFieldValid("password"),
                         })}
                         header={passwordHeader}
                         footer={passwordFooter}
-                        width={"100%"}
                       />
                       <label
                         htmlFor="password"
@@ -152,7 +141,7 @@ export const LoginPage: FC = () => {
                     </span>
                     {getFormErrorMessage("password")}
                   </PasswordDiv>
-                  <ButtonsLogin className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
+                  <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
                     <Button
                       label="Esqueceu a senha"
                       outlined
@@ -162,20 +151,18 @@ export const LoginPage: FC = () => {
                     />
 
                     <Button type="submit" label="Acessar" />
-                  </ButtonsLogin>
+                  </div>
                 </form>
               </div>
             </LeftContent>
             <div
-              className="hidden md:block col-5 p-0"
+              className="hidden md:block col-7 p-0"
               style={{
                 borderRadius: "0 12px 12px 0",
                 backgroundImage: `url(${img})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
-                height: "100%",
-                width: "100%",
               }}
             />
           </div>
