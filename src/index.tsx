@@ -8,11 +8,11 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Inicio from "./pages/inicio";
 import ErrorPage from "./pages/page-404";
 import LoginPage from "./pages/login/login-page";
 import { ThemeProvider } from "styled-components";
 import { Theme } from "./styles";
+import HomePage from "./pages/home-page";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Inicio />,
+        element: <HomePage />,
       },
     ],
   },

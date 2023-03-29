@@ -84,7 +84,7 @@ export const LoginPage: FC = () => {
           >
             <LeftContent className="flex flex-column h-full">
               <div className="flex align-item-center justify-content-center mb-3">
-                <h2>Pronto para cozinhar com o que tem em casa?</h2>
+                <h1>Pronto para cozinhar com o que tem em casa?</h1>
               </div>
               <div className="card">
                 <form
