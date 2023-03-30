@@ -43,9 +43,6 @@ const HomePage: FC = () => {
               alt=""
               style={{
                 height: "50rem",
-                alignItems: "center",
-                justifyContent: 'center',
-                display: 'flex'
               }}
             />
           </div>
