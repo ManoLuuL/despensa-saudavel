@@ -9,13 +9,13 @@ export const ContainerHome = styled.div`
   }
 
   .overlay {
-    background-color: rgba(0, 0, 0, 0.6);
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    max-width: 52vw;
   }
 
   h1 {
