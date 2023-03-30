@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "primereact/resources/themes/mdc-dark-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -17,14 +16,8 @@ import HomePage from "./pages/home-page";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <HomePage />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/",
-        element: <HomePage />,
-      },
-    ],
   },
   {
     path: "Login",
