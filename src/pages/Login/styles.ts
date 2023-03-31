@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { GetColorVariant } from "../../styles";
 
 export const LeftContent = styled.div`
   padding: 3.5rem 3.5rem 3.5rem 3rem;
@@ -10,35 +9,12 @@ export const LeftContent = styled.div`
 `;
 
 export const Container = styled.div`
-  height: 50rem;
-  border-radius: 12px;
-
-  display: flex !important;
-  justify-content: space-between;
-  background-color: black;
-
-  .main-content {
-    width: 55rem;
-    @media only screen and (max-width: ${(p) => p.theme.breakPoints.sm}) {
-      width: 95vw;
-    }
-  }
-`;
-
-export const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: linear-gradient(
-    to top right,
-    ${GetColorVariant("primary", "600")},
-    ${GetColorVariant("primary", "900")}
-  );
+  display: flex !important;
+  justify-content: space-between;
+  background-color: black;
 `;
 
 export const PasswordDiv = styled.div`

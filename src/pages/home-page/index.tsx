@@ -11,6 +11,7 @@ import {
 } from "./styles";
 import imgLogo from "./assets/logo_facul.png";
 import imgHome from "./assets/image.png";
+import { Button } from "../../components/molecules/button";
 
 const HomePage: FC = () => {
   return (
@@ -37,10 +38,10 @@ const HomePage: FC = () => {
           </Description>
           <Buttons>
             <NavLink to={"/Login"}>
-              <button className="button">Login</button>
+              <Button content="Login" />
             </NavLink>
             <NavLink to={"/Registrar"}>
-              <button className="button">Registrar-se</button>
+              <Button content="Cadastrar-se" />
             </NavLink>
           </Buttons>
         </Overlay>
