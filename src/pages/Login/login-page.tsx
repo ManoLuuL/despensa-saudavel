@@ -60,20 +60,6 @@ export const LoginPage: FC = () => {
     );
   };
 
-  const passwordHeader = <h6>Pick a password</h6>;
-  const passwordFooter = (
-    <Fragment>
-      <Divider />
-      <p className="mt-2">Suggestions</p>
-      <ul className="pl-2 ml-2 mt-0" style={{ lineHeight: "1.5" }}>
-        <li>At least one lowercase</li>
-        <li>At least one uppercase</li>
-        <li>At least one numeric</li>
-        <li>Minimum 8 characters</li>
-      </ul>
-    </Fragment>
-  );
-
   return (
     <>
       <Container>
@@ -118,12 +104,10 @@ export const LoginPage: FC = () => {
                     name="password"
                     value={formik.values.password}
                     onChange={formik.handleChange}
-                    toggleMask
+                    feedback={false}
                     className={classNames({
                       "p-invalid": isFormFieldValid("password"),
                     })}
-                    header={passwordHeader}
-                    footer={passwordFooter}
                   />
                   <label
                     htmlFor="password"
