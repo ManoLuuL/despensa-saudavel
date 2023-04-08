@@ -12,31 +12,8 @@ import {
 import imgLogo from "./assets/logo_facul.png";
 import imgHome from "./assets/image.png";
 import { Button } from "../../components/molecules/button";
-import { DataView } from "primereact/dataview";
-import { ReceitaService } from "../../utils/data";
-
-type teste = {
-  _id: {
-    $oid: string;
-  };
-  nome: string;
-  secao: {
-    nome: string;
-    conteudo: string[];
-  }[];
-};
 
 const HomePage: FC = () => {
-  const [receitas, setReceitas] = useState<teste[]>([]);
-
-  useEffect(() => {
-    setReceitas(ReceitaService.getReceitas());
-  }, []);
-
-  const itemTemplate = (product: teste) => {
-    return <div className="col-12">{product.nome}</div>;
-  };
-
   return (
     <ContainerGlobalHome>
       <ContainerHome>
@@ -78,7 +55,6 @@ const HomePage: FC = () => {
           />
         </ContainerImg>
       </ContainerHome>
-      <DataView value={receitas} itemTemplate={itemTemplate} />
     </ContainerGlobalHome>
   );
 };

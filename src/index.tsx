@@ -13,6 +13,7 @@ import { ThemeProvider } from "styled-components";
 import { Theme } from "./styles";
 import HomePage from "./pages/home-page";
 import RegisterPage from "./pages/reister-user-page/register-page";
+import MainPage from "./pages/main-page";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "Registrar",
     element: <RegisterPage />,
+  },
+  {
+    path: "Main",
+    element: <MainPage />,
   },
 ]);
 
