@@ -12,6 +12,12 @@ const MainPage: FC = () => {
     setReceitas(ReceitaService.getReceitas());
   }, []);
 
+  const secoes = receitas.map((x) => x.secao);
+
+  const ingredientes = secoes.map(
+    (x) => x.find((p) => p.nome === " Ingredientes") ?? []
+  );
+
   return (
     <Container>
       <TitlePage>Main-Page</TitlePage>
@@ -31,8 +37,28 @@ const MainPage: FC = () => {
             style={{ width: "25%" }}
           ></Column>
           <Column field="nome" header="Nome" style={{ width: "25%" }}></Column>
-          {/* <Column field="secao." header="Company" style={{ width: '25%' }}></Column> */}
         </DataTable>
+        <div className="mt-5">
+          <DataTable
+            value={ingredientes}
+            paginator
+            showGridlines
+            rows={10}
+            rowsPerPageOptions={[10, 25, 50, 100]}
+            tableStyle={{ minWidth: "50rem" }}
+          >
+            <Column
+              field="nome"
+              header="Nome"
+              style={{ width: "25%" }}
+            ></Column>
+            <Column
+              field="conteudo"
+              header="Conteudo"
+              style={{ width: "25%" }}
+            ></Column>
+          </DataTable>
+        </div>
       </div>
     </Container>
   );
