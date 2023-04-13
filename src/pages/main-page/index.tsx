@@ -4,6 +4,7 @@ import { ReceitaViewModel } from "./types";
 import { ReceitaService } from "../../utils/data";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import Navbar from "../../components/organism/Navbar";
 
 const MainPage: FC = () => {
   const [receitas, setReceitas] = useState<ReceitaViewModel[]>([]);
@@ -20,6 +21,7 @@ const MainPage: FC = () => {
 
   return (
     <Container>
+      <Navbar />
       <TitlePage>Main-Page</TitlePage>
       <h2>Receitas disponiveis:</h2>
       <div className="p-3">
