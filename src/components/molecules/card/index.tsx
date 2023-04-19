@@ -1,17 +1,24 @@
 import { FC } from "react";
 import { CardProps } from "./types";
+import {
+  CardFooter,
+  CardHeader,
+  CardSubtitle,
+  CardTitle,
+  CardWrapper,
+} from "./styles";
 
 const Card: FC<CardProps> = ({ title, subtitle, header, footer, children }) => {
   return (
-    <div className="card">
-      {header && <div className="card-header">{header}</div>}
+    <CardWrapper>
+      {header && <CardHeader>{header}</CardHeader>}
       <div className="card-body">
-        <h3>{title}</h3>
-        {subtitle && <p>{subtitle}</p>}
+        <CardTitle>{title}</CardTitle>
+        {subtitle && <CardSubtitle>{subtitle}</CardSubtitle>}
         {children}
       </div>
-      {footer && <div className="card-footer">{footer}</div>}
-    </div>
+      {footer && <CardFooter>{footer}</CardFooter>}
+    </CardWrapper>
   );
 };
 
