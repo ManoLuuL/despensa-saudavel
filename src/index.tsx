@@ -14,6 +14,8 @@ import { Theme } from "./styles";
 import HomePage from "./pages/home-page";
 import RegisterPage from "./pages/reister-user-page/register-page";
 import MainPage from "./pages/main-page";
+import CalcIMC from "./pages/calc-imc-page";
+import RecipeSearch from "./pages/buscar-receitas-page";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +35,11 @@ const router = createBrowserRouter([
     path: "Main",
     element: <MainPage />,
   },
+  {
+    path: "CalcularIMC",
+    element: <CalcIMC />,
+  },
+  { path: "BuscarReceitas", element: <RecipeSearch /> },
 ]);
 
 const root = ReactDOM.createRoot(

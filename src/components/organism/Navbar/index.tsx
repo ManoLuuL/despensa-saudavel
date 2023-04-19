@@ -1,34 +1,19 @@
 import { NavLink } from "react-router-dom";
 import { Button } from "../../molecules/button";
-import {
-  NavLinks,
-  Search,
-  SearchButton,
-  SearchInput,
-  StyledNav,
-} from "./styles";
+import { NavbarContainer, NavbarLeft, NavbarRight } from "./styles";
 
 const Navbar = () => {
   return (
-    <StyledNav>
-      <NavLinks>
+    <NavbarContainer>
+      <NavLink to={"/main"}>
+        <NavbarLeft>Cardapio Nutricional</NavbarLeft>
+      </NavLink>
+      <NavbarRight>
         <NavLink to={"/"}>
-          <Button content="Livro de Receitas" fontSize={1} />
+          <Button content="Dados do Usuario" fontSize={0.9} />
         </NavLink>
-        <NavLink to={"/"}>
-          <Button content="Receitas Favoritas" fontSize={1} />
-        </NavLink>
-      </NavLinks>
-      <Search>
-        <SearchInput type="text" placeholder="Pesquisar" />
-        <SearchButton>Pesquisar</SearchButton>
-      </Search>
-      <NavLinks>
-        <NavLink to={"/"}>
-          <Button content="Dados do Usuário" fontSize={1} />
-        </NavLink>
-      </NavLinks>
-    </StyledNav>
+      </NavbarRight>
+    </NavbarContainer>
   );
 };
 export default Navbar;
