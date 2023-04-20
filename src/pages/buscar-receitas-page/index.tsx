@@ -4,27 +4,12 @@ import { ReceitaViewModel } from "../main-page/types";
 import { ReceitaService } from "../../utils/data";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { RecipeApi } from "./types";
 import axios from "axios";
+import { Card } from "primereact/card";
+import { RecipeApi } from "./types";
+import { API_KEY } from "../../utils/api-key";
 
 const RecipeSearch = () => {
-  const [query, setQuery] = useState("");
-  const [recipes, setRecipes] = useState<RecipeApi[]>([]);
-
-  const searchRecipes = async () => {
-    const response = await fetch(
-      `https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples?apiKey=0198de02cb10419e98501bbe209a6848`
-    );
-    console.log(response);
-    // const data = await response.json();
-    // setRecipes(
-    //   data.hits.map((hit: any) => ({
-    //     title: hit.recipe.label,
-    //     ingredients: hit.recipe.ingredientLines,
-    //   }))
-    // );
-  };
-
   const [receitas, setReceitas] = useState<ReceitaViewModel[]>([]);
 
   useEffect(() => {
@@ -37,32 +22,20 @@ const RecipeSearch = () => {
     (x) => x.find((p) => p.nome === " Ingredientes") ?? []
   );
 
-  const apiKey = "0198de02cb10419e98501bbe209a6848";
-
-  interface Recipe {
-    id: number;
-    title: string;
-    image: string;
-    usedIngredients: any[];
-    missedIngredients: any[];
-    unusedIngredients: any[];
-  }
-
   const [searchQuery, setSearchQuery] = useState("");
-  const [recipes2, setRecipes2] = useState<Recipe[]>([]);
+  const [recipes2, setRecipes2] = useState<RecipeApi[]>([]);
 
   useEffect(() => {
     const fetchRecipesByIngredients = async () => {
       try {
         const response = await axios.get(
-          `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${searchQuery}`
+          `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${searchQuery}&number=100`
         );
-        const data = response.data.map((recipe: any) => ({
+        const data = response.data.map((recipe: RecipeApi) => ({
           id: recipe.id,
           title: recipe.title,
           image: recipe.image,
           usedIngredients: recipe.usedIngredients,
-          missedIngredients: recipe.missedIngredients,
           unusedIngredients: recipe.unusedIngredients,
         }));
         setRecipes2(data);
@@ -92,38 +65,22 @@ const RecipeSearch = () => {
           value={searchQuery}
           onChange={handleSearchQueryChange}
         />
-        <ul>
+        <div className="grid">
           {recipes2.map((recipe) => (
-            <li key={recipe.id}>
-              <img src={recipe.image} alt={recipe.title} />
-              <h2>{recipe.title}</h2>
-              <div>
-                <h3>Used ingredients:</h3>
-                <ul>
-                  {recipe.usedIngredients.map((ingredient: any) => (
-                    <li key={ingredient.id}>{ingredient.original}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3>Missed ingredients:</h3>
-                <ul>
-                  {recipe.missedIngredients.map((ingredient: any) => (
-                    <li key={ingredient.id}>{ingredient.original}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3>Unused ingredients:</h3>
-                <ul>
-                  {recipe.unusedIngredients.map((ingredient: any) => (
-                    <li key={ingredient.id}>{ingredient.original}</li>
-                  ))}
-                </ul>
-              </div>
-            </li>
+            <Card
+              className="col-4 md:w-25rem m-3"
+              title={recipe.title}
+              key={recipe.id}
+              header={
+                <>
+                  <img alt="Card" src={recipe.image} />
+                </>
+              }
+            >
+              {recipe.usedIngredients.map((x) => x.name)}
+            </Card>
           ))}
-        </ul>
+        </div>
       </div>
 
       <h2>Receitas disponiveis:</h2>
