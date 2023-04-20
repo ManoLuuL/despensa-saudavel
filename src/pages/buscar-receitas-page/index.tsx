@@ -65,10 +65,10 @@ const RecipeSearch = () => {
           value={searchQuery}
           onChange={handleSearchQueryChange}
         />
-        <div className="grid">
+        <div className="grid justify-content-center">
           {recipes2.map((recipe) => (
             <Card
-              className="col-4 md:w-25rem m-3"
+              className=" md:w-20rem m-3 "
               title={recipe.title}
               key={recipe.id}
               header={
