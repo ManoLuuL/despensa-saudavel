@@ -5,7 +5,6 @@ import { Container, LeftContent, PasswordDiv } from "./styles";
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import { classNames } from "primereact/utils";
-import { Divider } from "primereact/divider";
 import { Button } from "../../components/molecules/button";
 
 export type LoginForm = {
@@ -15,7 +14,6 @@ export type LoginForm = {
 
 export const LoginPage: FC = () => {
   const [formData, setFormData] = useState({});
-  const [showMessage, setShowMessage] = useState(false);
   let LoginValues: LoginForm = {
     email: "",
     password: "",
@@ -27,7 +25,7 @@ export const LoginPage: FC = () => {
       let errors: Record<string, string> = {};
 
       if (!data.email) {
-        errors.email = "Email is required.";
+        errors.email = "Email é obrigatorio.";
       } else if (
         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.email)
       ) {
@@ -43,7 +41,6 @@ export const LoginPage: FC = () => {
     onSubmit: (data) => {
       console.log(data);
       setFormData(data);
-      setShowMessage(true);
       formik.resetForm();
     },
   });
@@ -105,6 +102,7 @@ export const LoginPage: FC = () => {
                     value={formik.values.password}
                     onChange={formik.handleChange}
                     feedback={false}
+                    toggleMask
                     className={classNames({
                       "p-invalid": isFormFieldValid("password"),
                     })}
@@ -120,9 +118,7 @@ export const LoginPage: FC = () => {
                 </span>
                 {getFormErrorMessage("password")}
               </PasswordDiv>
-              <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
-                <Button content="Esqueceu a senha" fontSize={1} />
-
+              <div className="col-12 flex justify-content-end  p-0 gap-2 md:gap-0">
                 <Button content="Acessar" fontSize={1} />
               </div>
             </form>

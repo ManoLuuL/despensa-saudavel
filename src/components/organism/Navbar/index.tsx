@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Button } from "../../molecules/button";
-import { NavbarContainer, NavbarLeft, NavbarRight } from "./styles";
+import { ButtonNav, NavbarContainer, NavbarLeft, NavbarRight } from "./styles";
 
 const Navbar = () => {
   return (
@@ -10,7 +10,7 @@ const Navbar = () => {
       </NavLink>
       <NavbarRight>
         <NavLink to={"/"}>
-          <Button content="Dados do Usuario" fontSize={0.9} />
+          <ButtonNav>Dados do Usuario</ButtonNav>
         </NavLink>
       </NavbarRight>
     </NavbarContainer>

@@ -1,14 +1,13 @@
 import styled from "styled-components";
+import fundo from "../../assets/livro.jpg";
 
 export const Container = styled.div`
   height: 100vh;
-  background-color: black;
 `;
 
-export const TitlePage = styled.h1`
-  font-size: 6rem;
-  color: white;
-  margin: 0;
-  padding: 0;
-  display: flex;
+export const BackgroundMain = styled.div`
+  height: 100%;
+  background-image: url("${fundo}");
+  background-size: cover;
+  background-position: center;
 `;
