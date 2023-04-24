@@ -13,13 +13,11 @@ const Navbar = () => {
       <TitlePageNavBar>Teste</TitlePageNavBar>
       <NavMenu>
         <NavLink to="/main">Inicio</NavLink>
-        <NavLink to="/contact-us">Receitas Favoritas</NavLink>
-        <NavLink to="/sign-up">Sobre nós</NavLink>
-        {/* Second Nav */}
-        {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
+        <NavLink to="/ReceitasFavoritas">Receitas Favoritas</NavLink>
+        <NavLink to="/Sobre">Sobre nós</NavLink>
       </NavMenu>
       <NavBtn>
-        <NavBtnLink to="/signin">
+        <NavBtnLink to="/DadosUsuario">
           <span className="pi pi-user"></span>
         </NavBtnLink>
       </NavBtn>

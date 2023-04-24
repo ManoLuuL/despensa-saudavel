@@ -6,6 +6,9 @@ import RegisterPage from "../pages/reister-user-page/register-page";
 import MainPage from "../pages/main-page";
 import CalcIMC from "../pages/calc-imc-page";
 import RecipeSearch from "../pages/buscar-receitas-page";
+import FavoriteRecipe from "../pages/favorite-recipe";
+import UserPage from "../pages/user-page";
+import AboutPage from "../pages/about-page";
 
 export const pagesRoutes = createBrowserRouter([
   {
@@ -30,4 +33,7 @@ export const pagesRoutes = createBrowserRouter([
     element: <CalcIMC />,
   },
   { path: "BuscarReceitas", element: <RecipeSearch /> },
+  { path: "ReceitasFavoritas", element: <FavoriteRecipe /> },
+  { path: "DadosUsuario", element: <UserPage /> },
+  { path: "Sobre", element: <AboutPage /> },
 ]);
