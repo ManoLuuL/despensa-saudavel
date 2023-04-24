@@ -8,22 +8,23 @@ import { classNames } from "primereact/utils";
 import { Divider } from "primereact/divider";
 import { Button } from "../../components/molecules/button";
 import { NavLink } from "react-router-dom";
-
-export type LoginForm = {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
+import { Dropdown } from "primereact/dropdown";
+import { LoginForm, UserSex } from "./types";
+import { ITENS_USER_SEX } from "./consts";
+import { Checkbox, CheckboxChangeEvent } from "primereact/checkbox";
 
 export const RegisterPage: FC = () => {
   const [formData, setFormData] = useState({});
-  const [showMessage, setShowMessage] = useState(false);
+  const [valueUserSex, setValueUserSex] = useState<UserSex>();
+  const [checkRestriction, setCheckRestriction] = useState<string[]>([]);
+  const [checked, setChecked] = useState(false);
+
   let LoginValues: LoginForm = {
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
+    userSex: { id: 0, description: "" },
   };
 
   const formik = useFormik({
@@ -48,7 +49,6 @@ export const RegisterPage: FC = () => {
     onSubmit: (data) => {
       console.log(data);
       setFormData(data);
-      setShowMessage(true);
       formik.resetForm();
     },
   });
@@ -78,6 +78,20 @@ export const RegisterPage: FC = () => {
       </ul>
     </Fragment>
   );
+
+  const handleCheckChange = (e: CheckboxChangeEvent) => {
+    let restriction = [...checkRestriction];
+
+    if (e.checked) {
+      restriction.push(e.value);
+      setChecked(true);
+    } else {
+      restriction.splice(restriction.indexOf(e.value), 1);
+      setChecked(false);
+    }
+
+    setCheckRestriction(restriction);
+  };
 
   return (
     <>
@@ -187,6 +201,57 @@ export const RegisterPage: FC = () => {
                 </span>
                 {getFormErrorMessage("confirmPassword")}
               </PasswordDiv>
+              <div className="field w-full">
+                <span className="p-float-label w-full">
+                  <Dropdown
+                    name="userSex"
+                    options={ITENS_USER_SEX}
+                    optionLabel="description"
+                    className="w-full"
+                    value={valueUserSex}
+                    onChange={(e) => {
+                      if (e) {
+                        setValueUserSex(e.value);
+                      }
+                    }}
+                  />
+                  <label htmlFor="dd-city">Sexo:</label>
+                </span>
+              </div>
+              <div className="field w-full">
+                <div className="flex align-items-center">
+                  <Checkbox
+                    inputId="restricaoCheck"
+                    name="restricao"
+                    value="restrito"
+                    checked={checkRestriction.includes("restrito")}
+                    onChange={handleCheckChange}
+                  />
+                  <label htmlFor="restricaoCheck" className="ml-2">
+                    Possui restrição
+                  </label>
+                </div>
+              </div>
+              {checked && (
+                <div className="field w-full">
+                  <span className="p-float-label w-full">
+                    <Dropdown
+                      name="userSex"
+                      options={ITENS_USER_SEX}
+                      optionLabel="description"
+                      className="w-full"
+                      value={valueUserSex}
+                      onChange={(e) => {
+                        if (e) {
+                          setValueUserSex(e.value);
+                        }
+                      }}
+                    />
+                    <label htmlFor="dd-city">Sexo:</label>
+                  </span>
+                </div>
+              )}
+
               <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
                 <NavLink to={"/"}>
                   <Button content="Voltar" fontSize={1} type="button" />
