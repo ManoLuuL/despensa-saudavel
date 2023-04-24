@@ -1,19 +1,27 @@
-import { NavLink } from "react-router-dom";
-import { Button } from "../../molecules/button";
-import { ButtonNav, NavbarContainer, NavbarLeft, NavbarRight } from "./styles";
+import { FC } from "react";
+import { Actions, Logo, NavContainer, NavItems } from "./styles";
+import { NavBarProps } from "./types";
 
-const Navbar = () => {
+const Navbar: FC<NavBarProps> = (props) => {
+  const { currentRoute, setCurrentRoute, navigationData } = props;
+
   return (
-    <NavbarContainer>
-      <NavLink to={"/main"}>
-        <NavbarLeft>Cardapio Nutricional</NavbarLeft>
-      </NavLink>
-      <NavbarRight>
-        <NavLink to={"/"}>
-          <ButtonNav>Dados do Usuario</ButtonNav>
-        </NavLink>
-      </NavbarRight>
-    </NavbarContainer>
+    <NavContainer>
+      <Logo>Teste</Logo>
+      <NavItems>
+        {navigationData.map((item, index) => (
+          <li
+            className={currentRoute === item ? ".selectedNavItem" : ".navItem"}
+            key={index}
+            onClick={() => setCurrentRoute(item)}
+          >
+            {item}
+          </li>
+        ))}
+      </NavItems>
+      <Actions>Logout</Actions>
+    </NavContainer>
   );
 };
+
 export default Navbar;

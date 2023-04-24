@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Navbar from "../../components/organism/Navbar";
+import useNavigation from "../../utils/use-navigation";
+import navigationData from "../../utils/navigation";
 
 const CalcIMC = () => {
   const [weight, setWeight] = useState(0);
@@ -11,9 +13,15 @@ const CalcIMC = () => {
     setIMC(calculatedIMC);
   };
 
+  const { currentRoute, setCurrentRoute } = useNavigation();
+
   return (
     <>
-      <Navbar />
+      <Navbar
+        currentRoute={currentRoute}
+        navigationData={navigationData}
+        setCurrentRoute={setCurrentRoute}
+      />
       <div>
         <h2>Calcular IMC</h2>
         <label htmlFor="weight">Peso (em kg): </label>
