@@ -1,26 +1,29 @@
-import { FC } from "react";
-import { Actions, Logo, NavContainer, NavItems } from "./styles";
-import { NavBarProps } from "./types";
+import {
+  Nav,
+  NavBtn,
+  NavBtnLink,
+  NavLink,
+  NavMenu,
+  TitlePageNavBar,
+} from "./styles";
 
-const Navbar: FC<NavBarProps> = (props) => {
-  const { currentRoute, setCurrentRoute, navigationData } = props;
-
+const Navbar = () => {
   return (
-    <NavContainer>
-      <Logo>Teste</Logo>
-      <NavItems>
-        {navigationData.map((item, index) => (
-          <li
-            className={currentRoute === item ? ".selectedNavItem" : ".navItem"}
-            key={index}
-            onClick={() => setCurrentRoute(item)}
-          >
-            {item}
-          </li>
-        ))}
-      </NavItems>
-      <Actions>Logout</Actions>
-    </NavContainer>
+    <Nav>
+      <TitlePageNavBar>Teste</TitlePageNavBar>
+      <NavMenu>
+        <NavLink to="/main">Inicio</NavLink>
+        <NavLink to="/contact-us">Receitas Favoritas</NavLink>
+        <NavLink to="/sign-up">Sobre nós</NavLink>
+        {/* Second Nav */}
+        {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
+      </NavMenu>
+      <NavBtn>
+        <NavBtnLink to="/signin">
+          <span className="pi pi-user"></span>
+        </NavBtnLink>
+      </NavBtn>
+    </Nav>
   );
 };
 

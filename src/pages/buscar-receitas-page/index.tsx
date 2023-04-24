@@ -1,17 +1,10 @@
 import Navbar from "../../components/organism/Navbar";
 import { Card } from "primereact/card";
-import useNavigation from "../../utils/use-navigation";
-import navigationData from "../../utils/navigation";
 
 const RecipeSearch = () => {
-  const { currentRoute, setCurrentRoute } = useNavigation();
   return (
     <>
-      <Navbar
-        currentRoute={currentRoute}
-        navigationData={navigationData}
-        setCurrentRoute={setCurrentRoute}
-      />
+      <Navbar />
       <div>
         <div className="grid justify-content-center">
           {Array(5)

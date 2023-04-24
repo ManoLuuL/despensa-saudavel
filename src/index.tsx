@@ -6,41 +6,10 @@ import "primereact/resources/themes/mdc-dark-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ErrorPage from "./pages/page-404";
-import LoginPage from "./pages/login/login-page";
+import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { Theme } from "./styles";
-import HomePage from "./pages/home-page";
-import RegisterPage from "./pages/reister-user-page/register-page";
-import MainPage from "./pages/main-page";
-import CalcIMC from "./pages/calc-imc-page";
-import RecipeSearch from "./pages/buscar-receitas-page";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <HomePage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "Login",
-    element: <LoginPage />,
-  },
-  {
-    path: "Registrar",
-    element: <RegisterPage />,
-  },
-  {
-    path: "Main",
-    element: <MainPage />,
-  },
-  {
-    path: "CalcularIMC",
-    element: <CalcIMC />,
-  },
-  { path: "BuscarReceitas", element: <RecipeSearch /> },
-]);
+import { pagesRoutes } from "./routes/pages-routes";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -48,7 +17,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={Theme}>
-      <RouterProvider router={router} />
+      <RouterProvider router={pagesRoutes} />
     </ThemeProvider>
   </React.StrictMode>
 );
