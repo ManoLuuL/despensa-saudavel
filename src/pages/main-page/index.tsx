@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { BackgroundMain, Container } from "./styles";
+import { BackgroundMain, CardsContainer, Container } from "./styles";
 import Navbar from "../../components/organism/Navbar";
 import { CardIMC } from "./cards/imc-card";
 import { ReceitasCard } from "./cards/receitas-card";
@@ -11,7 +11,7 @@ const MainPage: FC = () => {
       <Container>
         <BackgroundMain>
           <Navbar />
-          <div className="h-auto mt-7">
+          <CardsContainer>
             <h1
               className="justify-content-center flex"
               style={{ color: "black" }}
@@ -23,7 +23,7 @@ const MainPage: FC = () => {
               <ReceitasCard />
               <ReceitasFavoritasCard />
             </div>
-          </div>
+          </CardsContainer>
         </BackgroundMain>
       </Container>
     </>

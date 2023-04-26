@@ -9,13 +9,14 @@ import { Divider } from "primereact/divider";
 import { Button } from "../../components/molecules/button";
 import { NavLink } from "react-router-dom";
 import { Dropdown } from "primereact/dropdown";
-import { LoginForm, UserSex } from "./types";
-import { ITENS_USER_SEX } from "./consts";
+import { LoginForm, DefaultItemSelect } from "./types";
+import { ITENS_RESTRICTION, ITENS_USER_SEX } from "./consts";
 import { Checkbox, CheckboxChangeEvent } from "primereact/checkbox";
 
 export const RegisterPage: FC = () => {
   const [formData, setFormData] = useState({});
-  const [valueUserSex, setValueUserSex] = useState<UserSex>();
+  const [valueUserSex, setValueUserSex] = useState<DefaultItemSelect>();
+  const [valueRestriction, setValueRestriction] = useState<DefaultItemSelect>();
   const [checkRestriction, setCheckRestriction] = useState<string[]>([]);
   const [checked, setChecked] = useState(false);
 
@@ -49,6 +50,7 @@ export const RegisterPage: FC = () => {
     onSubmit: (data) => {
       console.log(data);
       setFormData(data);
+
       formik.resetForm();
     },
   });
@@ -65,16 +67,16 @@ export const RegisterPage: FC = () => {
     );
   };
 
-  const passwordHeader = <h6>Pick a password</h6>;
+  const passwordHeader = <h6>Insira sua senha</h6>;
   const passwordFooter = (
     <Fragment>
       <Divider />
-      <p className="mt-2">Suggestions</p>
+      <p className="mt-2">Sugestão</p>
       <ul className="pl-2 ml-2 mt-0" style={{ lineHeight: "1.5" }}>
-        <li>At least one lowercase</li>
-        <li>At least one uppercase</li>
-        <li>At least one numeric</li>
-        <li>Minimum 8 characters</li>
+        <li>Letras minúsculas</li>
+        <li>Letras maiúsculas</li>
+        <li>Numéricos</li>
+        <li>Mínimo de 8 caracteres</li>
       </ul>
     </Fragment>
   );
@@ -236,18 +238,18 @@ export const RegisterPage: FC = () => {
                 <div className="field w-full">
                   <span className="p-float-label w-full">
                     <Dropdown
-                      name="userSex"
-                      options={ITENS_USER_SEX}
+                      name="restriction"
+                      options={ITENS_RESTRICTION}
                       optionLabel="description"
                       className="w-full"
-                      value={valueUserSex}
+                      value={valueRestriction}
                       onChange={(e) => {
                         if (e) {
-                          setValueUserSex(e.value);
+                          setValueRestriction(e.value);
                         }
                       }}
                     />
-                    <label htmlFor="dd-city">Sexo:</label>
+                    <label htmlFor="dd-city">Restrição:</label>
                   </span>
                 </div>
               )}

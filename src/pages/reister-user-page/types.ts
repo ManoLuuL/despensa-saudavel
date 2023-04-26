@@ -1,4 +1,4 @@
-export type UserSex = {
+export type DefaultItemSelect = {
   id: number;
   description: string;
 };
@@ -8,5 +8,5 @@ export type LoginForm = {
   email: string;
   password: string;
   confirmPassword: string;
-  userSex: UserSex;
+  userSex: DefaultItemSelect;
 };
