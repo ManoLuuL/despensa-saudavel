@@ -1,41 +1,26 @@
-import { useState } from "react";
 import Navbar from "../../components/organism/Navbar";
+import { IMCCalculator } from "./imc-calc-component";
+import { ContainerImc } from "./styles";
 
 const CalcIMC = () => {
-  const [weight, setWeight] = useState(0);
-  const [height, setHeight] = useState(0);
-  const [imc, setIMC] = useState(0);
-
-  const calculateIMC = () => {
-    const calculatedIMC = weight / (height * height);
-    setIMC(calculatedIMC);
-  };
-
   return (
     <>
       <Navbar />
-      <div>
-        <h2>Calcular IMC</h2>
-        <label htmlFor="weight">Peso (em kg): </label>
-        <input
-          type="number"
-          id="weight"
-          value={weight}
-          onChange={(e) => setWeight(Number(e.target.value))}
-        />
-        <br />
-        <label htmlFor="height">Altura (em metros): </label>
-        <input
-          type="number"
-          id="height"
-          value={height}
-          onChange={(e) => setHeight(Number(e.target.value))}
-        />
-        <br />
-        <button onClick={calculateIMC}>Calcular</button>
-        <br />
-        <p>Seu IMC é: {imc.toFixed(2)}</p>
-      </div>
+      <ContainerImc>
+        <div
+          className="p-grid p-nogutter p-align-center p-justify-center"
+          style={{ height: "100vh" }}
+        >
+          <div className="p-col-12 p-md-8 p-lg-6">
+            <div className="p-card">
+              <div className="p-card-header">Cálculo do IMC</div>
+              <div className="p-card-body">
+                <IMCCalculator />
+              </div>
+            </div>
+          </div>
+        </div>
+      </ContainerImc>
     </>
   );
 };
