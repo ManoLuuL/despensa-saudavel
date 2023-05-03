@@ -3,3 +3,9 @@ export type IMCResult = {
   label: string;
   color: string;
 };
+
+export type IMCCalculatorProps = {};
+
+export type IMCChartProps = {
+  result: IMCResult;
+};

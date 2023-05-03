@@ -1,31 +1,31 @@
 import { Chart } from "primereact/chart";
-import { ChartData } from "chart.js";
-import { IMCResult } from "./types";
-
-interface IMCChartProps {
-  result: IMCResult;
-}
+import { IMCChartProps } from "./types";
+import { IMCChartWrapper, ResultWrapper } from "./styles";
 
 export function IMCChart(props: IMCChartProps) {
   const { result } = props;
 
-  const chartData: ChartData = {
+  const data = {
+    labels: [result.label],
     datasets: [
       {
-        data: [result.value, 25 - result.value],
-        backgroundColor: [result.color, "#E0E0E0"],
-        borderWidth: 0,
+        data: [result.value],
+        backgroundColor: [result.color],
       },
     ],
-    labels: [result.label, ""],
   };
 
   return (
-    <div className="p-card">
-      <div className="p-card-header">{result.label}</div>
-      <div className="p-card-body">
-        <Chart type="doughnut" data={chartData} />
-      </div>
-    </div>
+    <IMCChartWrapper>
+      <ResultWrapper>
+        <span style={{ fontSize: "2rem", fontWeight: "bold" }}>
+          {result.value}
+        </span>
+        <span style={{ fontSize: "1.5rem", color: result.color }}>
+          {result.label}
+        </span>
+      </ResultWrapper>
+      <Chart type="doughnut " data={data} />
+    </IMCChartWrapper>
   );
 }
