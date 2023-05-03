@@ -6,7 +6,7 @@ export const CardIMC = () => {
   const header = (
     <img
       alt="Card"
-      src="https://primefaces.org/cdn/primereact/images/usercard.png"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUVqbbLcRkokdFq51r3JsqlT11pa3WGRULXA&usqp=CAU"
     />
   );
   const footer = (
