@@ -9,18 +9,19 @@ import { Divider } from "primereact/divider";
 import { Button } from "../../components/molecules/button";
 import { NavLink } from "react-router-dom";
 import { Dropdown } from "primereact/dropdown";
-import { LoginForm, DefaultItemSelect } from "./types";
+import { RegisterForm, DefaultItemSelect } from "./types";
 import { ITENS_USER_SEX } from "./consts";
+import { InputNumber } from "primereact/inputnumber";
 
 export const RegisterPage: FC = () => {
-  const [formData, setFormData] = useState({});
   const [valueUserSex, setValueUserSex] = useState<DefaultItemSelect>();
+  const [ageValue, setAgeValue] = useState<number>();
 
-  let LoginValues: LoginForm = {
-    name: "",
+  let LoginValues: RegisterForm = {
+    registerName: "",
     email: "",
     password: "",
-    userSex: { id: 0, description: "" },
+    sex: { id: 0, description: "" },
     age: 0,
   };
 
@@ -30,7 +31,7 @@ export const RegisterPage: FC = () => {
       let errors: Record<string, string> = {};
 
       if (!data.email) {
-        errors.email = "Email is required.";
+        errors.email = "Email é requerido.";
       } else if (
         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.email)
       ) {
@@ -41,12 +42,22 @@ export const RegisterPage: FC = () => {
       if (!data.password) {
         errors.password = "Senha é obrigatorio!";
       }
+
+      if (!data.registerName) {
+        errors.registerName = "Nome é obrigatorio!";
+      }
+
+      if (!data.sex) {
+        errors.sex = "Sexo é obrigatorio!";
+      }
+
+      if (!data.age) {
+        errors.age = "Idade é obrigatorio!";
+      }
       return errors;
     },
     onSubmit: (data) => {
       console.log(data);
-      setFormData(data);
-
       formik.resetForm();
     },
   });
@@ -94,22 +105,22 @@ export const RegisterPage: FC = () => {
               <div className="field">
                 <span className="p-float-label p-input-icon-right w-full">
                   <InputText
-                    id="name"
-                    name="name"
+                    id="registerName"
+                    name="registerName"
                     style={{ width: "100%" }}
-                    value={formik.values.name}
+                    value={formik.values.registerName}
                     onChange={formik.handleChange}
                   />
                   <label
-                    htmlFor="name"
+                    htmlFor="registerName"
                     className={classNames({
-                      "p-error": isFormFieldValid("name"),
+                      "p-error": isFormFieldValid("registerName"),
                     })}
                   >
                     Nome*
                   </label>
                 </span>
-                {getFormErrorMessage("name")}
+                {getFormErrorMessage("registerName")}
               </div>
               <div className="field">
                 <span className="p-float-label p-input-icon-right w-full">
@@ -165,7 +176,7 @@ export const RegisterPage: FC = () => {
               <div className="field w-full">
                 <span className="p-float-label w-full">
                   <Dropdown
-                    name="userSex"
+                    name="sex"
                     options={ITENS_USER_SEX}
                     optionLabel="description"
                     className="w-full"
@@ -176,8 +187,36 @@ export const RegisterPage: FC = () => {
                       }
                     }}
                   />
-                  <label htmlFor="dd-city">Sexo:</label>
+                  <label
+                    htmlFor="sex"
+                    className={classNames({
+                      "p-error": isFormFieldValid("sex"),
+                    })}
+                  >
+                    Sexo*:
+                  </label>
                 </span>
+                {getFormErrorMessage("sex")}
+              </div>
+
+              <div className="field w-full">
+                <span className="p-float-label w-full">
+                  <InputNumber
+                    name="age"
+                    value={ageValue}
+                    onChange={(e) => setAgeValue(e.value ?? undefined)}
+                    className="w-full"
+                  />
+                  <label
+                    htmlFor="age"
+                    className={classNames({
+                      "p-error": isFormFieldValid("age"),
+                    })}
+                  >
+                    Idade*:
+                  </label>
+                </span>
+                {getFormErrorMessage("age")}
               </div>
 
               <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">

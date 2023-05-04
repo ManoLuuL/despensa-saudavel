@@ -3,10 +3,10 @@ export type DefaultItemSelect = {
   description: string;
 };
 
-export type LoginForm = {
-  name: string;
+export type RegisterForm = {
+  registerName: string;
   email: string;
   password: string;
   age: number;
-  userSex: DefaultItemSelect;
+  sex: DefaultItemSelect;
 };

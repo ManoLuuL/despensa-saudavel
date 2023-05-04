@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { FC, Fragment, useState } from "react";
+import { FC } from "react";
 import img from "./assets/image.jpg";
 import { Container, LeftContent, PasswordDiv } from "./styles";
 import { InputText } from "primereact/inputtext";
@@ -10,7 +10,6 @@ import { NavLink } from "react-router-dom";
 import { LoginFormType } from "./types";
 
 export const LoginPage: FC = () => {
-  const [formData, setFormData] = useState({});
   let LoginValues: LoginFormType = {
     email: "",
     password: "",
