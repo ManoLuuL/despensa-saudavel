@@ -6,17 +6,30 @@ import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import { classNames } from "primereact/utils";
 import { Button } from "../../components/molecules/button";
-
-export type LoginForm = {
-  email: string;
-  password: string;
-};
+import { NavLink } from "react-router-dom";
+import { LoginFormType } from "./types";
 
 export const LoginPage: FC = () => {
   const [formData, setFormData] = useState({});
-  let LoginValues: LoginForm = {
+  let LoginValues: LoginFormType = {
     email: "",
     password: "",
+  };
+
+  const validateLoginForm = async (values: LoginFormType) => {
+    const response = await fetch("https://api.example.com/login", {
+      method: "POST",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message);
+    }
   };
 
   const formik = useFormik({
@@ -39,9 +52,12 @@ export const LoginPage: FC = () => {
       return errors;
     },
     onSubmit: (data) => {
-      console.log(data);
-      setFormData(data);
-      formik.resetForm();
+      try {
+        validateLoginForm(data);
+      } catch (error) {
+        console.error(error);
+        formik.resetForm();
+      }
     },
   });
 
@@ -118,7 +134,10 @@ export const LoginPage: FC = () => {
                 </span>
                 {getFormErrorMessage("password")}
               </PasswordDiv>
-              <div className="col-12 flex justify-content-end  p-0 gap-2 md:gap-0">
+              <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
+                <NavLink to={"/"}>
+                  <Button content="Voltar" fontSize={1} type="button" />
+                </NavLink>
                 <Button content="Acessar" fontSize={1} />
               </div>
             </form>
