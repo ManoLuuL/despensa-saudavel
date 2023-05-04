@@ -10,22 +10,18 @@ import { Button } from "../../components/molecules/button";
 import { NavLink } from "react-router-dom";
 import { Dropdown } from "primereact/dropdown";
 import { LoginForm, DefaultItemSelect } from "./types";
-import { ITENS_RESTRICTION, ITENS_USER_SEX } from "./consts";
-import { Checkbox, CheckboxChangeEvent } from "primereact/checkbox";
+import { ITENS_USER_SEX } from "./consts";
 
 export const RegisterPage: FC = () => {
   const [formData, setFormData] = useState({});
   const [valueUserSex, setValueUserSex] = useState<DefaultItemSelect>();
-  const [valueRestriction, setValueRestriction] = useState<DefaultItemSelect>();
-  const [checkRestriction, setCheckRestriction] = useState<string[]>([]);
-  const [checked, setChecked] = useState(false);
 
   let LoginValues: LoginForm = {
     name: "",
     email: "",
     password: "",
-    confirmPassword: "",
     userSex: { id: 0, description: "" },
+    age: 0,
   };
 
   const formik = useFormik({
@@ -80,20 +76,6 @@ export const RegisterPage: FC = () => {
       </ul>
     </Fragment>
   );
-
-  const handleCheckChange = (e: CheckboxChangeEvent) => {
-    let restriction = [...checkRestriction];
-
-    if (e.checked) {
-      restriction.push(e.value);
-      setChecked(true);
-    } else {
-      restriction.splice(restriction.indexOf(e.value), 1);
-      setChecked(false);
-    }
-
-    setCheckRestriction(restriction);
-  };
 
   return (
     <>
@@ -179,30 +161,7 @@ export const RegisterPage: FC = () => {
                 </span>
                 {getFormErrorMessage("password")}
               </PasswordDiv>
-              <PasswordDiv className="field w-full">
-                <span className="p-float-label">
-                  <Password
-                    id="confirmPassword"
-                    style={{ width: "100%" }}
-                    name="confirmPassword"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                    feedback={false}
-                    className={classNames({
-                      "p-invalid": isFormFieldValid("confirmPassword"),
-                    })}
-                  />
-                  <label
-                    htmlFor="confirmPassword"
-                    className={classNames({
-                      "p-error": isFormFieldValid("confirmPassword"),
-                    })}
-                  >
-                    Confirme a senha*
-                  </label>
-                </span>
-                {getFormErrorMessage("confirmPassword")}
-              </PasswordDiv>
+
               <div className="field w-full">
                 <span className="p-float-label w-full">
                   <Dropdown
@@ -220,39 +179,6 @@ export const RegisterPage: FC = () => {
                   <label htmlFor="dd-city">Sexo:</label>
                 </span>
               </div>
-              <div className="field w-full">
-                <div className="flex align-items-center">
-                  <Checkbox
-                    inputId="restricaoCheck"
-                    name="restricao"
-                    value="restrito"
-                    checked={checkRestriction.includes("restrito")}
-                    onChange={handleCheckChange}
-                  />
-                  <label htmlFor="restricaoCheck" className="ml-2">
-                    Possui restrição
-                  </label>
-                </div>
-              </div>
-              {checked && (
-                <div className="field w-full">
-                  <span className="p-float-label w-full">
-                    <Dropdown
-                      name="restriction"
-                      options={ITENS_RESTRICTION}
-                      optionLabel="description"
-                      className="w-full"
-                      value={valueRestriction}
-                      onChange={(e) => {
-                        if (e) {
-                          setValueRestriction(e.value);
-                        }
-                      }}
-                    />
-                    <label htmlFor="dd-city">Restrição:</label>
-                  </span>
-                </div>
-              )}
 
               <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
                 <NavLink to={"/"}>
