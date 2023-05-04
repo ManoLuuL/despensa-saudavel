@@ -1,14 +1,10 @@
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
 import { NavLink } from "react-router-dom";
+import img from "../../../assets/favorite-receipe.png";
 
 export const ReceitasFavoritasCard = () => {
-  const header = (
-    <img
-      alt="Card"
-      src="https://primefaces.org/cdn/primereact/images/usercard.png"
-    />
-  );
+  const header = <img alt="Card" src={img} />;
   const footer = (
     <div className="flex flex-wrap justify-content-end gap-2">
       <NavLink to={"/ReceitasFavoritas"}>

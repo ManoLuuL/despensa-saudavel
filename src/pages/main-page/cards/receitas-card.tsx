@@ -6,7 +6,7 @@ export const ReceitasCard = () => {
   const header = (
     <img
       alt="Card"
-      src="https://primefaces.org/cdn/primereact/images/usercard.png"
+      src="https://www.bemafiada.com/wp-content/uploads/2021/01/livro-de-receitas.jpg"
     />
   );
   const footer = (
