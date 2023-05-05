@@ -1,14 +1,10 @@
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
 import { NavLink } from "react-router-dom";
+import receiptImg from "../../../assets/book-img.jpg";
 
 export const ReceitasCard = () => {
-  const header = (
-    <img
-      alt="Card"
-      src="https://www.bemafiada.com/wp-content/uploads/2021/01/livro-de-receitas.jpg"
-    />
-  );
+  const header = <img alt="Card" src={receiptImg} />;
   const footer = (
     <div className="flex flex-wrap justify-content-end gap-2">
       <NavLink to={"/BuscarReceitas"}>
