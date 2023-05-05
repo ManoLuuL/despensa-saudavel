@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Card from "./cards/cards-receips";
 import Filters from "./filters/filter-ingredients";
+import Navbar from "../../components/organism/Navbar";
 
 const PageWrapper = styled.div`
   display: flex;
@@ -43,20 +44,23 @@ const cardsData = [
 ];
 
 const RecipeSearch: React.FC = () => (
-  <PageWrapper>
-    <FiltersWrapper>
-      <Filters />
-    </FiltersWrapper>
-    <CardsWrapper>
-      {cardsData.map((card) => (
-        <Card
-          key={card.title}
-          title={card.title}
-          description={card.description}
-        />
-      ))}
-    </CardsWrapper>
-  </PageWrapper>
+  <>
+    <Navbar />
+    <PageWrapper>
+      <FiltersWrapper>
+        <Filters />
+      </FiltersWrapper>
+      <CardsWrapper>
+        {cardsData.map((card) => (
+          <Card
+            key={card.title}
+            title={card.title}
+            description={card.description}
+          />
+        ))}
+      </CardsWrapper>
+    </PageWrapper>
+  </>
 );
 
 export default RecipeSearch;
