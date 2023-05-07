@@ -1,32 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 import Card from "./cards/cards-receips";
 import Filters from "./filters/filter-ingredients";
 import Navbar from "../../components/organism/Navbar";
-
-const PageWrapper = styled.div`
-  display: flex;
-  height: 100vh;
-`;
-
-const FiltersWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: #f0f0f0;
-  width: 300px;
-`;
-
-const CardsWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 16px;
-  flex: 1;
-  overflow-y: auto;
-`;
+import { CardsWrapper, FiltersWrapper, PageWrapper } from "./styles";
 
 const cardsData = [
   {

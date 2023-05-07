@@ -1,21 +1,7 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { Checkbox } from "primereact/checkbox";
 import { InputText } from "primereact/inputtext";
-
-const FiltersWrapper = styled.div`
-  width: 200px;
-  height: 100%;
-  padding: 16px;
-`;
-
-const FiltersTitle = styled.h2`
-  margin-bottom: 16px;
-`;
-
-const FiltersList = styled.div`
-  margin-top: 16px;
-`;
+import { FiltersList, FiltersTitle, FiltersWrapper } from "./styles";
 
 const Filters: React.FC = () => {
   const [filters, setFilters] = useState<string[]>([]);

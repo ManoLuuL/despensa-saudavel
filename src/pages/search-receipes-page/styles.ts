@@ -18,3 +18,27 @@ export const BntSearch = styled.button`
     color: black;
   }
 `;
+
+export const PageWrapper = styled.div`
+  display: flex;
+  height: 100vh;
+`;
+
+export const FiltersWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 300px;
+  border: 1px solid grey;
+`;
+
+export const CardsWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+`;
