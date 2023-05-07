@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import { Checkbox } from "primereact/checkbox";
 import { InputText } from "primereact/inputtext";
 import { FiltersList, FiltersTitle, FiltersWrapper } from "./styles";
 
-const Filters: React.FC = () => {
+const Filters: FC = () => {
   const [filters, setFilters] = useState<string[]>([]);
   const [currentFilter, setCurrentFilter] = useState<string>("");
 
-  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFilterChange = (event: ChangeEvent<HTMLInputElement>) => {
     setCurrentFilter(event.target.value);
   };
 

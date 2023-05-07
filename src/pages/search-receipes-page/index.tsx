@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import Card from "./cards/cards-receips";
 import Filters from "./filters/filter-ingredients";
 import Navbar from "../../components/organism/Navbar";
@@ -19,7 +19,7 @@ const cardsData = [
   },
 ];
 
-const RecipeSearch: React.FC = () => (
+const RecipeSearch: FC = () => (
   <>
     <Navbar />
     <PageWrapper>
