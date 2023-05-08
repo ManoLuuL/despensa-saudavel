@@ -27,13 +27,11 @@ const RecipeSearch: FC = () => (
         <Filters />
       </FiltersWrapper>
       <CardsWrapper>
-        {cardsData.map((card) => (
-          <Card
-            key={card.title}
-            title={card.title}
-            description={card.description}
-          />
-        ))}
+        {Array(50)
+          .fill(0)
+          .map((_, index) => (
+            <Card title="Teste" key={index} description="Teste de card" />
+          ))}
       </CardsWrapper>
     </PageWrapper>
   </>

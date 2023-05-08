@@ -24,16 +24,16 @@ const Filters: FC = () => {
 
   return (
     <FiltersWrapper>
-      <FiltersTitle>Filters</FiltersTitle>
+      <FiltersTitle>Ingredientes</FiltersTitle>
       <div>
         <InputText value={currentFilter} onChange={handleFilterChange} />
-        <button onClick={handleAddFilter}>Add</button>
+        <button onClick={handleAddFilter}>Adicionar</button>
       </div>
       <FiltersList>
         {filters.map((filter) => (
           <div key={filter}>
             <Checkbox checked value={filter} onChange={() => {}} />
-            <label>{filter}</label>
+            <label className="m-1">{filter.toUpperCase()}</label>
             <button onClick={() => handleRemoveFilter(filter)}>Remove</button>
           </div>
         ))}

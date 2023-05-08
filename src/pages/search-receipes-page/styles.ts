@@ -29,16 +29,17 @@ export const FiltersWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 300px;
+  width: 325px;
   border: 1px solid grey;
+  height: 100vh;
+  margin: 15px;
 `;
 
 export const CardsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   padding: 16px;
   flex: 1;
-  overflow-y: auto;
 `;

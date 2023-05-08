@@ -6,7 +6,7 @@ const Card: FC<CardProps> = (props) => {
   const { description, title } = props;
 
   return (
-    <CardWrapper>
+    <CardWrapper className="md:w-14rem m-3">
       <h2>{title}</h2>
       <p>{description}</p>
     </CardWrapper>
