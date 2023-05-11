@@ -10,9 +10,11 @@ import {
 const Navbar = () => {
   return (
     <Nav>
-      <TitlePageNavBar>Teste</TitlePageNavBar>
+      <TitlePageNavBar>Despensa Saudável</TitlePageNavBar>
       <NavMenu>
         <NavLink to="/main">Inicio</NavLink>
+        <NavLink to="/CalcularIMC">IMC</NavLink>
+        <NavLink to="/BuscarReceitas">Receitas</NavLink>
         <NavLink to="/ReceitasFavoritas">Receitas Favoritas</NavLink>
         <NavLink to="/Sobre">Sobre nós</NavLink>
       </NavMenu>

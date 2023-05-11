@@ -49,18 +49,6 @@ export const PageWrapper = styled.div`
   align-items: center;
 `;
 
-export const InputWrapperMain = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 4rem;
-
-  label {
-    font-size: 1.5rem;
-    margin-right: 1rem;
-  }
-`;
-
 export const ButtonWrapperMain = styled.div`
   margin-top: 2rem;
 `;
@@ -75,6 +63,7 @@ export const IMCTable = styled.table`
 
   th {
     background-color: #f2f2f2;
+    color: black;
     font-weight: bold;
     padding: 1rem;
     border: 1px solid #ddd;

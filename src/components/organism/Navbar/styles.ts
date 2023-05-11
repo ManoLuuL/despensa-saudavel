@@ -25,7 +25,7 @@ export const NavLink = styled(Link)`
 export const NavMenu = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 24px;
+  margin-right: 8rem;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -34,7 +34,7 @@ export const NavMenu = styled.div`
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
-  margin-right: 24px;
+  margin-right: 3rem;
   @media screen and (max-width: 768px) {
     display: none;
   }
