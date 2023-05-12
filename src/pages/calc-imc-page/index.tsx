@@ -11,11 +11,16 @@ import { calculateIMC } from "./imc-result";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import TablesImc from "./table-imc";
+import receitasJson from "../../data/receitas.json";
+import { ReceitasIMCViewModel } from "../../api/view-model/receitas-imc-view-model";
+import { Card } from "primereact/card";
 
 const IMCPage = () => {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [result, setResult] = useState<IMCResult | null>(null);
+
+  const data: ReceitasIMCViewModel = receitasJson;
 
   const handleCalculateClick = () => {
     const imcResult = calculateIMC(height, weight);
@@ -83,6 +88,22 @@ const IMCPage = () => {
             </IMCTableWrapper>
           </>
         )}
+        {data.receitas.map((itens) => (
+          <div key={itens.titulo}>
+            <Card
+              children={
+                <>
+                  {itens.ingredientes.map((ingred) => (
+                    <div key={ingred.ingrediente}>
+                      {ingred.ingrediente} - {ingred.quantidade}
+                    </div>
+                  ))}
+                </>
+              }
+              title={itens.titulo}
+            />
+          </div>
+        ))}
       </PageWrapper>
     </>
   );

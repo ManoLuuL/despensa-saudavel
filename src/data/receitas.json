@@ -1,21 +1,42 @@
 {
-    "receitas": [
-      {
-        "titulo": "Salada de Quinoa com Legumes",
-        "imagem": "https://exemplo.com/salada_quinoa.jpg",
-        "ingredientes": [
-          {"ingrediente": "Quinoa", "quantidade": "1/2 xícara"},
-          {"ingrediente": "Abobrinha", "quantidade": "1 unidade"},
-          {"ingrediente": "Cenoura", "quantidade": "1 unidade"},
-          {"ingrediente": "Tomate cereja", "quantidade": "1 xícara"},
-          {"ingrediente": "Salsinha", "quantidade": "1/4 xícara"},
-          {"ingrediente": "Suco de limão", "quantidade": "2 colheres de sopa"},
-          {"ingrediente": "Azeite de oliva", "quantidade": "2 colheres de sopa"}
-        ],
-        "modo_preparo": "1. Cozinhe a quinoa de acordo com as instruções da embalagem.\n2. Corte a abobrinha em cubos e rale a cenoura.\n3. Em uma tigela grande, misture a quinoa cozida, a abobrinha, a cenoura e os tomates cereja.\n4. Adicione a salsinha picada, o suco de limão e o azeite de oliva.\n5. Misture tudo até ficar bem incorporado.\n6. Sirva imediatamente ou leve à geladeira para esfriar antes de servir.",
-        "rendimento": "4 porções"
-      },
-      {
+    "receitas":[
+       {
+          "titulo":"Salada de Quinoa com Legumes",
+          "imagem":"https://exemplo.com/salada_quinoa.jpg",
+          "ingredientes":[
+             {
+                "ingrediente":"Quinoa",
+                "quantidade":"1/2 xícara"
+             },
+             {
+                "ingrediente":"Abobrinha",
+                "quantidade":"1 unidade"
+             },
+             {
+                "ingrediente":"Cenoura",
+                "quantidade":"1 unidade"
+             },
+             {
+                "ingrediente":"Tomate cereja",
+                "quantidade":"1 xícara"
+             },
+             {
+                "ingrediente":"Salsinha",
+                "quantidade":"1/4 xícara"
+             },
+             {
+                "ingrediente":"Suco de limão",
+                "quantidade":"2 colheres de sopa"
+             },
+             {
+                "ingrediente":"Azeite de oliva",
+                "quantidade":"2 colheres de sopa"
+             }
+          ],
+          "modo_preparo":"1. Cozinhe a quinoa de acordo com as instruções da embalagem.\n2. Corte a abobrinha em cubos e rale a cenoura.\n3. Em uma tigela grande, misture a quinoa cozida, a abobrinha, a cenoura e os tomates cereja.\n4. Adicione a salsinha picada, o suco de limão e o azeite de oliva.\n5. Misture tudo até ficar bem incorporado.\n6. Sirva imediatamente ou leve à geladeira para esfriar antes de servir.",
+          "rendimento":"4 porções"
+       },
+         {
         "titulo": "Frango com Legumes Assados",
         "imagem": "https://exemplo.com/frango_legumes.jpg",
         "ingredientes": [
@@ -74,4 +95,4 @@
             "rendimento": "2 porções"
           }
     ]
-}
+ }
