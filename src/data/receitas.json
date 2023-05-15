@@ -1,98 +1,148 @@
 {
-    "receitas":[
-       {
-          "titulo":"Salada de Quinoa com Legumes",
-          "imagem":"https://exemplo.com/salada_quinoa.jpg",
-          "ingredientes":[
-             {
-                "ingrediente":"Quinoa",
-                "quantidade":"1/2 xícara"
-             },
-             {
-                "ingrediente":"Abobrinha",
-                "quantidade":"1 unidade"
-             },
-             {
-                "ingrediente":"Cenoura",
-                "quantidade":"1 unidade"
-             },
-             {
-                "ingrediente":"Tomate cereja",
-                "quantidade":"1 xícara"
-             },
-             {
-                "ingrediente":"Salsinha",
-                "quantidade":"1/4 xícara"
-             },
-             {
-                "ingrediente":"Suco de limão",
-                "quantidade":"2 colheres de sopa"
-             },
-             {
-                "ingrediente":"Azeite de oliva",
-                "quantidade":"2 colheres de sopa"
-             }
-          ],
-          "modo_preparo":"1. Cozinhe a quinoa de acordo com as instruções da embalagem.\n2. Corte a abobrinha em cubos e rale a cenoura.\n3. Em uma tigela grande, misture a quinoa cozida, a abobrinha, a cenoura e os tomates cereja.\n4. Adicione a salsinha picada, o suco de limão e o azeite de oliva.\n5. Misture tudo até ficar bem incorporado.\n6. Sirva imediatamente ou leve à geladeira para esfriar antes de servir.",
-          "rendimento":"4 porções"
-       },
-         {
-        "titulo": "Frango com Legumes Assados",
-        "imagem": "https://exemplo.com/frango_legumes.jpg",
-        "ingredientes": [
-          {"ingrediente": "Peito de frango", "quantidade": "4 unidades"},
-          {"ingrediente": "Abobrinha", "quantidade": "1 unidade"},
-          {"ingrediente": "Cenoura", "quantidade": "2 unidades"},
-          {"ingrediente": "Cebola", "quantidade": "1 unidade"},
-          {"ingrediente": "Pimentão vermelho", "quantidade": "1 unidade"},
-          {"ingrediente": "Azeite de oliva", "quantidade": "2 colheres de sopa"},
-          {"ingrediente": "Sal e pimenta", "quantidade": "a gosto"}
-        ],
-        "modo_preparo": "1. Pré-aqueça o forno a 200°C.\n2. Corte todos os legumes em cubos e coloque em uma assadeira.\n3. Tempere os legumes com sal, pimenta e azeite de oliva.\n4. Coloque os peitos de frango sobre os legumes e tempere com sal e pimenta.\n5. Leve a assadeira ao forno por cerca de 30-35 minutos, ou até que o frango esteja cozido por completo.\n6. Sirva imediatamente.",
-        "rendimento": "4 porções"
+   "receitas":[
+      {
+         "titulo":"Salada de Quinoa com Legumes",
+         "imagem":"https://www.comidaereceitas.com.br/wp-content/uploads/2021/06/salada_quinoa_legumes-780x502.jpg",
+         "ingredientes":[
+            {
+               "ingrediente":"Quinoa",
+               "quantidade":"1/2 xícara"
+            },
+            {
+               "ingrediente":"Abobrinha",
+               "quantidade":"1 unidade"
+            },
+            {
+               "ingrediente":"Cenoura",
+               "quantidade":"1 unidade"
+            },
+            {
+               "ingrediente":"Tomate cereja",
+               "quantidade":"1 xícara"
+            },
+            {
+               "ingrediente":"Salsinha",
+               "quantidade":"1/4 xícara"
+            },
+            {
+               "ingrediente":"Suco de limão",
+               "quantidade":"2 colheres de sopa"
+            },
+            {
+               "ingrediente":"Azeite de oliva",
+               "quantidade":"2 colheres de sopa"
+            }
+         ],
+         "modo_preparo":"1. Cozinhe a quinoa de acordo com as instruções da embalagem.\n2. Corte a abobrinha em cubos e rale a cenoura.\n3. Em uma tigela grande, misture a quinoa cozida, a abobrinha, a cenoura e os tomates cereja.\n4. Adicione a salsinha picada, o suco de limão e o azeite de oliva.\n5. Misture tudo até ficar bem incorporado.\n6. Sirva imediatamente ou leve à geladeira para esfriar antes de servir.",
+         "rendimento":"4 porções"
       },
       {
-        "titulo": "Sopa de Legumes",
-        "imagem": "https://exemplo.com/sopa",
-        "ingredientes": [
-            {"ingrediente": "Abóbora", "quantidade": "500g"},
-            {"ingrediente": "Cenoura", "quantidade": "2 unidades"},
-            {"ingrediente": "Cebola", "quantidade": "1 unidade"},
-            {"ingrediente": "Alho", "quantidade": "3 dentes"},
-            {"ingrediente": "Tomilho", "quantidade": "1 colher de sopa"},
-            {"ingrediente": "Caldo de legumes", "quantidade": "1 litro"},
-            {"ingrediente": "Azeite de oliva", "quantidade": "2 colheres de sopa"},
-            {"ingrediente": "Sal e pimenta", "quantidade": "a gosto"}
-          ],
-          "modo_preparo": "1. Descasque a abóbora, retire as sementes e corte em cubos.\n2. Descasque e pique a cebola e os dentes de alho.\n3. Descasque e corte as cenouras em rodelas.\n4. Em uma panela grande, aqueça o azeite de oliva e refogue a cebola e o alho até ficarem dourados.\n5. Adicione a abóbora, as cenouras e o tomilho e refogue por mais alguns minutos.\n6. Adicione o caldo de legumes e deixe cozinhar por cerca de 20-30 minutos, ou até que a abóbora e as cenouras estejam macias.\n7. Bata a sopa no liquidificador até ficar homogênea.\n8. Tempere com sal e pimenta a gosto.\n9. Sirva quente.",
-          "rendimento": "4 porções"
-        },
-        {
-          "titulo": "Wrap de Frango e Vegetais",
-          "imagem": "https://exemplo.com/wrap_frango.jpg",
-          "ingredientes": [
-            {"ingrediente": "Peito de frango", "quantidade": "2 unidades"},
-            {"ingrediente": "Tortilhas de trigo integral", "quantidade": "4 unidades"},
-            {"ingrediente": "Cenoura", "quantidade": "1 unidade"},
-            {"ingrediente": "Pimentão vermelho", "quantidade": "1 unidade"},
-            {"ingrediente": "Alface americana", "quantidade": "4 folhas"},
-            {"ingrediente": "Maionese light", "quantidade": "2 colheres de sopa"}
-          ],
-          "modo_preparo": "1. Corte o peito de frango em tiras finas e tempere com sal e pimenta.\n2. Aqueça uma frigideira antiaderente e grelhe o frango até que esteja cozido por completo.\n3. Corte a cenoura e o pimentão em tiras finas.\n4. Espalhe um pouco de maionese light sobre cada tortilha.\n5. Distribua as folhas de alface, as tiras de frango e os legumes sobre as tortilhas.\n6. Enrole as tortilhas e sirva imediatamente.",
-          "rendimento": "4 porções"
-        },
-        {
-            "titulo": "Smoothie de Banana e Morango",
-            "imagem": "https://exemplo.com/smoothie_morango.jpg",
-            "ingredientes": [
-              {"ingrediente": "Banana madura", "quantidade": "2 unidades"},
-              {"ingrediente": "Morangos frescos", "quantidade": "1 xícara"},
-              {"ingrediente": "Leite desnatado", "quantidade": "1/2 xícara"},
-              {"ingrediente": "Iogurte natural desnatado", "quantidade": "1/2 xícara"},
-              {"ingrediente": "Mel", "quantidade": "1 colher de sopa"}
-            ],
-            "modo_preparo": "1. Descasque as bananas e corte-as em pedaços.\n2. Lave os morangos e retire as folhas.\n3. Coloque as frutas no liquidificador.\n4. Adicione o leite, o iogurte e o mel.\n5. Bata tudo até que fique homogêneo.\n6. Sirva em copos e decore com morangos frescos.",
-            "rendimento": "2 porções"
-          }
-    ]
- }
+         "titulo":"Frango com Legumes Assados",
+         "imagem":"https://assets.unileversolutions.com/recipes-v2/104434.jpg",
+         "ingredientes":[
+            {
+               "ingrediente":"Peito de frango",
+               "quantidade":"4 unidades"
+            },
+            {
+               "ingrediente":"Abobrinha",
+               "quantidade":"1 unidade"
+            },
+            {
+               "ingrediente":"Cenoura",
+               "quantidade":"2 unidades"
+            },
+            {
+               "ingrediente":"Cebola",
+               "quantidade":"1 unidade"
+            },
+            {
+               "ingrediente":"Pimentão vermelho",
+               "quantidade":"1 unidade"
+            },
+            {
+               "ingrediente":"Azeite de oliva",
+               "quantidade":"2 colheres de sopa"
+            },
+            {
+               "ingrediente":"Sal e pimenta",
+               "quantidade":"a gosto"
+            }
+         ],
+         "modo_preparo":"1. Pré-aqueça o forno a 200°C.\n2. Corte todos os legumes em cubos e coloque em uma assadeira.\n3. Tempere os legumes com sal, pimenta e azeite de oliva.\n4. Coloque os peitos de frango sobre os legumes e tempere com sal e pimenta.\n5. Leve a assadeira ao forno por cerca de 30-35 minutos, ou até que o frango esteja cozido por completo.\n6. Sirva imediatamente.",
+         "rendimento":"4 porções"
+      },
+      {
+         "titulo":"Sopa de Legumes",
+         "imagem":"https://assets.unileversolutions.com/recipes-v2/36850.jpg",
+         "ingredientes":[
+            {
+               "ingrediente":"Abóbora",
+               "quantidade":"500g"
+            },
+            {
+               "ingrediente":"Cenoura",
+               "quantidade":"2 unidades"
+            },
+            {
+               "ingrediente":"Cebola",
+               "quantidade":"1 unidade"
+            },
+            {
+               "ingrediente":"Alho",
+               "quantidade":"3 dentes"
+            },
+            {
+               "ingrediente":"Tomilho",
+               "quantidade":"1 colher de sopa"
+            },
+            {
+               "ingrediente":"Caldo de legumes",
+               "quantidade":"1 litro"
+            },
+            {
+               "ingrediente":"Azeite de oliva",
+               "quantidade":"2 colheres de sopa"
+            },
+            {
+               "ingrediente":"Sal e pimenta",
+               "quantidade":"a gosto"
+            }
+         ],
+         "modo_preparo":"1. Descasque a abóbora, retire as sementes e corte em cubos.\n2. Descasque e pique a cebola e os dentes de alho.\n3. Descasque e corte as cenouras em rodelas.\n4. Em uma panela grande, aqueça o azeite de oliva e refogue a cebola e o alho até ficarem dourados.\n5. Adicione a abóbora, as cenouras e o tomilho e refogue por mais alguns minutos.\n6. Adicione o caldo de legumes e deixe cozinhar por cerca de 20-30 minutos, ou até que a abóbora e as cenouras estejam macias.\n7. Bata a sopa no liquidificador até ficar homogênea.\n8. Tempere com sal e pimenta a gosto.\n9. Sirva quente.",
+         "rendimento":"4 porções"
+      },
+      {
+         "titulo":"Wrap de Frango e Vegetais",
+         "imagem":"https://vitat.com.br/central/Content/handlers/Receita.jpg?id=64675&tipo=r&default=s",
+         "ingredientes":[
+            {
+               "ingrediente":"Peito de frango",
+               "quantidade":"2 unidades"
+            },
+            {
+               "ingrediente":"Tortilhas de trigo integral",
+               "quantidade":"4 unidades"
+            },
+            {
+               "ingrediente":"Cenoura",
+               "quantidade":"1 unidade"
+            },
+            {
+               "ingrediente":"Pimentão vermelho",
+               "quantidade":"1 unidade"
+            },
+            {
+               "ingrediente":"Alface americana",
+               "quantidade":"4 folhas"
+            },
+            {
+               "ingrediente":"Maionese light",
+               "quantidade":"2 colheres de sopa"
+            }
+         ],
+         "modo_preparo":"1. Corte o peito de frango em tiras finas e tempere com sal e pimenta.\n2. Aqueça uma frigideira antiaderente e grelhe o frango até que esteja cozido por completo.\n3. Corte a cenoura e o pimentão em tiras finas.\n4. Espalhe um pouco de maionese light sobre cada tortilha.\n5. Distribua as folhas de alface, as tiras de frango e os legumes sobre as tortilhas.\n6. Enrole as tortilhas e sirva imediatamente.",
+         "rendimento":"4 porções"
+      }
+   ]
+}
