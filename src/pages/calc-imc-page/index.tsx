@@ -9,13 +9,13 @@ import {
   ReceitasWrapper,
 } from "./styles";
 import { IMCResult } from "./types";
-import { calculateIMC } from "./imc-result";
+import { calculateIMC } from "./utils/calculate-imc";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import TablesImc from "./table-imc";
 import receitasJson from "../../data/receitas.json";
 import { ReceitasIMCViewModel } from "../../api/view-model/receitas-imc-view-model";
-import { ReceitasIMC } from "./receitas";
+import { ReceitasIMC } from "./imc-recepes";
 
 const IMCPage = () => {
   const [height, setHeight] = useState("");

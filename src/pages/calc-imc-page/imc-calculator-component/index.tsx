@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
-import { IMCCalculatorProps, IMCResult } from "./types";
-import { calculateIMC } from "./imc-result";
+import { calculateIMC } from "../utils/calculate-imc";
 import { ButtonWrapper, IMCCalculatorWrapper, InputWrapper } from "./styles";
-import { IMCChart } from "./imc-chart";
+import { IMCChart } from "../imc-chart";
+import { IMCCalculatorProps } from "./types";
+import { IMCResult } from "../types";
 
 export function IMCCalculator(props: IMCCalculatorProps) {
   const [height, setHeight] = useState("");

@@ -1,4 +1,4 @@
-import { IMCResult } from "./types";
+import { IMCResult } from "../types";
 
 export function calculateIMC(height: string, weight: string): IMCResult {
   const heightInMeters = parseFloat(height);
