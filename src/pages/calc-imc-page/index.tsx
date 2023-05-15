@@ -12,7 +12,7 @@ import { IMCResult } from "./types";
 import { calculateIMC } from "./utils/calculate-imc";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import TablesImc from "./table-imc";
+import TablesImc from "./utils/imc-table";
 import receitasJson from "../../data/receitas.json";
 import { ReceitasIMCViewModel } from "../../api/view-model/receitas-imc-view-model";
 import { ReceitasIMC } from "./imc-recepes";

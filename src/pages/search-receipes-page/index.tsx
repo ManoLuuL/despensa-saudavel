@@ -3,78 +3,32 @@ import Card from "./cards/cards-receips";
 import Filters from "./filters/filter-ingredients";
 import Navbar from "../../components/organism/Navbar";
 import { CardsWrapper, FiltersWrapper, PageWrapper } from "./styles";
+import { ReceitasIMCViewModel } from "../../api/view-model/receitas-imc-view-model";
+import receitasJson from "../../data/receitas.json";
 
-const cardsData = [
-  {
-    title: "Card 1",
-    description: "This is card 1",
-  },
-  {
-    title: "Card 2",
-    description: "This is card 2",
-  },
-  {
-    title: "Card 3",
-    description: "This is card 3",
-  },
-];
+const RecipeSearch: FC = () => {
+  const data: ReceitasIMCViewModel = receitasJson;
 
-const RecipeSearch: FC = () => (
-  <>
-    <Navbar />
-    <PageWrapper>
-      <FiltersWrapper>
-        <Filters />
-      </FiltersWrapper>
-      <CardsWrapper>
-        {Array(50)
-          .fill(0)
-          .map((_, index) => (
-            <Card title="Teste" key={index} description="Teste de card" />
+  return (
+    <>
+      <Navbar />
+      <PageWrapper>
+        <FiltersWrapper>
+          <Filters />
+        </FiltersWrapper>
+        <CardsWrapper>
+          {data.receitas.map((itens, index) => (
+            <Card title={itens.titulo} key={index} description="" />
           ))}
-      </CardsWrapper>
-    </PageWrapper>
-  </>
-);
+          {Array(50)
+            .fill(0)
+            .map((_, index) => (
+              <Card title="Teste" key={index} description="Teste de card" />
+            ))}
+        </CardsWrapper>
+      </PageWrapper>
+    </>
+  );
+};
 
 export default RecipeSearch;
-
-// import Navbar from "../../components/organism/Navbar";
-// import { Card } from "primereact/card";
-// import { Chips } from "primereact/chips";
-// import { useState } from "react";
-// import { BntSearch } from "./styles";
-
-// const RecipeSearch = () => {
-//   const [searchValue, setSearchValue] = useState<string[]>([]);
-
-//   return (
-//     <>
-//       <Navbar />
-//       <div className="overflow-x-hidden">
-//         <div className="col-12 justify-content-center flex">
-//           <span className="p-float-label">
-//             <Chips
-//               id="search"
-//               value={searchValue}
-//               onChange={(e) => setSearchValue(e.value ?? [])}
-//             ></Chips>
-//             <label htmlFor="search">Ingredientes</label>
-//           </span>
-//           <BntSearch>Buscar </BntSearch>
-//         </div>
-//         <div className="grid justify-content-center">
-//           {Array(50)
-//             .fill(0)
-//             .map((_, index) => (
-//               <Card className=" md:w-18rem m-3 " title="Teste" key={index}>
-//                 Teste de card
-//               </Card>
-//             ))}
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default RecipeSearch;
