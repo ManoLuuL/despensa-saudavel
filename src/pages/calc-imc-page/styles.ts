@@ -2,9 +2,8 @@ import styled from "styled-components";
 
 export const PageWrapper = styled.div`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   overflow: hidden;
-  height: 100vh;
 `;
 
 export const ButtonWrapperMain = styled.div`
@@ -50,4 +49,7 @@ export const ContentWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin-right: 10rem;
 `;

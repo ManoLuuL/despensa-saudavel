@@ -81,8 +81,12 @@ const IMCPage = () => {
               />
             </ButtonWrapperMain>
           </div>
+
           {result && (
             <>
+              <p>
+                IMC: {result.value.toFixed(2)} - {result.label}
+              </p>
               <IMCTableWrapper>
                 <IMCTable>
                   <TablesImc />
@@ -93,14 +97,8 @@ const IMCPage = () => {
                     textAlign: "center",
                     justifyContent: "center",
                   }}
-                >
-                  <p>
-                    IMC: {result.value.toFixed(2)} - {result.label}
-                  </p>
-                </div>
+                ></div>
               </IMCTableWrapper>
-              <p>Recomendação:</p>
-              <ReceitasIMC content={data} />
             </>
           )}
         </ContentWrapper>
