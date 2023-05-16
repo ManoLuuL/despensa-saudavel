@@ -4,9 +4,10 @@ export function calculateIMC(height: string, weight: string): IMCResult {
   const heightInMeters = parseFloat(height);
   const weightInKg = parseFloat(weight);
 
-  if (isNaN(heightInMeters) || isNaN(weightInKg)) {
-    return { label: "Valores inválidos", value: 0, color: "gray" };
-  }
+  if (heightInMeters <= 0 || weightInKg <= 0) {
+    return { label: "Valores inválidos", value: 0, color: "red !important" };
+  } else if (isNaN(heightInMeters) || isNaN(weightInKg))
+    return { label: "Valores inválidos", value: 0, color: "red !important" };
 
   const imc = weightInKg / (heightInMeters * heightInMeters);
   const roundedIMC = Math.round(imc * 100) / 100;

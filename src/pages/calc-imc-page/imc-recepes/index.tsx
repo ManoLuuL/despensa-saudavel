@@ -10,7 +10,7 @@ export const ReceitasIMC: FC<ReceitasIMCProps> = (props) => {
     <ReceitasWrapper>
       <Title>Receitas do dia</Title>
       {content.receitas.map((itens) => (
-        <div key={itens.titulo} className="col-12 ">
+        <div key={itens.titulo} className="col-12">
           <Card
             header={
               <>

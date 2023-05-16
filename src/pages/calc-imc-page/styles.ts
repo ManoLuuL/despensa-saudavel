@@ -40,7 +40,7 @@ export const ReceitasWrapper = styled.div`
   align-items: center;
   width: 325px;
   border: 1px solid grey;
-  height: 100vh;
+  height: 150vh;
   margin: 15px;
 `;
 
