@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import HomePage from "../pages/home-page";
-import ErrorPage from "../pages/page-404";
+import HomePage from "../pages/home";
+import ErrorPage from "../pages/404";
 import LoginPage from "../pages/login/login-page";
-import RegisterPage from "../pages/register-user-page/register-page";
-import MainPage from "../pages/main-page";
-import CalcIMC from "../pages/calc-imc-page";
-import RecipeSearch from "../pages/search-receipes-page";
+import RegisterPage from "../pages/register/register-page";
 import FavoriteRecipe from "../pages/favorite-recipe";
-import UserPage from "../pages/user-page";
-import AboutPage from "../pages/about-page";
+import UserPage from "../pages/user";
+import AboutPage from "../pages/about";
+import MainPage from "../pages/main";
+import RecipeSearch from "../pages/search-receipes";
+import IMCPage from "../pages/imc";
 
 export const pagesRoutes = createBrowserRouter([
   {
@@ -30,7 +30,7 @@ export const pagesRoutes = createBrowserRouter([
   },
   {
     path: "CalcularIMC",
-    element: <CalcIMC />,
+    element: <IMCPage />,
   },
   { path: "BuscarReceitas", element: <RecipeSearch /> },
   { path: "ReceitasFavoritas", element: <FavoriteRecipe /> },
