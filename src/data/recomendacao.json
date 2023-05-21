@@ -1,0 +1,226 @@
+{
+    "receitas":[
+        {
+            "titulo": "Smoothie de Banana e Morango",
+            "ingredientes": [
+              {
+                "ingrediente": "Banana",
+                "quantidade": "1 unidade"
+              },
+              {
+                "ingrediente": "Morangos",
+                "quantidade": "1 xícara"
+              },
+              {
+                "ingrediente": "Iogurte natural",
+                "quantidade": "1/2 xícara"
+              },
+              {
+                "ingrediente": "Leite de amêndoas",
+                "quantidade": "1/2 xícara"
+              },
+              {
+                "ingrediente": "Mel",
+                "quantidade": "1 colher de chá"
+              },
+              {
+                "ingrediente": "Gelo",
+                "quantidade": "a gosto"
+              }
+            ],
+            "modo_preparo": "No liquidificador, adicione a banana, os morangos, o iogurte natural, o leite de amêndoas e o mel. Bata até obter uma mistura homogênea. Adicione gelo a gosto e bata novamente. Sirva gelado.",
+            "rendimento": "1 porção"
+          },
+          {
+            "titulo": "Salada de Grão-de-Bico",
+            "ingredientes": [
+              {
+                "ingrediente": "Grão-de-bico cozido",
+                "quantidade": "2 xícaras"
+              },
+              {
+                "ingrediente": "Pepino",
+                "quantidade": "1 unidade"
+              },
+              {
+                "ingrediente": "Tomate",
+                "quantidade": "1 unidade"
+              },
+              {
+                "ingrediente": "Cebola roxa",
+                "quantidade": "1/4 de xícara"
+              },
+              {
+                "ingrediente": "Salsinha",
+                "quantidade": "2 colheres de sopa"
+              },
+              {
+                "ingrediente": "Azeite de oliva",
+                "quantidade": "2 colheres de sopa"
+              },
+              {
+                "ingrediente": "Suco de limão",
+                "quantidade": "1 colher de sopa"
+              },
+              {
+                "ingrediente": "Sal",
+                "quantidade": "a gosto"
+              },
+              {
+                "ingrediente": "Pimenta",
+                "quantidade": "a gosto"
+              }
+            ],
+            "modo_preparo": "Em uma tigela, misture o grão-de-bico cozido, o pepino e o tomate picados, a cebola roxa fatiada e a salsinha picada. Regue com azeite de oliva e suco de limão. Tempere com sal e pimenta a gosto. Misture bem todos os ingredientes. Sirva fria.",
+            "rendimento": "2 porções"
+          },
+          {
+            "titulo": "Wrap de Atum",
+            "ingredientes": [
+              {
+                "ingrediente": "Atum em lata",
+                "quantidade": "1 lata"
+              },
+              {
+                "ingrediente": "Tortilha de trigo integral",
+                "quantidade": "2 unidades"
+              },
+              {
+                "ingrediente": "Alface",
+                "quantidade": "2 folhas"
+              },
+              {
+                "ingrediente": "Cenoura ralada",
+                "quantidade": "1/2 xícara"
+              },
+              {
+                "ingrediente": "Maionese light",
+                "quantidade": "2 colheres de sopa"
+              },
+              {
+                "ingrediente": "Sal",
+                "quantidade": "a gosto"
+              },
+              {
+                "ingrediente": "Pimenta",
+                "quantidade": "a gosto"
+              }
+            ],
+            "modo_preparo": "Em uma tigela, misture o atum escorrido, a cenoura ralada e a maionese light. Tempere com sal e pimenta a gosto. Espalhe a mistura sobre as tortilhas de trigo integral. Coloque as folhas de alface por cima. Enrole as tortilhas formando wraps. Corte ao meio e sirva.",
+            "rendimento": "2 porções"
+          },
+          {
+            "titulo": "Omelete de Legumes",
+            "ingredientes": [
+              {
+                "ingrediente": "Ovos",
+                "quantidade": "3 unidades"
+              },
+              {
+                "ingrediente": "Abobrinha",
+                "quantidade": "1/2 unidade"
+              },
+              {
+                "ingrediente": "Cenoura",
+                "quantidade": "1 unidade"
+              },
+              {
+                "ingrediente": "Cebola",
+                "quantidade": "1/4 de xícara"
+              },
+              {
+                "ingrediente": "Pimentão vermelho",
+                "quantidade": "1/4 de xícara"
+              },
+              {
+                "ingrediente": "Queijo cottage",
+                "quantidade": "2 colheres de sopa"
+              },
+              {
+                "ingrediente": "Sal",
+                "quantidade": "a gosto"
+              },
+              {
+                "ingrediente": "Pimenta",
+                "quantidade": "a gosto"
+              },
+              {
+                "ingrediente": "Azeite de oliva",
+                "quantidade": "1 colher de chá"
+              }
+            ],
+            "modo_preparo": "Em uma tigela, bata os ovos. Adicione a abobrinha, a cenoura, a cebola e o pimentão vermelho picados. Tempere com sal e pimenta a gosto. Em uma frigideira antiaderente, aqueça o azeite de oliva. Despeje a mistura de ovos e legumes na frigideira. Cozinhe em fogo médio até que a omelete esteja firme. Espalhe o queijo cottage por cima. Dobre a omelete ao meio e sirva.",
+            "rendimento": "1 porção"
+          },
+          {
+            "titulo": "Sopa de Lentilha",
+            "ingredientes": [
+              {
+                "ingrediente": "Lentilha",
+                "quantidade": "1 xícara"
+              },
+              {
+                "ingrediente": "Cenoura",
+                "quantidade": "1 unidade"
+              },
+              {
+                "ingrediente": "Cebola",
+                "quantidade": "1 unidade"
+              },
+              {
+                "ingrediente": "Alho",
+                "quantidade": "2 dentes"
+              },
+              {
+                "ingrediente": "Caldo de legumes",
+                "quantidade": "1 litro"
+              },
+              {
+                "ingrediente": "Azeite de oliva",
+                "quantidade": "2 colheres de sopa"
+              },
+              {
+                "ingrediente": "Sal",
+                "quantidade": "a gosto"
+              },
+              {
+                "ingrediente": "Pimenta",
+                "quantidade": "a gosto"
+              }
+            ],
+            "modo_preparo": "Lave a lentilha e deixe de molho por 30 minutos. Em uma panela, aqueça o azeite de oliva e refogue a cebola e o alho picados até dourarem. Adicione a cenoura em cubos e refogue por mais alguns minutos. Escorra a lentilha e adicione à panela. Acrescente o caldo de legumes, tempere com sal e pimenta a gosto. Cozinhe em fogo médio por cerca de 30 minutos ou até que a lentilha esteja macia. Sirva quente.",
+            "rendimento": "4 porções"
+          },
+          {
+            "titulo": "Wrap de Frutas",
+            "ingredientes": [
+              {
+                "ingrediente": "Tortilha de trigo integral",
+                "quantidade": "1 unidade"
+              },
+              {
+                "ingrediente": "Morangos",
+                "quantidade": "6 unidades"
+              },
+              {
+                "ingrediente": "Banana",
+                "quantidade": "1 unidade"
+              },
+              {
+                "ingrediente": "Iogurte grego",
+                "quantidade": "2 colheres de sopa"
+              },
+              {
+                "ingrediente": "Mel",
+                "quantidade": "1 colher de chá"
+              },
+              {
+                "ingrediente": "Canela em pó",
+                "quantidade": "1/4 de colher de chá"
+              }
+            ],
+            "modo_preparo": "Espalhe o iogurte grego sobre a tortilha de trigo integral. Corte as frutas em fatias finas e distribua sobre o iogurte. Regue com mel e polvilhe canela em pó por cima. Enrole a tortilha formando um wrap. Corte ao meio e sirva.",
+            "rendimento": "1 porção"
+          }
+    ]
+}

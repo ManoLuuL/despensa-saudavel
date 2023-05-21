@@ -5,7 +5,6 @@ type Ingredientes = {
 
 type Receitas = {
   titulo: string;
-  imagem: string;
   ingredientes: Ingredientes[];
   modo_preparo: string;
   rendimento: string;
