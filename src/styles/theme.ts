@@ -1,68 +1,108 @@
-import { DefaultTheme } from 'styled-components';
+import { StyledComponentsTheme } from "./types";
 
-export const Theme: DefaultTheme = {
+const BASE_THEME_PROPS: Omit<
+  StyledComponentsTheme,
+  keyof {
+    surface: unknown;
+    textColor: unknown;
+    contrast: unknown;
+    secondary: unknown;
+  }
+> = {
   primary: {
-    color: 'var(--primary-600)',
-    text: 'white',
-    hover: 'var(--primary-700)',
-    active: 'var(--primary-900)'
-  },
-  secondary: {
-    color: 'var(--bluegray-600)',
-    text: 'white',
-    hover: 'var(--bluegray-700)',
-    active: 'var(--bluegray-900)'
+    color: "var(--primary-500)",
+    hover: "var(--primary-700)",
+    active: "var(--primary-900)",
   },
   success: {
-    color: 'var(--green-600)',
-    text: 'white',
-    hover: 'var(--green-700)',
-    active: 'var(--green-900)'
+    color: "#309E3A",
+    hover: "#2a8c33",
+    active: "#23752b",
   },
   danger: {
-    color: 'var(--red-600)',
-    text: 'white',
-    hover: 'var(--red-700)',
-    active: 'var(--red-900)'
+    color: "#FF0002",
+    hover: "#CC0002",
+    active: "#A30002",
   },
   alert: {
-    color: 'var(--yellow-600)',
-    text: 'white',
-    hover: 'var(--yellow-700)',
-    active: 'var(--yellow-900)'
+    color: "#FFC700",
+    hover: "#edba02",
+    active: "#d9aa00",
   },
-  surface: {
-    text: 'var(--text-color)',
-    content: 'var(--surface-a)',
-    container: 'var(--surface-c)'
-  },
-
-  required: 'var(--surface-100)',
 
   borderRadii: {
-    sm: '2px',
-    normal: '4px',
-    lg: '8px'
+    xs: "4px",
+    sm: "6px",
+    md: "10px",
+    lg: "20px",
+    xl: "9999px",
   },
 
   boxShadows: {
-    sm: '',
-    normal: `hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
-    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;`,
-    lg: ''
+    xs: "",
+    sm: "",
+    md: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+    lg: "2px 2px 5px 5px rgba(0, 0, 0, 0.25)",
+    xl: "",
   },
 
   fontSizes: {
-    sm: '0.825rem',
-    normal: '0.950rem',
-    lg: '1.125rem'
+    xs: "8px",
+    sm: "10px",
+    md: "12px",
+    lg: "15px",
+    xl: "20px",
   },
 
   breakPoints: {
-    xs: '0px',
-    sm: '600px',
-    md: '960px',
-    lg: '1280px',
-    xl: '1920px'
-  }
+    xs: "0px",
+    sm: "600px",
+    md: "960px",
+    lg: "1280px",
+    xl: "1920px",
+  },
+};
+
+export const LightTheme: StyledComponentsTheme = {
+  ...BASE_THEME_PROPS,
+  secondary: {
+    color: "#585858",
+    hover: "#464646",
+    active: "#383838",
+  },
+  surface: {
+    text: "#585858",
+    content: "#FFFFFF",
+    container: "#D9D9D9",
+  },
+  contrast: {
+    color: "#1D1D1D",
+    hover: "#171717",
+    active: "#121212",
+    text: "#FFFFFF",
+  },
+
+  textColor: "#FFFFFF",
+};
+
+export const DarkTheme: StyledComponentsTheme = {
+  ...BASE_THEME_PROPS,
+  secondary: {
+    color: "#949494",
+    hover: "#BABABA",
+    active: "#D3D3D3",
+  },
+  surface: {
+    text: "#FFFFFF",
+    content: "#121212",
+    container: "#1D1D1D",
+  },
+  contrast: {
+    color: "#FFFFFF",
+    hover: "#FFFFFF",
+    active: "#FFFFFF",
+    text: "#121212",
+  },
+
+  textColor: "#FFFFFF",
 };

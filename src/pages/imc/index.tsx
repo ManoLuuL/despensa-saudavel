@@ -15,14 +15,20 @@ import { Button } from "primereact/button";
 import TablesImc from "./utils/imc-table";
 import receitasJson from "../../data/receitas.json";
 import receitasRecomend from "../../data/recomendacao.json";
-import { ReceitasIMCViewModel } from "../../api/view-model/receitas-imc-view-model";
+import {
+  Receitas,
+  ReceitasIMCViewModel,
+} from "../../api/view-model/receitas-imc-view-model";
 import { ReceitasIMC } from "./imc-recepes";
 import { Card } from "primereact/card";
+import { RecipesModal } from "./recipes-modal";
 
 const IMCPage = () => {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [result, setResult] = useState<IMCResult | null>(null);
+  const [showRecipesModal, setShowRecipesModal] = useState(false);
+  const [recipeSelected, setRecipeSelected] = useState<Receitas>();
 
   const receitasToDay: ReceitasIMCViewModel = receitasJson;
   const receitasRecomendadas: ReceitasIMCViewModel = receitasRecomend;
@@ -123,6 +129,10 @@ const IMCPage = () => {
                         style={{
                           cursor: "pointer",
                         }}
+                        onClick={() => {
+                          setShowRecipesModal(true);
+                          setRecipeSelected(itens);
+                        }}
                       />
                     </div>
                   ))}
@@ -132,6 +142,13 @@ const IMCPage = () => {
           )}
         </ContentWrapper>
       </PageWrapper>
+
+      {showRecipesModal && (
+        <RecipesModal
+          recipes={recipeSelected}
+          onHide={() => setShowRecipesModal(false)}
+        />
+      )}
     </>
   );
 };

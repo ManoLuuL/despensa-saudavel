@@ -3,8 +3,8 @@ import { Rotate360 } from "./animations-keyframes";
 
 export const GlobalStyle = createGlobalStyle`
   * {
-    font-family: 'Noto Sans', 'sans-serif';
-    font-size: ${(p) => p.theme.fontSizes.normal};
+    font-family: 'Roboto', 'sans-serif';
+    font-size: ${(p) => p.theme.fontSizes.md};
 
     padding: 0;
     margin: 0;

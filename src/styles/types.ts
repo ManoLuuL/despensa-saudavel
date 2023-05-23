@@ -1,6 +1,5 @@
 export type Palette = {
   color: string;
-  text: string;
   hover: string;
   active: string;
 };
@@ -11,15 +10,11 @@ export type SurfacesPalette = {
   container: string;
 };
 
-export type Sizes = {
-  xs: string;
-  sm: string;
-  md: string;
-  lg: string;
-  xl: string;
+export type ContrastPalette = Palette & {
+  text: string;
 };
 
-export type BreakpointVariants = {
+export type Sizes = {
   xs: string;
   sm: string;
   md: string;
@@ -46,3 +41,23 @@ export type ColorVariants =
   | "700"
   | "800"
   | "900";
+
+export interface StyledComponentsTheme {
+  primary: Palette;
+  secondary: Palette;
+  success: Palette;
+  danger: Palette;
+  alert: Palette;
+
+  contrast: ContrastPalette;
+
+  textColor: string;
+
+  surface: SurfacesPalette;
+
+  borderRadii: Sizes;
+  boxShadows: Sizes;
+  fontSizes: Sizes;
+
+  breakPoints: Sizes;
+}

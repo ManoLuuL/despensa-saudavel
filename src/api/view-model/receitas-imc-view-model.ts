@@ -1,9 +1,9 @@
-type Ingredientes = {
+export type Ingredientes = {
   ingrediente: string;
   quantidade: string;
 };
 
-type Receitas = {
+export type Receitas = {
   titulo: string;
   ingredientes: Ingredientes[];
   modo_preparo: string;
