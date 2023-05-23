@@ -1,7 +1,7 @@
-import 'styled-components';
-import { BreakpointVariants, Palette, Sizes, SurfacesPalette } from './types';
+import "styled-components";
+import { BreakpointVariants, Palette, Sizes, SurfacesPalette } from "./types";
 
-declare module 'styled-components' {
+declare module "styled-components" {
   export interface DefaultTheme {
     primary: Palette;
     secondary: Palette;
@@ -9,7 +9,9 @@ declare module 'styled-components' {
     danger: Palette;
     alert: Palette;
 
-    required: string;
+    contrast: ContrastPalette;
+
+    textColor: string;
 
     surface: SurfacesPalette;
 
@@ -17,6 +19,6 @@ declare module 'styled-components' {
     boxShadows: Sizes;
     fontSizes: Sizes;
 
-    breakPoints: BreakpointVariants;
+    breakPoints: Sizes;
   }
 }

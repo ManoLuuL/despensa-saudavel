@@ -12,9 +12,11 @@ export type SurfacesPalette = {
 };
 
 export type Sizes = {
+  xs: string;
   sm: string;
-  normal: string;
+  md: string;
   lg: string;
+  xl: string;
 };
 
 export type BreakpointVariants = {
@@ -25,16 +27,22 @@ export type BreakpointVariants = {
   xl: string;
 };
 
-export type Colors = 'primary' | 'secondary' | 'success' | 'danger' | 'alert';
+export type Colors =
+  | "primary"
+  | "secondary"
+  | "success"
+  | "danger"
+  | "alert"
+  | "contrast";
 
 export type ColorVariants =
-  | '50'
-  | '100'
-  | '200'
-  | '300'
-  | '400'
-  | '500'
-  | '600'
-  | '700'
-  | '800'
-  | '900';
+  | "50"
+  | "100"
+  | "200"
+  | "300"
+  | "400"
+  | "500"
+  | "600"
+  | "700"
+  | "800"
+  | "900";
