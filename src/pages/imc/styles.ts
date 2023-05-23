@@ -11,8 +11,8 @@ export const ButtonWrapperMain = styled.div`
 `;
 
 export const IMCTableWrapper = styled.div`
-  margin-top: 4rem;
   display: flex;
+  justify-content: center;
 `;
 
 export const IMCTable = styled.table`
@@ -40,7 +40,7 @@ export const ReceitasWrapper = styled.div`
   align-items: center;
   width: 325px;
   border: 1px solid grey;
-  height: 150vh;
+  height: 90vh;
   margin: 15px;
 `;
 

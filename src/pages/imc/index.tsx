@@ -14,6 +14,7 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import TablesImc from "./utils/imc-table";
 import receitasJson from "../../data/receitas.json";
+import receitasRecomend from "../../data/recomendacao.json";
 import { ReceitasIMCViewModel } from "../../api/view-model/receitas-imc-view-model";
 import { ReceitasIMC } from "./imc-recepes";
 import { Card } from "primereact/card";
@@ -23,7 +24,8 @@ const IMCPage = () => {
   const [weight, setWeight] = useState("");
   const [result, setResult] = useState<IMCResult | null>(null);
 
-  const data: ReceitasIMCViewModel = receitasJson;
+  const receitasToDay: ReceitasIMCViewModel = receitasJson;
+  const receitasRecomendadas: ReceitasIMCViewModel = receitasRecomend;
 
   const handleCalculateClick = () => {
     const imcResult = calculateIMC(height, weight);
@@ -38,13 +40,13 @@ const IMCPage = () => {
 
   const getRecommendations = (): string => {
     if (result && result.value < 18.5) {
-      return "You are underweight. Consider consulting a nutritionist to develop a healthy eating plan.";
+      return "Você está abaixo do peso. Considere consultar um nutricionista para desenvolver um plano de alimentação saudável.";
     } else if (result && result.value >= 18.5 && result.value < 24.9) {
-      return "Congratulations! You are within a healthy weight range. Maintain a balanced diet and regular physical activity.";
+      return "Parabéns! Você está dentro de uma faixa de peso saudável. Manter uma alimentação equilibrada e atividade física regular.";
     } else if (result && result.value >= 25 && result.value < 29.9) {
-      return "You are overweight. Focus on a balanced diet and increase physical activity. Consider consulting a healthcare professional.";
+      return "Você está acima do peso. Concentre-se em uma dieta equilibrada e aumente a atividade física. Considere consultar um profissional de saúde.";
     } else if (result && result.value >= 30) {
-      return "You are obese. It is important to consult a healthcare professional for guidance and support.";
+      return "Você é obeso. É importante consultar um profissional de saúde para orientação e apoio.";
     } else {
       return "";
     }
@@ -55,7 +57,7 @@ const IMCPage = () => {
       <Navbar />
       <PageWrapper>
         <ReceitasWrapper>
-          <ReceitasIMC content={data} />
+          <ReceitasIMC content={receitasToDay} />
         </ReceitasWrapper>
         <ContentWrapper>
           <h1 style={{ textAlign: "center" }}>Calculadora de IMC</h1>
@@ -98,47 +100,35 @@ const IMCPage = () => {
           </div>
 
           {result && (
-            <>
-              <p>
+            <div className="grid align-items-center justify-content-center text-center">
+              <div className="col-12">
                 IMC: {result.value.toFixed(2)} - {result.label}
-              </p>
-              <IMCTableWrapper>
-                <IMCTable>
-                  <TablesImc />
-                </IMCTable>
-                <div
-                  style={{
-                    padding: "10px",
-                    textAlign: "center",
-                    justifyContent: "center",
-                  }}
-                ></div>
-              </IMCTableWrapper>
-              <div>{getRecommendations()}</div>
-              <div>Recomendações:</div>
-              <div className="grid justify-content-center align-items-center">
-                {data.receitas.map((itens) => (
-                  <div key={itens.titulo} className="col-3">
-                    <Card
-                      style={{
-                        width: "60%",
-                      }}
-                      header={
-                        <img
-                          className="flex align-items-center"
-                          src={itens.imagem}
-                          alt=""
-                          style={{
-                            height: "190px",
-                          }}
-                        />
-                      }
-                      title={itens.titulo}
-                    />
-                  </div>
-                ))}
               </div>
-            </>
+              <div className="col-12">{getRecommendations()}</div>
+              <div className="col-12">
+                <IMCTableWrapper>
+                  <IMCTable>
+                    <TablesImc />
+                  </IMCTable>
+                </IMCTableWrapper>
+              </div>
+
+              <div className="col-12">Recomendações:</div>
+              <div className="col-12 justify-content-center">
+                <div className="grid justify-content-center align-items-center">
+                  {receitasRecomendadas.receitas.map((itens) => (
+                    <div key={itens.titulo} className="col-4">
+                      <Card
+                        title={itens.titulo}
+                        style={{
+                          cursor: "pointer",
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           )}
         </ContentWrapper>
       </PageWrapper>

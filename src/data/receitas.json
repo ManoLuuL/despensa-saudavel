@@ -2,7 +2,6 @@
    "receitas":[
       {
          "titulo":"Salada de Quinoa com Legumes",
-         "imagem":"https://www.comidaereceitas.com.br/wp-content/uploads/2021/06/salada_quinoa_legumes-780x502.jpg",
          "ingredientes":[
             {
                "ingrediente":"Quinoa",
@@ -38,7 +37,6 @@
       },
       {
          "titulo":"Frango com Legumes Assados",
-         "imagem":"https://assets.unileversolutions.com/recipes-v2/104434.jpg",
          "ingredientes":[
             {
                "ingrediente":"Peito de frango",
@@ -74,7 +72,6 @@
       },
       {
          "titulo":"Sopa de Legumes",
-         "imagem":"https://assets.unileversolutions.com/recipes-v2/36850.jpg",
          "ingredientes":[
             {
                "ingrediente":"Abóbora",
@@ -114,7 +111,6 @@
       },
       {
          "titulo":"Wrap de Frango e Vegetais",
-         "imagem":"https://vitat.com.br/central/Content/handlers/Receita.jpg?id=64675&tipo=r&default=s",
          "ingredientes":[
             {
                "ingrediente":"Peito de frango",
@@ -143,6 +139,64 @@
          ],
          "modo_preparo":"1. Corte o peito de frango em tiras finas e tempere com sal e pimenta.\n2. Aqueça uma frigideira antiaderente e grelhe o frango até que esteja cozido por completo.\n3. Corte a cenoura e o pimentão em tiras finas.\n4. Espalhe um pouco de maionese light sobre cada tortilha.\n5. Distribua as folhas de alface, as tiras de frango e os legumes sobre as tortilhas.\n6. Enrole as tortilhas e sirva imediatamente.",
          "rendimento":"4 porções"
-      }
+      },
+      {
+         "titulo": "Omelete de Legumes",
+         "ingredientes": [
+            {
+               "ingrediente":"Ovos",
+               "quantidade":"2 unidades"
+            },
+            {
+               "ingrediente":"Tomate picado",
+               "quantidade":"1/4 de xícara"
+            },
+            {
+               "ingrediente":"Espinafre picado",
+               "quantidade":"1/4 de xícara"
+            },{
+               "ingrediente":"Pimentão picado",
+               "quantidade":"1/4 de xícara"
+            },{
+               "ingrediente":"Cebola picada",
+               "quantidade":"1/4 de xícara"
+            },{
+               "ingrediente":"Sal e pimenta",
+               "quantidade":"A gosto"
+            },{
+               "ingrediente":"Azeite de oliva",
+               "quantidade":"1 colher de chá"
+            }
+         ],
+         "modo_preparo": "Em uma tigela, bata os ovos e tempere com sal e pimenta. Em uma frigideira antiaderente, aqueça o azeite em fogo médio. Adicione a cebola e o pimentão e refogue por alguns minutos até que fiquem macios. Acrescente o tomate e o espinafre e cozinhe por mais alguns minutos. Despeje os ovos batidos sobre os legumes na frigideira e cozinhe até que a parte de baixo esteja firme. Vire a omelete com cuidado e cozinhe por mais alguns minutos. Sirva quente.",
+         "rendimento": "1 porção"
+       },
+       {
+         "titulo": "Salmão Assado com Brócolis",
+         "ingredientes": [
+            {
+               "ingrediente":"Filé de salmão",
+               "quantidade":"1 unidade"
+            },
+            {
+               "ingrediente":"Brócolis em floretes",
+               "quantidade":"1 xícara de brócolis"
+            },
+            {
+               "ingrediente":"Limão",
+               "quantidade":"1 unidade de suco"
+            },
+            {
+               "ingrediente":"Azeite de oliva",
+               "quantidade":"2 colher de chá"
+            },
+            {
+               "ingrediente":"Sal e pimenta",
+               "quantidade":"A gosto"
+            }
+         ],
+         "modo_preparo": "Preaqueça o forno a 200°C. Tempere o filé de salmão com sal, pimenta, suco de limão e 1 colher de sopa de azeite de oliva. Em uma assadeira, disponha o salmão e os floretes de brócolis. Regue com a colher de sopa restante de azeite de oliva. Asse por cerca de 15-20 minutos, ou até que o salmão esteja cozido e o brócolis esteja macio. Sirva quente.",
+         "rendimento": "1 porção"
+       }
    ]
 }

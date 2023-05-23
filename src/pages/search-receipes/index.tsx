@@ -18,19 +18,7 @@ const RecipeSearch: FC = () => {
         </FiltersWrapper>
         <CardsWrapper>
           {data.receitas.map((itens, index) => (
-            <Card
-              title={itens.titulo}
-              key={index}
-              header={
-                <>
-                  <img
-                    src={itens.imagem}
-                    alt=""
-                    style={{ height: "90px", width: "190px" }}
-                  />
-                </>
-              }
-            />
+            <Card title={itens.titulo} key={index} />
           ))}
         </CardsWrapper>
       </PageWrapper>
