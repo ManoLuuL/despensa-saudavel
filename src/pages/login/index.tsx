@@ -8,12 +8,15 @@ import { classNames } from "primereact/utils";
 import { Button } from "../../components/molecules/button";
 import { NavLink } from "react-router-dom";
 import { LoginFormType } from "./types";
+import { useNavigate } from "react-router-dom";
 
 export const LoginPage: FC = () => {
   let LoginValues: LoginFormType = {
     email: "",
     password: "",
   };
+
+  const navigate = useNavigate();
 
   const validateLoginForm = async (values: LoginFormType) => {
     const response = await fetch("https://api.example.com/login", {
@@ -52,6 +55,8 @@ export const LoginPage: FC = () => {
     },
     onSubmit: (data) => {
       try {
+        if(data.email === 'luis.couto@hotmail.com' && data.password === 'Senha123') navigate("/main")
+        
         validateLoginForm(data);
       } catch (error) {
         console.error(error);
