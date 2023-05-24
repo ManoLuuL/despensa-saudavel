@@ -57,7 +57,7 @@ export const LoginPage: FC = () => {
       try {
         if(data.email === 'luis.couto@hotmail.com' && data.password === 'Senha123') navigate("/main")
         
-        validateLoginForm(data);
+        // validateLoginForm(data);
       } catch (error) {
         console.error(error);
         formik.resetForm();
