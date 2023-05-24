@@ -22,6 +22,7 @@ export const BntSearch = styled.button`
 export const PageWrapper = styled.div`
   display: flex;
   height: 100vh;
+  overflow: hidden;
 `;
 
 export const FiltersWrapper = styled.div`
