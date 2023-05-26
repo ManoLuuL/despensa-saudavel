@@ -2,6 +2,7 @@ import { ChangeEvent, FC, useState } from "react";
 import { Checkbox } from "primereact/checkbox";
 import { InputText } from "primereact/inputtext";
 import { FiltersList, FiltersTitle, FiltersWrapper } from "./styles";
+import { Button } from "../../../components/molecules/button-custom";
 
 const Filters: FC = () => {
   const [filters, setFilters] = useState<string[]>([]);
@@ -25,9 +26,19 @@ const Filters: FC = () => {
   return (
     <FiltersWrapper>
       <FiltersTitle>Ingredientes</FiltersTitle>
-      <div>
-        <InputText value={currentFilter} onChange={handleFilterChange} />
-        <button onClick={handleAddFilter}>Adicionar</button>
+      <div className="grid gap-2">
+        <InputText
+          value={currentFilter}
+          onChange={handleFilterChange}
+          className="col-9 "
+        />
+        <Button
+          className="col-3"
+          icon={{
+            name: "add",
+          }}
+          onClick={handleAddFilter}
+        />
       </div>
       <FiltersList>
         {filters.map((filter) => (
