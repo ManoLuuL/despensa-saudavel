@@ -21,9 +21,9 @@ import {
 } from "../../api/view-model/receitas-imc-view-model";
 import { ReceitasIMC } from "./imc-recepes";
 import { Card } from "primereact/card";
-import { RecipesModal } from "./recipes-modal";
+import { RecipesModal } from "../../components/organism/pre-modals";
 
-const IMCPage = () => {
+export const IMCPage = () => {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [result, setResult] = useState<IMCResult | null>(null);
@@ -152,5 +152,3 @@ const IMCPage = () => {
     </>
   );
 };
-
-export default IMCPage;

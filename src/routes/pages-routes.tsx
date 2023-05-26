@@ -1,14 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
-import HomePage from "../pages/home";
-import ErrorPage from "../pages/404";
-import LoginPage from "../pages/login";
-import RegisterPage from "../pages/register";
-import FavoriteRecipe from "../pages/favorite-recipe";
-import UserPage from "../pages/user";
-import AboutPage from "../pages/about";
-import MainPage from "../pages/main";
-import RecipeSearch from "../pages/search-receipes";
-import IMCPage from "../pages/imc";
+import {
+  AboutPage,
+  ErrorPage,
+  FavoriteRecipe,
+  HomePage,
+  IMCPage,
+  LoginPage,
+  MainPage,
+  RecipeSearch,
+  RegisterPage,
+  UserPage,
+} from "../pages";
 
 export const pagesRoutes = createBrowserRouter([
   {

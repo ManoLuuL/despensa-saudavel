@@ -3,7 +3,7 @@ import { ReceitasIMCProps } from "./types";
 import { Card } from "primereact/card";
 import { Title, ReceitasWrapper } from "./styles";
 import { Receitas } from "../../../api/view-model/receitas-imc-view-model";
-import { RecipesModal } from "../recipes-modal";
+import { RecipesModal } from "../../../components/organism/pre-modals";
 
 export const ReceitasIMC: FC<ReceitasIMCProps> = (props) => {
   const { content } = props;
