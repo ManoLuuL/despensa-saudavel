@@ -17,7 +17,7 @@ export const ModalHeader: FC<InternalModalHeaderProps> = (props) => {
   if (hide) return null;
 
   return (
-    <div className="flex align-items-center justify-content-between pb-3">
+    <div className="flex align-items-center justify-content-between p-2">
       {typeof title === "string" ? <HeaderTitle>{title}</HeaderTitle> : title}
       {hasCloseFunction && (
         <Button

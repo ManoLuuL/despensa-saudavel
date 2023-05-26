@@ -31,7 +31,7 @@ export const FiltersWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 325px;
-  border: 1px solid grey;
+  border-right: 1px solid grey;
   height: 100vh;
   margin: 15px;
 `;

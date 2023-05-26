@@ -1,6 +1,5 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const HeaderTitle = styled.span`
-  font-size: ${p => p.theme.fontSizes.lg};
+export const HeaderTitle = styled.h2`
   font-weight: bold;
 `;
