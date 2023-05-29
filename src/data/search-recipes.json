@@ -1,0 +1,1044 @@
+{
+    "receitas": [
+      {
+        "titulo": "Bolo de Chocolate",
+        "ingredientes": [
+          {
+            "ingrediente": "Farinha de trigo",
+            "quantidade": "2 xícaras"
+          },
+          {
+            "ingrediente": "Açúcar",
+            "quantidade": "2 xícaras"
+          },
+          {
+            "ingrediente": "Chocolate em pó",
+            "quantidade": "1 xícara"
+          },
+          {
+            "ingrediente": "Leite",
+            "quantidade": "1 xícara"
+          },
+          {
+            "ingrediente": "Ovos",
+            "quantidade": "4 unidades"
+          },
+          {
+            "ingrediente": "Manteiga",
+            "quantidade": "1/2 xícara"
+          }
+        ],
+        "modo_preparo": "1. Em um recipiente, misture a farinha de trigo, o açúcar e o chocolate em pó. \n2. Adicione o leite, os ovos e a manteiga. \n3. Bata tudo até obter uma massa homogênea. \n4. Despeje a massa em uma forma untada e leve ao forno preaquecido a 180°C por aproximadamente 40 minutos. \n5. Espere esfriar e sirva.",
+        "rendimento": "12 porções"
+      },
+      {
+        "titulo": "Lasanha",
+        "ingredientes": [
+          {
+            "ingrediente": "Massa de lasanha",
+            "quantidade": "500g"
+          },
+          {
+            "ingrediente": "Carne moída",
+            "quantidade": "500g"
+          },
+          {
+            "ingrediente": "Molho de tomate",
+            "quantidade": "2 xícaras"
+          },
+          {
+            "ingrediente": "Queijo mussarela",
+            "quantidade": "300g"
+          },
+          {
+            "ingrediente": "Queijo parmesão ralado",
+            "quantidade": "1 xícara"
+          },
+          {
+            "ingrediente": "Cebola",
+            "quantidade": "1 unidade"
+          },
+          {
+            "ingrediente": "Alho",
+            "quantidade": "2 dentes"
+          },
+          {
+            "ingrediente": "Azeite",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Sal",
+            "quantidade": "a gosto"
+          },
+          {
+            "ingrediente": "Pimenta",
+            "quantidade": "a gosto"
+          }
+        ],
+        "modo_preparo": "1. Cozinhe a massa da lasanha conforme as instruções da embalagem e reserve. \n2. Em uma panela, refogue a cebola e o alho no azeite até dourarem. \n3. Adicione a carne moída e tempere com sal e pimenta. Cozinhe até ficar bem dourada. \n4. Acrescente o molho de tomate e deixe cozinhar por mais alguns minutos. \n5. Em uma forma, monte camadas alternadas de massa, carne moída, queijo mussarela e molho. Repita até finalizar os ingredientes. \n6. Polvilhe queijo parmesão ralado por cima. \n7. Leve ao forno preaquecido a 180°C por cerca de 30 minutos ou até gratinar. \n8. Retire do forno, espere esfriar um pouco e sirva.",
+        "rendimento": "8 porções"
+      },
+      {
+        "titulo": "Salada Caesar",
+        "ingredientes": [
+          {
+            "ingrediente": "Alface romana",
+            "quantidade": "1 pé"
+          },
+          {
+            "ingrediente": "Croutons",
+            "quantidade": "1 xícara"
+          },
+          {
+            "ingrediente": "Queijo parmesão",
+            "quantidade": "1/2 xícara"
+          },
+          {
+            "ingrediente": "Peito de frango grelhado",
+            "quantidade": "2 unidades"
+          },
+          {
+            "ingrediente": "Molho Caesar",
+            "quantidade": "1/2 xícara"
+          }
+        ],
+        "modo_preparo": "1. Lave e rasgue as folhas de alface romana em pedaços menores. \n2. Corte o peito de frango em tiras e grelhe em uma frigideira com um pouco de óleo. \n3. Em uma tigela grande, misture a alface, os croutons e o queijo parmesão. \n4. Adicione o peito de frango grelhado e regue com o molho Caesar. \n5. Misture tudo delicadamente até que todos os ingredientes estejam bem incorporados. \n6. Sirva imediatamente.",
+        "rendimento": "4 porções"
+      },
+      {
+        "titulo": "Risoto de Cogumelos",
+        "ingredientes": [
+          {
+            "ingrediente": "Arroz arbóreo",
+            "quantidade": "2 xícaras"
+          },
+          {
+            "ingrediente": "Cogumelos variados (shimeji, shitake, champignon)",
+            "quantidade": "300g"
+          },
+          {
+            "ingrediente": "Caldo de legumes",
+            "quantidade": "4 xícaras"
+          },
+          {
+            "ingrediente": "Cebola",
+            "quantidade": "1 unidade"
+          },
+          {
+            "ingrediente": "Alho",
+            "quantidade": "2 dentes"
+          },
+          {
+            "ingrediente": "Vinho branco seco",
+            "quantidade": "1/2 xícara"
+          },
+          {
+            "ingrediente": "Queijo parmesão ralado",
+            "quantidade": "1/2 xícara"
+          },
+          {
+            "ingrediente": "Manteiga",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Azeite",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Sal",
+            "quantidade": "a gosto"
+          },
+          {
+            "ingrediente": "Pimenta",
+            "quantidade": "a gosto"
+          }
+        ],
+        "modo_preparo": "1. Aqueça o caldo de legumes em uma panela e mantenha em fogo baixo. \n2. Em outra panela, aqueça o azeite e a manteiga e refogue a cebola e o alho até ficarem dourados. \n3. Adicione os cogumelos e refogue por alguns minutos até ficarem macios. \n4. Acrescente o arroz arbóreo e refogue por mais alguns minutos. \n5. Adicione o vinho branco e deixe cozinhar até evaporar. \n6. Comece a adicionar o caldo de legumes aos poucos, mexendo sempre, até o arroz ficar al dente. \n7. Retire do fogo e misture o queijo parmesão ralado. \n8. Tempere com sal e pimenta a gosto. \n9. Deixe descansar por alguns minutos antes de servir.",
+        "rendimento": "6 porções"
+      },
+      {
+        "titulo": "Pão de Queijo",
+        "ingredientes": [
+          {
+            "ingrediente": "Polvilho doce",
+            "quantidade": "500g"
+          },
+          {
+            "ingrediente": "Queijo minas padrão ralado",
+            "quantidade": "300g"
+          },
+          {
+            "ingrediente": "Leite",
+            "quantidade": "1 xícara"
+          },
+          {
+            "ingrediente": "Óleo vegetal",
+            "quantidade": "1/2 xícara"
+          },
+          {
+            "ingrediente": "Ovos",
+            "quantidade": "3 unidades"
+          },
+          {
+            "ingrediente": "Sal",
+            "quantidade": "a gosto"
+          }
+        ],
+        "modo_preparo": "1. Em uma tigela, coloque o polvilho doce e reserve. \n2. Em uma panela, aqueça o leite com o óleo e o sal até ferver. \n3. Despeje a mistura quente sobre o polvilho e misture bem. \n4. Acrescente o queijo minas ralado e misture novamente até obter uma massa homogênea. \n5. Adicione os ovos um a um, incorporando bem a massa a cada adição. \n6. Pré-aqueça o forno a 180°C. \n7. Modele pequenas bolinhas com a massa e disponha em uma forma untada. \n8. Leve ao forno por aproximadamente 25 minutos ou até dourarem. \n9. Retire do forno e sirva quente.",
+        "rendimento": "30 unidades"
+      },
+      {
+        "titulo": "Sopa de Legumes",
+        "ingredientes": [
+          {
+            "ingrediente": "Batata",
+            "quantidade": "2 unidades"
+          },
+          {
+            "ingrediente": "Cenoura",
+            "quantidade": "2 unidades"
+          },
+          {
+            "ingrediente": "Abobrinha",
+            "quantidade": "1 unidade"
+          },
+          {
+            "ingrediente": "Cebola",
+            "quantidade": "1 unidade"
+          },
+          {
+            "ingrediente": "Alho",
+            "quantidade": "2 dentes"
+          },
+          {
+            "ingrediente": "Caldo de legumes",
+            "quantidade": "4 xícaras"
+          },
+          {
+            "ingrediente": "Azeite",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Sal",
+            "quantidade": "a gosto"
+          },
+          {
+            "ingrediente": "Pimenta",
+            "quantidade": "a gosto"
+          }
+        ],
+        "modo_preparo": "1. Descasque e corte as batatas, cenouras e abobrinha em cubos. \n2. Em uma panela grande, aqueça o azeite e refogue a cebola e o alho até dourarem. \n3. Adicione os legumes cortados e refogue por alguns minutos. \n4. Acrescente o caldo de legumes e tempere com sal e pimenta. \n5. Deixe cozinhar em fogo médio-alto até os legumes ficarem macios. \n6. Com o auxílio de um mixer de mão ou em um liquidificador, bata a sopa até obter uma consistência cremosa. \n7. Ajuste o sal e a pimenta, se necessário. \n8. Sirva quente.",
+        "rendimento": "4 porções"
+      },
+      {
+        "titulo": "Mousse de Limão",
+        "ingredientes": [
+          {
+            "ingrediente": "Leite condensado",
+            "quantidade": "1 lata"
+          },
+          {
+            "ingrediente": "Creme de leite",
+            "quantidade": "1 lata"
+          },
+          {
+            "ingrediente": "Suco de limão",
+            "quantidade": "1/2 xícara"
+          },
+          {
+            "ingrediente": "Raspas de limão",
+            "quantidade": "1 colher de sopa"
+          }
+        ],
+        "modo_preparo": "1. Em um liquidificador, bata o leite condensado e o creme de leite até obter uma mistura homogênea. \n2. Acrescente o suco de limão e bata novamente até incorporar. \n3. Despeje a mistura em taças individuais ou em uma travessa grande. \n4. Leve à geladeira por pelo menos 4 horas ou até firmar. \n5. Na hora de servir, decore com raspas de limão. \n6. Sirva gelado.",
+        "rendimento": "6 porções"
+      },
+      {
+        "titulo": "Strogonoff de Frango",
+        "ingredientes": [
+          {
+            "ingrediente": "Peito de frango",
+            "quantidade": "500g"
+          },
+          {
+            "ingrediente": "Cebola",
+            "quantidade": "1 unidade"
+          },
+          {
+            "ingrediente": "Alho",
+            "quantidade": "2 dentes"
+          },
+          {
+            "ingrediente": "Molho de tomate",
+            "quantidade": "1 xícara"
+          },
+          {
+            "ingrediente": "Cogumelos fatiados",
+            "quantidade": "200g"
+          },
+          {
+            "ingrediente": "Creme de leite",
+            "quantidade": "1 lata"
+          },
+          {
+            "ingrediente": "Ketchup",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Mostarda",
+            "quantidade": "1 colher de sopa"
+          },
+          {
+            "ingrediente": "Conhaque",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Azeite",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Sal",
+            "quantidade": "a gosto"
+          },
+          {
+            "ingrediente": "Pimenta",
+            "quantidade": "a gosto"
+          }
+        ],
+        "modo_preparo": "1. Corte o peito de frango em cubos pequenos e tempere com sal e pimenta. \n2. Em uma panela grande, aqueça o azeite e refogue a cebola e o alho até dourarem. \n3. Adicione o frango e cozinhe até ficar bem dourado. \n4. Acrescente os cogumelos e continue cozinhando por alguns minutos. \n5. Adicione o molho de tomate, o ketchup, a mostarda e o conhaque. \n6. Deixe cozinhar por mais alguns minutos para que os sabores se incorporem. \n7. Por fim, adicione o creme de leite e misture bem. \n8. Cozinhe por mais alguns minutos até aquecer completamente. \n9. Sirva acompanhado de arroz branco e batata palha.",
+        "rendimento": "4 porções"
+      },
+      {
+        "titulo": "Pudim de Leite Condensado",
+        "ingredientes": [
+          {
+            "ingrediente": "Leite condensado",
+            "quantidade": "1 lata"
+          },
+          {
+            "ingrediente": "Leite",
+            "quantidade": "1 medida (use a lata de leite condensado como medida)"
+          },
+          {
+            "ingrediente": "Ovos",
+            "quantidade": "3 unidades"
+          },
+          {
+            "ingrediente": "Açúcar",
+            "quantidade": "1 xícara"
+          },
+          {
+            "ingrediente": "Água",
+            "quantidade": "1/2 xícara"
+          }
+        ],
+        "modo_preparo": "1. Em uma forma de pudim, derreta o açúcar com a água em fogo baixo até obter uma calda dourada. \n2. Espalhe a calda por toda a forma, cobrindo bem o fundo e as laterais. Reserve. \n3. No liquidificador, bata o leite condensado, o leite e os ovos até obter uma mistura homogênea. \n4. Despeje a mistura na forma caramelizada. \n5. Cubra a forma com papel alumínio e leve ao forno preaquecido a 180°C em banho-maria por cerca de 1 hora. \n6. Retire o papel alumínio e verifique se o pudim está firme. \n7. Deixe esfriar completamente e leve à geladeira por algumas horas. \n8. Desenforme antes de servir.",
+        "rendimento": "8 porções"
+      },
+      {
+        "titulo": "Macarrão à Carbonara",
+        "ingredientes": [
+          {
+            "ingrediente": "Macarrão tipo espaguete",
+            "quantidade": "500g"
+          },
+          {
+            "ingrediente": "Bacon em cubos",
+            "quantidade": "200g"
+          },
+          {
+            "ingrediente": "Queijo parmesão ralado",
+            "quantidade": "1 xícara"
+          },
+          {
+            "ingrediente": "Ovos",
+            "quantidade": "3 unidades"
+          },
+          {
+            "ingrediente": "Alho",
+            "quantidade": "2 dentes"
+          },
+          {
+            "ingrediente": "Azeite",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Sal",
+            "quantidade": "a gosto"
+          },
+          {
+            "ingrediente": "Pimenta",
+            "quantidade": "a gosto"
+          }
+        ],
+        "modo_preparo": "1. Cozinhe o macarrão em água fervente com sal até ficar al dente. \n2. Enquanto o macarrão cozinha, aqueça o azeite em uma frigideira e frite o bacon até ficar crocante. \n3. Adicione o alho picado e refogue por mais alguns minutos. \n4. Em uma tigela, bata os ovos e misture o queijo parmesão ralado. \n5. Escorra o macarrão e adicione-o à frigideira com o bacon e o alho. \n6. Desligue o fogo e, com a frigideira fora do fogo, adicione a mistura de ovos e queijo. \n7. Misture bem para que o calor do macarrão cozinhe os ovos, formando um molho cremoso. \n8. Tempere com sal e pimenta a gosto. \n9. Sirva imediatamente.",
+        "rendimento": "4 porções"
+      },
+      {
+        "titulo": "Brigadeiro",
+        "ingredientes": [
+          {
+            "ingrediente": "Leite condensado",
+            "quantidade": "1 lata"
+          },
+          {
+            "ingrediente": "Chocolate em pó",
+            "quantidade": "3 colheres de sopa"
+          },
+          {
+            "ingrediente": "Manteiga",
+            "quantidade": "1 colher de sopa"
+          },
+          {
+            "ingrediente": "Granulado",
+            "quantidade": "para decorar"
+          }
+        ],
+        "modo_preparo": "1. Em uma panela, coloque o leite condensado, o chocolate em pó e a manteiga. \n2. Leve ao fogo baixo e mexa constantemente até desprender do fundo da panela e formar uma massa consistente. \n3. Desligue o fogo e espere esfriar. \n4. Com as mãos untadas, faça bolinhas com a massa e passe no granulado para decorar. \n5. Coloque em forminhas de papel e sirva.",
+        "rendimento": "20 unidades"
+      },
+      {
+        "titulo": "Bolo de Cenoura",
+        "ingredientes": [
+          {
+            "ingrediente": "Cenoura",
+            "quantidade": "3 unidades"
+          },
+          {
+            "ingrediente": "Ovos",
+            "quantidade": "3 unidades"
+          },
+          {
+            "ingrediente": "Óleo vegetal",
+            "quantidade": "1 xícara"
+          },
+          {
+            "ingrediente": "Açúcar",
+            "quantidade": "2 xícaras"
+          },
+          {
+            "ingrediente": "Farinha de trigo",
+            "quantidade": "2 xícaras"
+          },
+          {
+            "ingrediente": "Fermento em pó",
+            "quantidade": "1 colher de sopa"
+          },
+          {
+            "ingrediente": "Sal",
+            "quantidade": "1 pitada"
+          }
+        ],
+        "modo_preparo": "1. Preaqueça o forno a 180°C. \n2. Descasque e corte as cenouras em pedaços. \n3. No liquidificador, bata as cenouras, os ovos e o óleo até obter uma mistura homogênea. \n4. Em uma tigela, misture o açúcar, a farinha de trigo, o fermento em pó e o sal. \n5. Acrescente a mistura do liquidificador aos ingredientes secos e misture bem. \n6. Despeje a massa em uma forma untada e enfarinhada. \n7. Leve ao forno por aproximadamente 40 minutos ou até que um palito inserido no centro do bolo saia limpo. \n8. Retire do forno e deixe esfriar antes de desenformar. \n9. Sirva em fatias.",
+        "rendimento": "10 porções"
+      },
+      {
+        "titulo": "Salada Caprese",
+        "ingredientes": [
+          {
+            "ingrediente": "Tomate",
+            "quantidade": "3 unidades"
+          },
+          {
+            "ingrediente": "Queijo de búfala",
+            "quantidade": "200g"
+          },
+          {
+            "ingrediente": "Folhas de manjericão",
+            "quantidade": "1 maço"
+          },
+          {
+            "ingrediente": "Azeite de oliva",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Vinagre balsâmico",
+            "quantidade": "1 colher de sopa"
+          },
+          {
+            "ingrediente": "Sal",
+            "quantidade": "a gosto"
+          },
+          {
+            "ingrediente": "Pimenta",
+            "quantidade": "a gosto"
+          }
+        ],
+        "modo_preparo": "1. Lave os tomates e corte-os em rodelas médias. \n2. Corte o queijo de búfala em rodelas finas. \n3. Lave e seque as folhas de manjericão. \n4. Em um prato, intercale as rodelas de tomate, as rodelas de queijo de búfala e as folhas de manjericão. \n5. Regue com o azeite de oliva e o vinagre balsâmico. \n6. Tempere com sal e pimenta a gosto. \n7. Sirva imediatamente.",
+        "rendimento": "4 porções"
+      },
+      {
+        "titulo": "Pão de Queijo",
+        "ingredientes": [
+          {
+            "ingrediente": "Polvilho doce",
+            "quantidade": "500g"
+          },
+          {
+            "ingrediente": "Queijo minas padrão ralado",
+            "quantidade": "300g"
+          },
+          {
+            "ingrediente": "Leite",
+            "quantidade": "1 xícara"
+          },
+          {
+            "ingrediente": "Óleo vegetal",
+            "quantidade": "1/2 xícara"
+          },
+          {
+            "ingrediente": "Ovos",
+            "quantidade": "3 unidades"
+          },
+          {
+            "ingrediente": "Sal",
+            "quantidade": "1 colher de chá"
+          }
+        ],
+        "modo_preparo": "1. Preaqueça o forno a 180°C. \n2. Em uma tigela, misture o polvilho doce e o queijo minas ralado. \n3. Em uma panela, aqueça o leite e o óleo até ferver. \n4. Despeje a mistura quente sobre o polvilho e o queijo e misture bem. \n5. Acrescente os ovos um a um, mexendo bem a cada adição. \n6. Adicione o sal e continue misturando até obter uma massa homogênea. \n7. Com as mãos untadas, faça bolinhas com a massa e coloque em uma forma untada. \n8. Leve ao forno por aproximadamente 30 minutos ou até que os pães de queijo estejam dourados. \n9. Retire do forno e sirva quente.",
+        "rendimento": "40 unidades"
+      },
+      {
+        "titulo": "Bolo de Chocolate",
+        "ingredientes": [
+          {
+            "ingrediente": "Farinha de trigo",
+            "quantidade": "2 xícaras"
+          },
+          {
+            "ingrediente": "Açúcar",
+            "quantidade": "2 xícaras"
+          },
+          {
+            "ingrediente": "Chocolate em pó",
+            "quantidade": "1 xícara"
+          },
+          {
+            "ingrediente": "Leite",
+            "quantidade": "1 xícara"
+          },
+          {
+            "ingrediente": "Óleo vegetal",
+            "quantidade": "1/2 xícara"
+          },
+          {
+            "ingrediente": "Ovos",
+            "quantidade": "3 unidades"
+          },
+          {
+            "ingrediente": "Fermento em pó",
+            "quantidade": "1 colher de sopa"
+          },
+          {
+            "ingrediente": "Sal",
+            "quantidade": "1 pitada"
+          },
+          {
+            "ingrediente": "Água quente",
+            "quantidade": "1 xícara"
+          }
+        ],
+        "modo_preparo": "1. Preaqueça o forno a 180°C. \n2. Em uma tigela, misture a farinha de trigo, o açúcar, o chocolate em pó, o fermento em pó e o sal. \n3. Adicione o leite, o óleo vegetal e os ovos. \n4. Bata bem a massa até ficar homogênea. \n5. Acrescente a água quente e misture novamente. \n6. Despeje a massa em uma forma untada e enfarinhada. \n7. Leve ao forno por aproximadamente 40 minutos ou até que um palito inserido no centro do bolo saia limpo. \n8. Retire do forno e deixe esfriar antes de desenformar. \n9. Decore a gosto e sirva em fatias.",
+        "rendimento": "12 porções"
+      },
+      {
+        "titulo": "Sopa de Legumes",
+        "ingredientes": [
+          {
+            "ingrediente": "Batata",
+            "quantidade": "2 unidades"
+          },
+          {
+            "ingrediente": "Cenoura",
+            "quantidade": "2 unidades"
+          },
+          {
+            "ingrediente": "Abobrinha",
+            "quantidade": "1 unidade"
+          },
+          {
+            "ingrediente": "Vagem",
+            "quantidade": "100g"
+          },
+          {
+            "ingrediente": "Cebola",
+            "quantidade": "1 unidade"
+          },
+          {
+            "ingrediente": "Alho",
+            "quantidade": "2 dentes"
+          },
+          {
+            "ingrediente": "Óleo vegetal",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Caldo de legumes",
+            "quantidade": "1 tablete"
+          },
+          {
+            "ingrediente": "Água",
+            "quantidade": "1 litro"
+          },
+          {
+            "ingrediente": "Sal",
+            "quantidade": "a gosto"
+          },
+          {
+            "ingrediente": "Pimenta",
+            "quantidade": "a gosto"
+          }
+        ],
+        "modo_preparo": "1. Descasque e corte as batatas e as cenouras em cubos. \n2. Corte a abobrinha em rodelas e a vagem em pedaços. \n3. Em uma panela grande, aqueça o óleo vegetal e refogue a cebola e o alho até dourarem. \n4. Adicione as batatas, as cenouras, a abobrinha e a vagem. \n5. Dissolva o caldo de legumes na água e despeje na panela. \n6. Tempere com sal e pimenta a gosto. \n7. Cozinhe em fogo médio por aproximadamente 20 minutos ou até que os legumes estejam macios. \n8. Retire do fogo e deixe esfriar um pouco. \n9. Com o auxílio de um mixer de mão, bata a sopa até obter uma consistência cremosa. \n10. Aqueça novamente antes de servir.",
+        "rendimento": "6 porções"
+      },
+      {
+        "titulo": "Pão Caseiro",
+        "ingredientes": [
+          {
+            "ingrediente": "Farinha de trigo",
+            "quantidade": "1 kg"
+          },
+          {
+            "ingrediente": "Água morna",
+            "quantidade": "500ml"
+          },
+          {
+            "ingrediente": "Açúcar",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Sal",
+            "quantidade": "1 colher de sopa"
+          },
+          {
+            "ingrediente": "Fermento biológico seco",
+            "quantidade": "10g"
+          }
+        ],
+        "modo_preparo": "1. Em uma tigela grande, misture a farinha de trigo, o açúcar e o sal. \n2. Dissolva o fermento biológico seco em água morna e adicione à mistura de farinha. \n3. Misture bem até formar uma massa homogênea. \n4. Sove a massa em uma superfície enfarinhada por cerca de 10 minutos, até que fique elástica e macia. \n5. Coloque a massa de volta na tigela, cubra com um pano e deixe descansar em um local aquecido por aproximadamente 1 hora, ou até dobrar de tamanho. \n6. Pré-aqueça o forno a 180°C. \n7. Divida a massa em duas partes e modele os pães de acordo com sua preferência. \n8. Coloque os pães em uma assadeira untada e deixe descansar por mais 30 minutos. \n9. Leve ao forno por aproximadamente 40 minutos ou até que estejam dourados. \n10. Retire do forno e deixe esfriar antes de servir.",
+        "rendimento": "2 pães"
+      },
+      {
+        "titulo": "Suco de Laranja",
+        "ingredientes": [
+          {
+            "ingrediente": "Laranjas",
+            "quantidade": "4 unidades"
+          },
+          {
+            "ingrediente": "Açúcar",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Água",
+            "quantidade": "500ml"
+          },
+          {
+            "ingrediente": "Gelo",
+            "quantidade": "a gosto"
+          }
+        ],
+        "modo_preparo": "1. Esprema as laranjas para extrair o suco. \n2. Em uma jarra, adicione o suco de laranja, o açúcar e a água. \n3. Mexa bem até que o açúcar esteja completamente dissolvido. \n4. Adicione gelo a gosto. \n5. Sirva em copos e decore com fatias de laranja, se desejar.",
+        "rendimento": "4 porções"
+      },
+      {
+        "titulo": "Empadão de Frango",
+        "ingredientes": [
+          {
+            "ingrediente": "Farinha de trigo",
+            "quantidade": "3 xícaras"
+          },
+          {
+            "ingrediente": "Manteiga",
+            "quantidade": "200g"
+          },
+          {
+            "ingrediente": "Ovo",
+            "quantidade": "1 unidade"
+          },
+          {
+            "ingrediente": "Água gelada",
+            "quantidade": "6 colheres de sopa"
+          },
+          {
+            "ingrediente": "Peito de frango cozido e desfiado",
+            "quantidade": "500g"
+          },
+          {
+            "ingrediente": "Cebola",
+            "quantidade": "1 unidade"
+          },
+          {
+            "ingrediente": "Alho",
+            "quantidade": "2 dentes"
+          },
+          {
+            "ingrediente": "Óleo vegetal",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Milho verde",
+            "quantidade": "1 lata"
+          },
+          {
+            "ingrediente": "Ervilha",
+            "quantidade": "1 lata"
+          },
+          {
+            "ingrediente": "Molho de tomate",
+            "quantidade": "1/2 xícara"
+          },
+          {
+            "ingrediente": "Salsinha",
+            "quantidade": "a gosto"
+          },
+          {
+            "ingrediente": "Sal",
+            "quantidade": "a gosto"
+          },
+          {
+            "ingrediente": "Pimenta",
+            "quantidade": "a gosto"
+          }
+        ],
+        "modo_preparo": "1. Em uma tigela, misture a farinha de trigo, a manteiga, o ovo e a água gelada até formar uma massa homogênea. \n2. Embrulhe a massa em plástico filme e leve à geladeira por 30 minutos. \n3. Em uma panela, aqueça o óleo vegetal e refogue a cebola e o alho até dourarem. \n4. Adicione o frango desfiado, o milho verde, a ervilha, o molho de tomate, a salsinha, o sal e a pimenta. \n5. Misture bem e cozinhe por alguns minutos. \n6. Preaqueça o forno a 180°C. \n7. Divida a massa em duas partes e abra metade dela com um rolo. \n8. Forre o fundo de uma forma de empadão com a massa aberta. \n9. Coloque o recheio de frango sobre a massa. \n10. Abra a outra metade da massa e cubra o empadão. \n11. Feche bem as bordas e faça pequenos cortes na superfície da massa para permitir a saída do vapor. \n12. Leve ao forno por aproximadamente 40 minutos ou até que a massa esteja dourada. \n13. Retire do forno e deixe esfriar um pouco antes de servir.",
+        "rendimento": "8 porções"
+      },
+      {
+        "titulo": "Mousse de Maracujá",
+        "ingredientes": [
+          {
+            "ingrediente": "Polpa de maracujá",
+            "quantidade": "1 xícara"
+          },
+          {
+            "ingrediente": "Leite condensado",
+            "quantidade": "1 lata"
+          },
+          {
+            "ingrediente": "Creme de leite",
+            "quantidade": "1 lata"
+          },
+          {
+            "ingrediente": "Gelatina em pó sem sabor",
+            "quantidade": "1 envelope"
+          },
+          {
+            "ingrediente": "Água",
+            "quantidade": "1/2 xícara"
+          },
+          {
+            "ingrediente": "Açúcar",
+            "quantidade": "2 colheres de sopa"
+          }
+        ],
+        "modo_preparo": "1. Dissolva a gelatina em pó sem sabor na água e reserve. \n2. No liquidificador, bata a polpa de maracujá, o leite condensado e o creme de leite até ficar homogêneo. \n3. Adicione a gelatina dissolvida e bata novamente até misturar bem. \n4. Em uma panela, aqueça o açúcar até derreter e formar uma calda. \n5. Despeje a calda em uma forma para mousse ou em taças individuais. \n6. Despeje a mistura do liquidificador sobre a calda na forma ou nas taças. \n7. Leve à geladeira por aproximadamente 4 horas, ou até firmar. \n8. Desenforme ou sirva diretamente nas taças.",
+        "rendimento": "8 porções"
+      },
+      {
+        "titulo": "Lasanha de Carne",
+        "ingredientes": [
+          {
+            "ingrediente": "Massa de lasanha pré-cozida",
+            "quantidade": "500g"
+          },
+          {
+            "ingrediente": "Carne moída",
+            "quantidade": "500g"
+          },
+          {
+            "ingrediente": "Cebola",
+            "quantidade": "1 unidade"
+          },
+          {
+            "ingrediente": "Alho",
+            "quantidade": "2 dentes"
+          },
+          {
+            "ingrediente": "Molho de tomate",
+            "quantidade": "2 xícaras"
+          },
+          {
+            "ingrediente": "Queijo mussarela ralado",
+            "quantidade": "300g"
+          },
+          {
+            "ingrediente": "Queijo parmesão ralado",
+            "quantidade": "100g"
+          },
+          {
+            "ingrediente": "Manteiga",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Leite",
+            "quantidade": "2 xícaras"
+          },
+          {
+            "ingrediente": "Farinha de trigo",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Noz-moscada",
+            "quantidade": "a gosto"
+          },
+          {
+            "ingrediente": "Sal",
+            "quantidade": "a gosto"
+          },
+          {
+            "ingrediente": "Pimenta",
+            "quantidade": "a gosto"
+          }
+        ],
+        "modo_preparo": "1. Em uma panela, aqueça a manteiga e refogue a cebola e o alho até dourarem. \n2. Adicione a carne moída e cozinhe até ficar bem dourada. \n3. Acrescente o molho de tomate, sal e pimenta a gosto. \n4. Cozinhe por alguns minutos e reserve. \n5. Em outra panela, prepare um molho branco derretendo a manteiga e adicionando a farinha de trigo. \n6. Mexa bem e adicione o leite aos poucos, mexendo sempre para não formar grumos. \n7. Cozinhe o molho branco até engrossar. Tempere com sal, pimenta e noz-moscada a gosto. \n8. Pré-aqueça o forno a 180°C. \n9. Em um refratário, monte a lasanha alternando camadas de massa pré-cozida, carne moída, queijo mussarela e molho branco. \n10. Repita as camadas até finalizar com o molho branco por cima. \n11. Polvilhe queijo parmesão ralado sobre o topo da lasanha. \n12. Leve ao forno por aproximadamente 40 minutos ou até que esteja dourada e borbulhante. \n13. Retire do forno e deixe descansar por alguns minutos antes de servir.",
+        "rendimento": "8 porções"
+      },
+      {
+        "titulo": "Salada Caesar",
+        "ingredientes": [
+          {
+            "ingrediente": "Alface romana",
+            "quantidade": "1 maço"
+          },
+          {
+            "ingrediente": "Croutons",
+            "quantidade": "1 xícara"
+          },
+          {
+            "ingrediente": "Queijo parmesão ralado",
+            "quantidade": "1/2 xícara"
+          },
+          {
+            "ingrediente": "Filé de frango",
+            "quantidade": "2 unidades"
+          },
+          {
+            "ingrediente": "Azeite de oliva",
+            "quantidade": "3 colheres de sopa"
+          },
+          {
+            "ingrediente": "Suco de limão",
+            "quantidade": "2 colheres de sopa"
+          },
+          {
+            "ingrediente": "Mostarda Dijon",
+            "quantidade": "1 colher de sopa"
+          },
+          {
+            "ingrediente": "Alho",
+            "quantidade": "1 dente"
+          },
+          {
+            "ingrediente": "Anchovas em conserva",
+            "quantidade": "2 filés"
+          },
+          {
+            "ingrediente": "Ovo",
+            "quantidade": "1 unidade"
+          }
+        ],
+        "modo_preparo": "1. Corte o filé de frango em tiras e tempere com sal e pimenta a gosto. \n2. Em uma frigideira, aqueça um pouco de azeite de oliva e grelhe as tiras de frango até ficarem douradas e cozidas por completo. \n3. Reserve. \n4. Em uma tigela, prepare o molho Caesar misturando o suco de limão, a mostarda Dijon, o alho picado e as anchovas em conserva amassadas. \n5. Em uma travessa, coloque as folhas de alface romana lavadas e rasgadas. \n6. Adicione os croutons, o queijo parmesão ralado e o frango grelhado. \n7. Regue a salada com o molho Caesar e misture bem. \n8. Cozinhe o ovo até ficar com a gema firme. \n9. Corte o ovo em fatias e coloque sobre a salada. \n10. Sirva imediatamente.",
+        "rendimento": "4 porções"
+      },
+      {
+        "titulo":"Salada de Quinoa com Legumes",
+        "ingredientes":[
+           {
+              "ingrediente":"Quinoa",
+              "quantidade":"1/2 xícara"
+           },
+           {
+              "ingrediente":"Abobrinha",
+              "quantidade":"1 unidade"
+           },
+           {
+              "ingrediente":"Cenoura",
+              "quantidade":"1 unidade"
+           },
+           {
+              "ingrediente":"Tomate cereja",
+              "quantidade":"1 xícara"
+           },
+           {
+              "ingrediente":"Salsinha",
+              "quantidade":"1/4 xícara"
+           },
+           {
+              "ingrediente":"Suco de limão",
+              "quantidade":"2 colheres de sopa"
+           },
+           {
+              "ingrediente":"Azeite de oliva",
+              "quantidade":"2 colheres de sopa"
+           }
+        ],
+        "modo_preparo":"1. Cozinhe a quinoa de acordo com as instruções da embalagem.\n2. Corte a abobrinha em cubos e rale a cenoura.\n3. Em uma tigela grande, misture a quinoa cozida, a abobrinha, a cenoura e os tomates cereja.\n4. Adicione a salsinha picada, o suco de limão e o azeite de oliva.\n5. Misture tudo até ficar bem incorporado.\n6. Sirva imediatamente ou leve à geladeira para esfriar antes de servir.",
+        "rendimento":"4 porções"
+     },
+     {
+        "titulo":"Frango com Legumes Assados",
+        "ingredientes":[
+           {
+              "ingrediente":"Peito de frango",
+              "quantidade":"4 unidades"
+           },
+           {
+              "ingrediente":"Abobrinha",
+              "quantidade":"1 unidade"
+           },
+           {
+              "ingrediente":"Cenoura",
+              "quantidade":"2 unidades"
+           },
+           {
+              "ingrediente":"Cebola",
+              "quantidade":"1 unidade"
+           },
+           {
+              "ingrediente":"Pimentão vermelho",
+              "quantidade":"1 unidade"
+           },
+           {
+              "ingrediente":"Azeite de oliva",
+              "quantidade":"2 colheres de sopa"
+           },
+           {
+              "ingrediente":"Sal e pimenta",
+              "quantidade":"a gosto"
+           }
+        ],
+        "modo_preparo":"1. Pré-aqueça o forno a 200°C.\n2. Corte todos os legumes em cubos e coloque em uma assadeira.\n3. Tempere os legumes com sal, pimenta e azeite de oliva.\n4. Coloque os peitos de frango sobre os legumes e tempere com sal e pimenta.\n5. Leve a assadeira ao forno por cerca de 30-35 minutos, ou até que o frango esteja cozido por completo.\n6. Sirva imediatamente.",
+        "rendimento":"4 porções"
+     },
+     {
+        "titulo":"Sopa de Legumes",
+        "ingredientes":[
+           {
+              "ingrediente":"Abóbora",
+              "quantidade":"500g"
+           },
+           {
+              "ingrediente":"Cenoura",
+              "quantidade":"2 unidades"
+           },
+           {
+              "ingrediente":"Cebola",
+              "quantidade":"1 unidade"
+           },
+           {
+              "ingrediente":"Alho",
+              "quantidade":"3 dentes"
+           },
+           {
+              "ingrediente":"Tomilho",
+              "quantidade":"1 colher de sopa"
+           },
+           {
+              "ingrediente":"Caldo de legumes",
+              "quantidade":"1 litro"
+           },
+           {
+              "ingrediente":"Azeite de oliva",
+              "quantidade":"2 colheres de sopa"
+           },
+           {
+              "ingrediente":"Sal e pimenta",
+              "quantidade":"a gosto"
+           }
+        ],
+        "modo_preparo":"1. Descasque a abóbora, retire as sementes e corte em cubos.\n2. Descasque e pique a cebola e os dentes de alho.\n3. Descasque e corte as cenouras em rodelas.\n4. Em uma panela grande, aqueça o azeite de oliva e refogue a cebola e o alho até ficarem dourados.\n5. Adicione a abóbora, as cenouras e o tomilho e refogue por mais alguns minutos.\n6. Adicione o caldo de legumes e deixe cozinhar por cerca de 20-30 minutos, ou até que a abóbora e as cenouras estejam macias.\n7. Bata a sopa no liquidificador até ficar homogênea.\n8. Tempere com sal e pimenta a gosto.\n9. Sirva quente.",
+        "rendimento":"4 porções"
+     },
+     {
+        "titulo":"Wrap de Frango e Vegetais",
+        "ingredientes":[
+           {
+              "ingrediente":"Peito de frango",
+              "quantidade":"2 unidades"
+           },
+           {
+              "ingrediente":"Tortilhas de trigo integral",
+              "quantidade":"4 unidades"
+           },
+           {
+              "ingrediente":"Cenoura",
+              "quantidade":"1 unidade"
+           },
+           {
+              "ingrediente":"Pimentão vermelho",
+              "quantidade":"1 unidade"
+           },
+           {
+              "ingrediente":"Alface americana",
+              "quantidade":"4 folhas"
+           },
+           {
+              "ingrediente":"Maionese light",
+              "quantidade":"2 colheres de sopa"
+           }
+        ],
+        "modo_preparo":"1. Corte o peito de frango em tiras finas e tempere com sal e pimenta.\n2. Aqueça uma frigideira antiaderente e grelhe o frango até que esteja cozido por completo.\n3. Corte a cenoura e o pimentão em tiras finas.\n4. Espalhe um pouco de maionese light sobre cada tortilha.\n5. Distribua as folhas de alface, as tiras de frango e os legumes sobre as tortilhas.\n6. Enrole as tortilhas e sirva imediatamente.",
+        "rendimento":"4 porções"
+     },
+     {
+        "titulo": "Omelete de Legumes",
+        "ingredientes": [
+           {
+              "ingrediente":"Ovos",
+              "quantidade":"2 unidades"
+           },
+           {
+              "ingrediente":"Tomate picado",
+              "quantidade":"1/4 de xícara"
+           },
+           {
+              "ingrediente":"Espinafre picado",
+              "quantidade":"1/4 de xícara"
+           },{
+              "ingrediente":"Pimentão picado",
+              "quantidade":"1/4 de xícara"
+           },{
+              "ingrediente":"Cebola picada",
+              "quantidade":"1/4 de xícara"
+           },{
+              "ingrediente":"Sal e pimenta",
+              "quantidade":"A gosto"
+           },{
+              "ingrediente":"Azeite de oliva",
+              "quantidade":"1 colher de chá"
+           }
+        ],
+        "modo_preparo": "Em uma tigela, bata os ovos e tempere com sal e pimenta. Em uma frigideira antiaderente, aqueça o azeite em fogo médio. Adicione a cebola e o pimentão e refogue por alguns minutos até que fiquem macios. Acrescente o tomate e o espinafre e cozinhe por mais alguns minutos. Despeje os ovos batidos sobre os legumes na frigideira e cozinhe até que a parte de baixo esteja firme. Vire a omelete com cuidado e cozinhe por mais alguns minutos. Sirva quente.",
+        "rendimento": "1 porção"
+      },
+      {
+        "titulo": "Salmão Assado com Brócolis",
+        "ingredientes": [
+           {
+              "ingrediente":"Filé de salmão",
+              "quantidade":"1 unidade"
+           },
+           {
+              "ingrediente":"Brócolis em floretes",
+              "quantidade":"1 xícara de brócolis"
+           },
+           {
+              "ingrediente":"Limão",
+              "quantidade":"1 unidade de suco"
+           },
+           {
+              "ingrediente":"Azeite de oliva",
+              "quantidade":"2 colher de chá"
+           },
+           {
+              "ingrediente":"Sal e pimenta",
+              "quantidade":"A gosto"
+           }
+        ],
+        "modo_preparo": "Preaqueça o forno a 200°C. Tempere o filé de salmão com sal, pimenta, suco de limão e 1 colher de sopa de azeite de oliva. Em uma assadeira, disponha o salmão e os floretes de brócolis. Regue com a colher de sopa restante de azeite de oliva. Asse por cerca de 15-20 minutos, ou até que o salmão esteja cozido e o brócolis esteja macio. Sirva quente.",
+        "rendimento": "1 porção"
+      }
+    ]
+  }

@@ -13,8 +13,8 @@ import { calculateIMC } from "./utils/calculate-imc";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import TablesImc from "./utils/imc-table";
-import receitasJson from "../../data/receitas.json";
-import receitasRecomend from "../../data/recomendacao.json";
+import recipesToDay from "../../data/recipes-to-day.json";
+import recipesRecomend from "../../data/sujestions.json";
 import {
   Receitas,
   ReceitasIMCViewModel,
@@ -30,8 +30,8 @@ export const IMCPage = () => {
   const [showRecipesModal, setShowRecipesModal] = useState(false);
   const [recipeSelected, setRecipeSelected] = useState<Receitas>();
 
-  const receitasToDay: ReceitasIMCViewModel = receitasJson;
-  const receitasRecomendadas: ReceitasIMCViewModel = receitasRecomend;
+  const receitasToDay: ReceitasIMCViewModel = recipesToDay;
+  const receitasRecomendadas: ReceitasIMCViewModel = recipesRecomend;
 
   const handleCalculateClick = () => {
     const imcResult = calculateIMC(height, weight);

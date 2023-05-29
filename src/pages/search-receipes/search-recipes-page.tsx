@@ -6,12 +6,13 @@ import {
   Receitas,
   ReceitasIMCViewModel,
 } from "../../api/view-model/receitas-imc-view-model";
-import receitasJson from "../../data/receitas.json";
 import { Card } from "primereact/card";
 import { RecipesModal } from "../../components/organism/pre-modals";
+import newReceitas from "../../data/search-recipes.json";
 
 export const RecipeSearch: FC = () => {
-  const data: ReceitasIMCViewModel = receitasJson;
+  const newData: ReceitasIMCViewModel = newReceitas;
+
   const [showRecipe, setShowRecipe] = useState(false);
   const [recipeSelected, setRecipeSelected] = useState<Receitas>();
 
@@ -24,7 +25,7 @@ export const RecipeSearch: FC = () => {
         </FiltersWrapper>
 
         <CardsWrapper>
-          {data.receitas.map((itens, index) => (
+          {newData.receitas.map((itens, index) => (
             <Card
               className="md:w-18rem m-3"
               style={{ height: "104px", cursor: "pointer" }}
@@ -36,13 +37,6 @@ export const RecipeSearch: FC = () => {
               }}
             />
           ))}
-          {Array(50)
-            .fill(0)
-            .map((_, index) => (
-              <Card className=" md:w-18rem m-3 " title="Teste" key={index}>
-                Teste de card
-              </Card>
-            ))}
         </CardsWrapper>
       </PageWrapper>
 
