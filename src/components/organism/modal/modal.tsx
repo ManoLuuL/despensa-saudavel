@@ -94,6 +94,7 @@ export const Modal: FC<ModalProps> = (props) => {
             ? width
             : width.default
           : "unset",
+        border: "5px",
         ...style,
       }}
       footer={null}

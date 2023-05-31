@@ -24,6 +24,7 @@ export const IMCPage = () => {
   const [weight, setWeight] = useState("");
   const [result, setResult] = useState<IMCResult | null>(null);
   const [showDietasModal, setShowDietasModal] = useState(false);
+  const [titleDieta, setTitleDieta] = useState<string>("");
 
   const receitasToDay: ReceitasIMCViewModel = recipesToDay;
 
@@ -156,6 +157,7 @@ export const IMCPage = () => {
                         }}
                         onClick={() => {
                           setShowDietasModal(true);
+                          setTitleDieta(itens.title);
                         }}
                       />
                     </div>
@@ -168,7 +170,10 @@ export const IMCPage = () => {
       </PageWrapper>
 
       {showDietasModal && (
-        <ModalDietasIMC onHide={() => setShowDietasModal(false)} />
+        <ModalDietasIMC
+          onHide={() => setShowDietasModal(false)}
+          title={titleDieta}
+        />
       )}
     </>
   );

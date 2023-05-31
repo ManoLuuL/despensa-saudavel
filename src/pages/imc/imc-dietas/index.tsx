@@ -10,7 +10,7 @@ import recipesRecomend from "../../../data/sujestions.json";
 import { RecipesModal } from "../../../components/organism/pre-modals";
 
 export const ModalDietasIMC: FC<IMCDietasProps> = (props) => {
-  const { onHide } = props;
+  const { onHide, title } = props;
 
   const receitasRecomendadas: ReceitasIMCViewModel = recipesRecomend;
 
@@ -19,25 +19,27 @@ export const ModalDietasIMC: FC<IMCDietasProps> = (props) => {
 
   return (
     <>
-      <Modal onHide={onHide} title="Teste">
+      <Modal onHide={onHide} title={title}>
         <h3 style={{ color: "red" }}>
           Não nos responsabilizamos por resultados negativos, lembre-se de
           sempre buscar ajuda médica e de profissionais da área
         </h3>
-        {receitasRecomendadas.receitas.map((itens) => (
-          <div key={itens.titulo} className="col-12">
-            <Card
-              title={itens.titulo}
-              style={{
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                setShowRecipesModal(true);
-                setRecipeSelected(itens);
-              }}
-            />
-          </div>
-        ))}
+        <div className="grid">
+          {receitasRecomendadas.receitas.map((itens) => (
+            <div key={itens.titulo} className="col-4">
+              <Card
+                title={itens.titulo}
+                style={{
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  setShowRecipesModal(true);
+                  setRecipeSelected(itens);
+                }}
+              />
+            </div>
+          ))}
+        </div>
       </Modal>
 
       {showRecipesModal && (
