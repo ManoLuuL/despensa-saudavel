@@ -8,34 +8,59 @@ import {
   PageWrapper,
   ReceitasWrapper,
 } from "./styles";
-import { IMCResult } from "./types";
+import { DietasIMC, IMCResult } from "./types";
 import { calculateIMC } from "./utils/calculate-imc";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import TablesImc from "./utils/imc-table";
 import recipesToDay from "../../data/recipes-to-day.json";
-import recipesRecomend from "../../data/sujestions.json";
-import {
-  Receitas,
-  ReceitasIMCViewModel,
-} from "../../api/view-model/receitas-imc-view-model";
+import { ReceitasIMCViewModel } from "../../api/view-model/receitas-imc-view-model";
 import { ReceitasIMC } from "./imc-recepes";
 import { Card } from "primereact/card";
-import { RecipesModal } from "../../components/organism/pre-modals";
+import { ModalDietasIMC } from "./imc-dietas";
 
 export const IMCPage = () => {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [result, setResult] = useState<IMCResult | null>(null);
-  const [showRecipesModal, setShowRecipesModal] = useState(false);
-  const [recipeSelected, setRecipeSelected] = useState<Receitas>();
+  const [showDietasModal, setShowDietasModal] = useState(false);
 
   const receitasToDay: ReceitasIMCViewModel = recipesToDay;
-  const receitasRecomendadas: ReceitasIMCViewModel = recipesRecomend;
+
+  const [dietas, setDietas] = useState<DietasIMC[]>([]);
 
   const handleCalculateClick = () => {
     const imcResult = calculateIMC(height, weight);
     setResult(imcResult);
+
+    if (imcResult.value) {
+      const result = imcResult.value;
+      if (result < 18.5) {
+        setDietas([
+          { title: "Dieta 1", content: "Receita X e Y", recipes: [] },
+          { title: "Dieta 2", content: "Receita X e Y", recipes: [] },
+          { title: "Dieta 3", content: "Receita X e Y", recipes: [] },
+        ]);
+      } else if (result && result >= 18.5 && result < 24.9) {
+        setDietas([
+          { title: "Dieta 1", content: "Receita X e Y", recipes: [] },
+          { title: "Dieta 2", content: "Receita X e Y", recipes: [] },
+          { title: "Dieta 3", content: "Receita X e Y", recipes: [] },
+        ]);
+      } else if (result && result >= 25 && result < 29.9) {
+        setDietas([
+          { title: "Dieta 1", content: "Receita X e Y", recipes: [] },
+          { title: "Dieta 2", content: "Receita X e Y", recipes: [] },
+          { title: "Dieta 3", content: "Receita X e Y", recipes: [] },
+        ]);
+      } else if (result && result >= 30) {
+        setDietas([
+          { title: "Dieta 1", content: "Receita X e Y", recipes: [] },
+          { title: "Dieta 2", content: "Receita X e Y", recipes: [] },
+          { title: "Dieta 3", content: "Receita X e Y", recipes: [] },
+        ]);
+      }
+    }
   };
 
   const handleResetClick = () => {
@@ -122,16 +147,15 @@ export const IMCPage = () => {
               <div className="col-12">Recomendações:</div>
               <div className="col-12 justify-content-center">
                 <div className="grid justify-content-center align-items-center">
-                  {receitasRecomendadas.receitas.map((itens) => (
-                    <div key={itens.titulo} className="col-4">
+                  {dietas.map((itens) => (
+                    <div key={itens.title} className="col-4">
                       <Card
-                        title={itens.titulo}
+                        title={itens.title}
                         style={{
                           cursor: "pointer",
                         }}
                         onClick={() => {
-                          setShowRecipesModal(true);
-                          setRecipeSelected(itens);
+                          setShowDietasModal(true);
                         }}
                       />
                     </div>
@@ -143,11 +167,8 @@ export const IMCPage = () => {
         </ContentWrapper>
       </PageWrapper>
 
-      {showRecipesModal && (
-        <RecipesModal
-          recipes={recipeSelected}
-          onHide={() => setShowRecipesModal(false)}
-        />
+      {showDietasModal && (
+        <ModalDietasIMC onHide={() => setShowDietasModal(false)} />
       )}
     </>
   );

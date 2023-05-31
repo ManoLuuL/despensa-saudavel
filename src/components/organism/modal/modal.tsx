@@ -6,6 +6,7 @@ import { ModalHeader } from "./header/header";
 import { ModalProps } from "./types";
 import { useTheme } from "styled-components";
 import { getNewUUID } from "../../../globals/utils/random";
+import { Divider } from "primereact/divider";
 
 export const Modal: FC<ModalProps> = (props) => {
   const {
@@ -107,14 +108,17 @@ export const Modal: FC<ModalProps> = (props) => {
       <Container>
         <div className="base-modal-header">
           {customHeader ?? (
-            <ModalHeader
-              handleClose={onHide}
-              isSubmitting={isSubmitting}
-              internalDisableAllButtons={disableAllButtons}
-              hide={!!hideHeader}
-              title={title}
-              hasCloseFunction={!!onHide}
-            />
+            <>
+              <ModalHeader
+                handleClose={onHide}
+                isSubmitting={isSubmitting}
+                internalDisableAllButtons={disableAllButtons}
+                hide={!!hideHeader}
+                title={title}
+                hasCloseFunction={!!onHide}
+              />
+              <Divider />
+            </>
           )}
         </div>
 
