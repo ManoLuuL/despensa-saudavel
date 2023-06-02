@@ -24,8 +24,11 @@ export const IMCPage = () => {
   const [weight, setWeight] = useState("");
   const [result, setResult] = useState<IMCResult | null>(null);
   const [showDietasModal, setShowDietasModal] = useState(false);
-  const [titleDieta, setTitleDieta] = useState<string>("");
-  const [contentDieta, setContentDieta] = useState<number>();
+  const [contentDieta, setContentDieta] = useState<DietasIMC>({
+    category: "low",
+    id: 0,
+    title: "",
+  });
 
   const receitasToDay: ReceitasIMCViewModel = recipesToDay;
 
@@ -39,30 +42,30 @@ export const IMCPage = () => {
       const result = imcResult.value;
       if (result < 18.5) {
         setDietas([
-          { title: "Dieta 1", id: 1, recipes: [] },
-          { title: "Dieta 2", id: 2, recipes: [] },
-          { title: "Dieta 3", id: 3, recipes: [] },
+          { title: "Dieta 1", id: 1, category: "low" },
+          { title: "Dieta 2", id: 2, category: "low" },
+          { title: "Dieta 3", id: 3, category: "low" },
         ]);
       } else if (result && result >= 18.5 && result < 24.9) {
         setDietas([
-          { title: "Dieta 1", id: 1, recipes: [] },
-          { title: "Dieta 2", id: 2, recipes: [] },
-          { title: "Dieta 3", id: 3, recipes: [] },
+          { title: "Dieta 1", id: 1, category: "medium" },
+          { title: "Dieta 2", id: 2, category: "medium" },
+          { title: "Dieta 3", id: 3, category: "medium" },
         ]);
       } else if (result && result >= 25 && result >= 29.9) {
         setDietas([
           {
             title: "Dieta para emagrecer gastando pouco",
             id: 1,
-            recipes: [],
+            category: "high",
           },
-          { title: "Dieta 2", id: 2, recipes: [] },
-          { title: "Dieta 3", id: 3, recipes: [] },
+          { title: "Dieta para redução de gordura", id: 2, category: "high" },
+          { title: "Dieta geral", id: 3, category: "high" },
         ]);
       }
     }
   };
-  console.log(dietas);
+
   const handleResetClick = () => {
     setHeight("");
     setWeight("");
@@ -156,8 +159,7 @@ export const IMCPage = () => {
                         }}
                         onClick={() => {
                           setShowDietasModal(true);
-                          setTitleDieta(itens.title);
-                          setContentDieta(itens.id);
+                          setContentDieta(itens);
                         }}
                       />
                     </div>
@@ -172,8 +174,7 @@ export const IMCPage = () => {
       {showDietasModal && (
         <ModalDietasIMC
           onHide={() => setShowDietasModal(false)}
-          title={titleDieta}
-          content={contentDieta ?? 0}
+          {...contentDieta}
         />
       )}
     </>

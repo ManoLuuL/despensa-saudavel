@@ -1,22 +1,38 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { IMCDietasProps } from "./types";
-import { Card } from "primereact/card";
 import { Modal } from "../../../components/organism/modal";
-import {
-  Receitas,
-  ReceitasIMCViewModel,
-} from "../../../api/view-model/receitas-imc-view-model";
-import recipesRecomend from "../../../data/sujestions.json";
-import { RecipesModal } from "../../../components/organism/pre-modals";
-import { DietaObesoBaixoCusto } from "../dietas/dieta-obeso-baixo-custo";
+import { DietaObesoBaixoCusto } from "./diets/diet-obeso-baixo-custo";
 
 export const ModalDietasIMC: FC<IMCDietasProps> = (props) => {
-  const { onHide, title, content } = props;
+  const { onHide, category, id, title } = props;
 
-  const receitasRecomendadas: ReceitasIMCViewModel = recipesRecomend;
-
-  const [showRecipesModal, setShowRecipesModal] = useState(false);
-  const [recipeSelected, setRecipeSelected] = useState<Receitas>();
+  const getDiets = (category: "low" | "high" | "medium", id: number) => {
+    if (category === "low") {
+      if (id === 1) {
+        return <>Dieta 1</>;
+      } else if (id === 2) {
+        return <>Dieta 2</>;
+      } else {
+        return <>Dieta 3</>;
+      }
+    } else if (category === "medium") {
+      if (id === 1) {
+        return <>Dieta 1</>;
+      } else if (id === 2) {
+        return <>Dieta 2</>;
+      } else {
+        return <>Dieta 3</>;
+      }
+    } else {
+      if (id === 1) {
+        return <DietaObesoBaixoCusto />;
+      } else if (id === 2) {
+        return <>Dieta 2</>;
+      } else {
+        return <>Dieta 3</>;
+      }
+    }
+  };
 
   return (
     <>
@@ -29,31 +45,8 @@ export const ModalDietasIMC: FC<IMCDietasProps> = (props) => {
           Não nos responsabilizamos por resultados negativos, lembre-se de
           sempre buscar ajuda médica e de profissionais da área
         </h3>
-        {content === 1 ? <DietaObesoBaixoCusto /> : undefined}
-        <div className="grid">
-          {receitasRecomendadas.receitas.map((itens) => (
-            <div key={itens.titulo} className="col-4">
-              <Card
-                title={itens.titulo}
-                style={{
-                  cursor: "pointer",
-                }}
-                onClick={() => {
-                  setShowRecipesModal(true);
-                  setRecipeSelected(itens);
-                }}
-              />
-            </div>
-          ))}
-        </div>
+        {getDiets(category, id)}
       </Modal>
-
-      {showRecipesModal && (
-        <RecipesModal
-          onHide={() => setShowRecipesModal(false)}
-          recipes={recipeSelected}
-        />
-      )}
     </>
   );
 };
