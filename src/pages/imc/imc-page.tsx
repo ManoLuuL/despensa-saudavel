@@ -25,6 +25,7 @@ export const IMCPage = () => {
   const [result, setResult] = useState<IMCResult | null>(null);
   const [showDietasModal, setShowDietasModal] = useState(false);
   const [titleDieta, setTitleDieta] = useState<string>("");
+  const [contentDieta, setContentDieta] = useState<number>();
 
   const receitasToDay: ReceitasIMCViewModel = recipesToDay;
 
@@ -38,32 +39,30 @@ export const IMCPage = () => {
       const result = imcResult.value;
       if (result < 18.5) {
         setDietas([
-          { title: "Dieta 1", content: "Receita X e Y", recipes: [] },
-          { title: "Dieta 2", content: "Receita X e Y", recipes: [] },
-          { title: "Dieta 3", content: "Receita X e Y", recipes: [] },
+          { title: "Dieta 1", id: 1, recipes: [] },
+          { title: "Dieta 2", id: 2, recipes: [] },
+          { title: "Dieta 3", id: 3, recipes: [] },
         ]);
       } else if (result && result >= 18.5 && result < 24.9) {
         setDietas([
-          { title: "Dieta 1", content: "Receita X e Y", recipes: [] },
-          { title: "Dieta 2", content: "Receita X e Y", recipes: [] },
-          { title: "Dieta 3", content: "Receita X e Y", recipes: [] },
+          { title: "Dieta 1", id: 1, recipes: [] },
+          { title: "Dieta 2", id: 2, recipes: [] },
+          { title: "Dieta 3", id: 3, recipes: [] },
         ]);
-      } else if (result && result >= 25 && result < 29.9) {
+      } else if (result && result >= 25 && result >= 29.9) {
         setDietas([
-          { title: "Dieta 1", content: "Receita X e Y", recipes: [] },
-          { title: "Dieta 2", content: "Receita X e Y", recipes: [] },
-          { title: "Dieta 3", content: "Receita X e Y", recipes: [] },
-        ]);
-      } else if (result && result >= 30) {
-        setDietas([
-          { title: "Dieta 1", content: "Receita X e Y", recipes: [] },
-          { title: "Dieta 2", content: "Receita X e Y", recipes: [] },
-          { title: "Dieta 3", content: "Receita X e Y", recipes: [] },
+          {
+            title: "Dieta para emagrecer gastando pouco",
+            id: 1,
+            recipes: [],
+          },
+          { title: "Dieta 2", id: 2, recipes: [] },
+          { title: "Dieta 3", id: 3, recipes: [] },
         ]);
       }
     }
   };
-
+  console.log(dietas);
   const handleResetClick = () => {
     setHeight("");
     setWeight("");
@@ -158,6 +157,7 @@ export const IMCPage = () => {
                         onClick={() => {
                           setShowDietasModal(true);
                           setTitleDieta(itens.title);
+                          setContentDieta(itens.id);
                         }}
                       />
                     </div>
@@ -173,6 +173,7 @@ export const IMCPage = () => {
         <ModalDietasIMC
           onHide={() => setShowDietasModal(false)}
           title={titleDieta}
+          content={contentDieta ?? 0}
         />
       )}
     </>

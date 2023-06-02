@@ -8,6 +8,6 @@ export type IMCResult = {
 
 export type DietasIMC = {
   title: string;
-  content: string;
+  id: number;
   recipes: Receitas[];
 };
