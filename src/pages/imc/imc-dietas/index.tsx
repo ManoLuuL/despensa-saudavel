@@ -1,7 +1,11 @@
 import { FC } from "react";
 import { IMCDietasProps } from "./types";
 import { Modal } from "../../../components/organism/modal";
-import { DietaObesoBaixoCusto } from "./diets/diet-obeso-baixo-custo";
+import {
+  DietGanhoDeMassa,
+  DietReducerGordura,
+  DietaObesoBaixoCusto,
+} from "./diets";
 
 export const ModalDietasIMC: FC<IMCDietasProps> = (props) => {
   const { onHide, category, id, title } = props;
@@ -9,7 +13,7 @@ export const ModalDietasIMC: FC<IMCDietasProps> = (props) => {
   const getDiets = (category: "low" | "high" | "medium", id: number) => {
     if (category === "low") {
       if (id === 1) {
-        return <>Dieta 1</>;
+        return <DietGanhoDeMassa />;
       } else if (id === 2) {
         return <>Dieta 2</>;
       } else {
@@ -27,7 +31,7 @@ export const ModalDietasIMC: FC<IMCDietasProps> = (props) => {
       if (id === 1) {
         return <DietaObesoBaixoCusto />;
       } else if (id === 2) {
-        return <>Dieta 2</>;
+        return <DietReducerGordura />;
       } else {
         return <>Dieta 3</>;
       }
