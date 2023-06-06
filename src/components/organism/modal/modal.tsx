@@ -15,7 +15,6 @@ export const Modal: FC<ModalProps> = (props) => {
     children,
     className,
     confirmButtonConfig,
-    customFooter,
     customHeader,
     disableAllButtons,
     hasForm,
@@ -95,15 +94,29 @@ export const Modal: FC<ModalProps> = (props) => {
             : width.default
           : "unset",
         border: "5px",
+        overflow: "hidden",
         ...style,
       }}
-      footer={null}
+      footer={
+        <ModalFooter
+          handleClose={onHide}
+          handleConfirm={handleConfirm}
+          isSubmitting={isSubmitting}
+          cancelButtonConfig={cancelButtonConfig}
+          confirmButtonConfig={confirmButtonConfig}
+          internalDisableAllButtons={disableAllButtons}
+          hide={!!hideFooter}
+          formId={hasForm ? formId : undefined}
+          hasConfirmFunction={!!onConfirm}
+          hasCloseFunction={!!onHide}
+        />
+      }
       draggable={false}
       resizable={false}
       dismissableMask={closeOnOutsideClick}
       showHeader={false}
       keepInViewport={false}
-      blockScroll={true}
+      blockScroll={false}
       closable={true}
     >
       <Container>
@@ -129,21 +142,6 @@ export const Modal: FC<ModalProps> = (props) => {
           </form>
         ) : (
           children
-        )}
-
-        {customFooter ?? (
-          <ModalFooter
-            handleClose={onHide}
-            handleConfirm={handleConfirm}
-            isSubmitting={isSubmitting}
-            cancelButtonConfig={cancelButtonConfig}
-            confirmButtonConfig={confirmButtonConfig}
-            internalDisableAllButtons={disableAllButtons}
-            hide={!!hideFooter}
-            formId={hasForm ? formId : undefined}
-            hasConfirmFunction={!!onConfirm}
-            hasCloseFunction={!!onHide}
-          />
         )}
       </Container>
     </Dialog>

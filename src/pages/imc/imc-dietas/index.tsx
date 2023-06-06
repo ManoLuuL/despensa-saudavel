@@ -39,18 +39,16 @@ export const ModalDietasIMC: FC<IMCDietasProps> = (props) => {
   };
 
   return (
-    <>
-      <Modal
-        onHide={onHide}
-        title={title}
-        width={{ default: "70vw", mobile: "80vw" }}
-      >
-        <h3 style={{ color: "red" }}>
-          Não nos responsabilizamos por resultados negativos, lembre-se de
-          sempre buscar ajuda médica e de profissionais da área
-        </h3>
-        {getDiets(category, id)}
-      </Modal>
-    </>
+    <Modal
+      onHide={onHide}
+      title={title}
+      width={{ default: "70vw", mobile: "80vw" }}
+    >
+      <h3 style={{ color: "red" }}>
+        Não nos responsabilizamos por resultados negativos, lembre-se de sempre
+        buscar ajuda médica e de profissionais da área
+      </h3>
+      {getDiets(category, id)}
+    </Modal>
   );
 };
