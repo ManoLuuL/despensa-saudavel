@@ -7,6 +7,4 @@ export type RegisterForm = {
   registerName: string;
   email: string;
   password: string;
-  age?: number;
-  sex: DefaultItemSelect;
 };

@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { FC, useRef } from "react";
+import { FC } from "react";
 import img from "./assets/image.jpg";
 import { Container, LeftContent, PasswordDiv } from "./styles";
 import { InputText } from "primereact/inputtext";
@@ -62,12 +62,10 @@ export const LoginPage: FC = () => {
           data.email === "luis.couto@hotmail.com" &&
           data.password === "Senha123"
         ) {
-          console.log("a");
           navigate("/main");
           showSuccess("Logado com sucesso");
         } else {
           showError("Login invalido");
-          console.log("b");
         }
 
         // validateLoginForm(data);

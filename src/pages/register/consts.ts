@@ -1,20 +1,5 @@
 import { DefaultItemSelect } from "./types";
 
-export const ITENS_USER_SEX: DefaultItemSelect[] = [
-  {
-    id: 1,
-    description: "Feminino",
-  },
-  {
-    id: 2,
-    description: "Masculino",
-  },
-  {
-    id: 3,
-    description: "Outros",
-  },
-];
-
 export const ITENS_RESTRICTION: DefaultItemSelect[] = [
   {
     id: 1,

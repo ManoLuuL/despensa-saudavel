@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { FC, Fragment, MutableRefObject, useRef, useState } from "react";
+import { FC, Fragment } from "react";
 import img from "./assets/salada.jpg";
 import { Container, LeftContent, PasswordDiv } from "./styles";
 import { InputText } from "primereact/inputtext";
@@ -8,43 +8,17 @@ import { classNames } from "primereact/utils";
 import { Divider } from "primereact/divider";
 import { Button } from "../../components/molecules/button";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Dropdown } from "primereact/dropdown";
-import { RegisterForm, DefaultItemSelect } from "./types";
-import { ITENS_USER_SEX } from "./consts";
-import { InputNumber } from "primereact/inputnumber";
-import { Toast } from "primereact/toast";
+import { RegisterForm } from "./types";
+import { useToast } from "../../globals/hooks/use-toast";
 
 export const RegisterPage: FC = () => {
-  const [valueUserSex, setValueUserSex] = useState<DefaultItemSelect>();
-  const [ageValue, setAgeValue] = useState<number>();
   const navigate = useNavigate();
-
-  const toastSucessRef = useRef<Toast>(null);
-  const toastErrorRef = useRef<Toast>(null);
+  const { showSuccess, showError } = useToast();
 
   let LoginValues: RegisterForm = {
     registerName: "",
     email: "",
     password: "",
-    sex: { id: 0, description: "" },
-    age: 0,
-  };
-
-  const showSuccess = () => {
-    toastSucessRef.current?.show({
-      severity: "success",
-      summary: "Success Submit",
-      detail: "Usuario cadastrado com sucesso",
-      life: 3000,
-    });
-  };
-  const showError = () => {
-    toastErrorRef.current?.show({
-      severity: "error",
-      summary: "Error Submit",
-      detail: "Erro ao cadastrar o usuario",
-      life: 3000,
-    });
   };
 
   const formik = useFormik({
@@ -69,21 +43,14 @@ export const RegisterPage: FC = () => {
         errors.registerName = "Nome é obrigatorio!";
       }
 
-      if (!data.sex) {
-        errors.sex = "Sexo é obrigatorio!";
-      }
-
-      if (!data.age) {
-        errors.age = "Idade é obrigatorio!";
-      }
       return errors;
     },
-    onSubmit: (data) => {
+    onSubmit: () => {
       try {
-        if (data) navigate("/login");
-        showSuccess();
+        navigate("/login");
+        showSuccess("Registrado com sucesso");
       } catch (e) {
-        showError();
+        showError("Erro ao registrar no sistema");
         console.error(e);
         formik.resetForm();
       }
@@ -111,7 +78,7 @@ export const RegisterPage: FC = () => {
         <li>Letras minúsculas</li>
         <li>Letras maiúsculas</li>
         <li>Numéricos</li>
-        <li>Mínimo de 8 caracteres</li>
+        <li>Mínimo de 6 caracteres</li>
       </ul>
     </Fragment>
   );
@@ -188,6 +155,10 @@ export const RegisterPage: FC = () => {
                     })}
                     header={passwordHeader}
                     footer={passwordFooter}
+                    promptLabel="Insira a senha"
+                    weakLabel="Muito simples"
+                    mediumLabel="Senha aceitavel"
+                    strongLabel="Senha excelente"
                   />
                   <label
                     htmlFor="password"
@@ -200,44 +171,6 @@ export const RegisterPage: FC = () => {
                 </span>
                 {getFormErrorMessage("password")}
               </PasswordDiv>
-
-              <div className="field w-full">
-                <span className="p-float-label w-full">
-                  <Dropdown
-                    name="sex"
-                    options={ITENS_USER_SEX}
-                    optionLabel="description"
-                    className="w-full"
-                    value={valueUserSex}
-                    onChange={(e) => {
-                      if (e) {
-                        setValueUserSex(e.value);
-                      }
-                    }}
-                  />
-                  <label
-                    htmlFor="sex"
-                    className={classNames({
-                      "p-error": isFormFieldValid("sex"),
-                    })}
-                  >
-                    Sexo*:
-                  </label>
-                </span>
-                {getFormErrorMessage("sex")}
-              </div>
-
-              <div className="field w-full">
-                <span className="p-float-label w-full">
-                  <InputNumber
-                    name="age"
-                    value={ageValue}
-                    onChange={(e) => setAgeValue(e.value ?? undefined)}
-                    className="w-full"
-                  />
-                  <label htmlFor="age">Idade:</label>
-                </span>
-              </div>
 
               <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
                 <NavLink to={"/"}>
