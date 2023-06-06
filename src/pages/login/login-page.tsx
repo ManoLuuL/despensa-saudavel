@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { FC } from "react";
+import { FC, useRef } from "react";
 import img from "./assets/image.jpg";
 import { Container, LeftContent, PasswordDiv } from "./styles";
 import { InputText } from "primereact/inputtext";
@@ -9,12 +9,15 @@ import { Button } from "../../components/molecules/button";
 import { NavLink } from "react-router-dom";
 import { LoginFormType } from "./types";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "../../globals/hooks/use-toast";
 
 export const LoginPage: FC = () => {
   let LoginValues: LoginFormType = {
     email: "",
     password: "",
   };
+
+  const { showSuccess, showError } = useToast();
 
   const navigate = useNavigate();
 
@@ -58,11 +61,18 @@ export const LoginPage: FC = () => {
         if (
           data.email === "luis.couto@hotmail.com" &&
           data.password === "Senha123"
-        )
+        ) {
+          console.log("a");
           navigate("/main");
+          showSuccess("Logado com sucesso");
+        } else {
+          showError("Login invalido");
+          console.log("b");
+        }
 
         // validateLoginForm(data);
       } catch (error) {
+        showError("Erro ao logar no sistema");
         console.error(error);
         formik.resetForm();
       }
@@ -146,7 +156,7 @@ export const LoginPage: FC = () => {
                 <NavLink to={"/"}>
                   <Button content="Voltar" fontSize={1} type="button" />
                 </NavLink>
-                <Button content="Acessar" fontSize={1} />
+                <Button content="Acessar" fontSize={1} type="submit" />
               </div>
             </form>
           </div>

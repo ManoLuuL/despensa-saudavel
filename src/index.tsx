@@ -6,10 +6,12 @@ import "primereact/resources/themes/mdc-dark-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
+import "react-toastify/dist/ReactToastify.css";
 import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { DarkTheme } from "./styles";
 import { pagesRoutes } from "./routes/pages-routes";
+import { ToastContainer } from "react-toastify";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -17,6 +19,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={DarkTheme}>
+      <ToastContainer theme="light" />
       <RouterProvider router={pagesRoutes} />
     </ThemeProvider>
   </React.StrictMode>

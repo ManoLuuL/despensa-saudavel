@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { FC, Fragment, useState } from "react";
+import { FC, Fragment, MutableRefObject, useRef, useState } from "react";
 import img from "./assets/salada.jpg";
 import { Container, LeftContent, PasswordDiv } from "./styles";
 import { InputText } from "primereact/inputtext";
@@ -7,15 +7,20 @@ import { Password } from "primereact/password";
 import { classNames } from "primereact/utils";
 import { Divider } from "primereact/divider";
 import { Button } from "../../components/molecules/button";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Dropdown } from "primereact/dropdown";
 import { RegisterForm, DefaultItemSelect } from "./types";
 import { ITENS_USER_SEX } from "./consts";
 import { InputNumber } from "primereact/inputnumber";
+import { Toast } from "primereact/toast";
 
 export const RegisterPage: FC = () => {
   const [valueUserSex, setValueUserSex] = useState<DefaultItemSelect>();
   const [ageValue, setAgeValue] = useState<number>();
+  const navigate = useNavigate();
+
+  const toastSucessRef = useRef<Toast>(null);
+  const toastErrorRef = useRef<Toast>(null);
 
   let LoginValues: RegisterForm = {
     registerName: "",
@@ -23,6 +28,23 @@ export const RegisterPage: FC = () => {
     password: "",
     sex: { id: 0, description: "" },
     age: 0,
+  };
+
+  const showSuccess = () => {
+    toastSucessRef.current?.show({
+      severity: "success",
+      summary: "Success Submit",
+      detail: "Usuario cadastrado com sucesso",
+      life: 3000,
+    });
+  };
+  const showError = () => {
+    toastErrorRef.current?.show({
+      severity: "error",
+      summary: "Error Submit",
+      detail: "Erro ao cadastrar o usuario",
+      life: 3000,
+    });
   };
 
   const formik = useFormik({
@@ -57,8 +79,14 @@ export const RegisterPage: FC = () => {
       return errors;
     },
     onSubmit: (data) => {
-      console.log(data);
-      formik.resetForm();
+      try {
+        if (data) navigate("/login");
+        showSuccess();
+      } catch (e) {
+        showError();
+        console.error(e);
+        formik.resetForm();
+      }
     },
   });
 
@@ -207,16 +235,8 @@ export const RegisterPage: FC = () => {
                     onChange={(e) => setAgeValue(e.value ?? undefined)}
                     className="w-full"
                   />
-                  <label
-                    htmlFor="age"
-                    className={classNames({
-                      "p-error": isFormFieldValid("age"),
-                    })}
-                  >
-                    Idade*:
-                  </label>
+                  <label htmlFor="age">Idade:</label>
                 </span>
-                {getFormErrorMessage("age")}
               </div>
 
               <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
@@ -224,7 +244,7 @@ export const RegisterPage: FC = () => {
                   <Button content="Voltar" fontSize={1} type="button" />
                 </NavLink>
 
-                <Button content="Confirmar" fontSize={1} />
+                <Button content="Confirmar" fontSize={1} type="submit" />
               </div>
             </form>
           </div>
