@@ -15,7 +15,7 @@ export const RecipeSearch: FC = () => {
 
   const [showRecipe, setShowRecipe] = useState(false);
   const [recipeSelected, setRecipeSelected] = useState<Receitas>();
-
+  console.log(newData.receitas);
   return (
     <>
       <Navbar />
@@ -27,7 +27,7 @@ export const RecipeSearch: FC = () => {
         <CardsWrapper>
           {newData.receitas.map((itens, index) => (
             <Card
-              className="md:w-18rem m-3"
+              className="md:w-14rem m-2"
               style={{ height: "104px", cursor: "pointer" }}
               title={itens.titulo}
               key={index}
