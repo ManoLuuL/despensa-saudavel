@@ -33,16 +33,24 @@ export const AboutPage = () => {
               uma alimentação equilibrada e saudável.
             </p>
             <Divider />
-            <p>Desenvolvedores:</p>
+            <h3 className="flex justify-content-center">Desenvolvedores:</h3>
             <p>Luis Ricardo C. Couto</p>
             <p>Vitor Molina Correia do Nascimento</p>
             <Divider />
-            <h3>Tecnologias Utilizadas</h3>
+            <h3 className="flex justify-content-center">
+              Tecnologias Utilizadas
+            </h3>
             <p>
               Este website será desenvolvido utilizando as seguintes
-              tecnologias: Front-end: HTML, CSS, TypeScript e React Back-end:
-              indefinido Funcionalidades do Website
+              tecnologias: Front-end: HTML, CSS, TypeScript e React
             </p>
+            <p>Back-end: Python, PSQL</p>
+
+            <Divider />
+            <h3 className="flex justify-content-center">
+              Fontes nutricionais:
+            </h3>
+            <p>https://vitat.com.br/dieta-detox/</p>
           </>
         }
       />

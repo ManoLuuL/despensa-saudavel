@@ -18,6 +18,7 @@ import { ReceitasIMCViewModel } from "../../api/view-model/receitas-imc-view-mod
 import { ReceitasIMC } from "./imc-recepes";
 import { Card } from "primereact/card";
 import { ModalDietasIMC } from "./imc-dietas";
+import { Divider } from "primereact/divider";
 
 export const IMCPage = () => {
   const [height, setHeight] = useState("");
@@ -166,6 +167,12 @@ export const IMCPage = () => {
                   ))}
                 </div>
               </div>
+              <Divider />
+              <p>
+                Todas as dietas fornecidas foram retiradas de sites de nutrição,
+                para saber mais acesse a pagina sobre ou consulte um
+                nutricionista
+              </p>
             </div>
           )}
         </ContentWrapper>
