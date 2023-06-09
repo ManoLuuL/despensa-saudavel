@@ -19,15 +19,13 @@ export const ModalDietasIMC: FC<IMCDietasProps> = (props) => {
       } else if (id === 2) {
         return <>Dieta 2</>;
       } else {
-        return <>Dieta 3</>;
+        return <DietDetox />;
       }
     } else if (category === "medium") {
       if (id === 1) {
         return <>Dieta 1</>;
-      } else if (id === 2) {
-        return <>Dieta 2</>;
       } else {
-        return <>Dieta 3</>;
+        return <DietDetox />;
       }
     } else {
       if (id === 1) {
