@@ -23,7 +23,9 @@ export const ModalDietasIMC: FC<IMCDietasProps> = (props) => {
       }
     } else if (category === "medium") {
       if (id === 1) {
-        return <>Dieta 1</>;
+        return <DietGanhoDeMassa />;
+      } else if (id === 2) {
+        return <DietReducerGordura />;
       } else {
         return <DietDetox />;
       }
