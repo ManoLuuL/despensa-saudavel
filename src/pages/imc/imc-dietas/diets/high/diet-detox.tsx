@@ -36,10 +36,10 @@ export const DietDetox: FC = () => {
   return (
     <>
       <p>
-        a dieta detox não tem muita diferença de uma dieta saudável. Mas, para
-        cumprir o objetivo de desintoxicar o corpo, o programa aposta em
-        alimentos naturais e exclui os alimentos industrializados e aqueles com
-        alto potencial alergênico, ou seja, laticínios, leite de soja, glúten,
+        A dieta detox não tem muita diferença de uma dieta saudável. Mas, para
+        cumprir o objetivo de desintoxicar o corpo, é utilizado alimentos
+        naturais e exclui os alimentos industrializados e aqueles com alto
+        potencial alergênico, ou seja, laticínios, leite de soja, glúten,
         cereais refinados, açúcar, adoçantes, corantes, conservantes, café e
         álcool
       </p>

@@ -17,9 +17,11 @@ export const DietGanhoDeMassa: FC = () => {
   return (
     <>
       <h3>Café da Manhã</h3>
+
       <p> Whey, ovos, aveia e frutas</p>
       <p>Batata doce com frango desfiado</p>
       <p>Mingau de água com aveia, Nitrohard e frutas</p>
+
       <Divider />
       <h3>Lanche da manhã</h3>
 

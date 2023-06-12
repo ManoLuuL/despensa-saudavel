@@ -16,8 +16,6 @@ export const ModalDietasIMC: FC<IMCDietasProps> = (props) => {
     if (category === "low") {
       if (id === 1) {
         return <DietGanhoDeMassa />;
-      } else if (id === 2) {
-        return <>Dieta 2</>;
       } else {
         return <DietDetox />;
       }

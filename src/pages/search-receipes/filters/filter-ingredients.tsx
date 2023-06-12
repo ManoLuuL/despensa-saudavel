@@ -3,8 +3,12 @@ import { Checkbox } from "primereact/checkbox";
 import { InputText } from "primereact/inputtext";
 import { FiltersList, FiltersTitle, FiltersWrapper } from "./styles";
 import { Button } from "../../../components/molecules/button-custom";
+import { FiltersListProps } from "./types";
+import newReceitas from "../../../data/search-recipes.json";
+import { Receitas } from "../../../api/view-model/receitas-imc-view-model";
 
-const Filters: FC = () => {
+const Filters: FC<FiltersListProps> = (props) => {
+  const { setNewReceips } = props;
   const [filters, setFilters] = useState<string[]>([]);
   const [currentFilter, setCurrentFilter] = useState<string>("");
 
@@ -16,11 +20,22 @@ const Filters: FC = () => {
     if (currentFilter && !filters.includes(currentFilter)) {
       setFilters([...filters, currentFilter]);
       setCurrentFilter("");
+      const newValues = buscaObjetos(currentFilter, newReceitas.receitas);
+      setNewReceips(newValues);
     }
   };
 
   const handleRemoveFilter = (filter: string) => {
     setFilters(filters.filter((f) => f !== filter));
+    setNewReceips(newReceitas.receitas);
+  };
+
+  const buscaObjetos = (ingrediente: string, objetos: Receitas[]) => {
+    return objetos.filter((objeto) =>
+      Object.values(objeto).some((value) =>
+        value.toString().toLowerCase().includes(ingrediente.toLowerCase())
+      )
+    );
   };
 
   return (
@@ -43,7 +58,12 @@ const Filters: FC = () => {
       <FiltersList>
         {filters.map((filter) => (
           <div key={filter}>
-            <Checkbox checked value={filter} onChange={() => {}} />
+            <Checkbox
+              checked
+              value={filter}
+              onChange={() => {}}
+              disabled={true}
+            />
             <label className="m-1">{filter.toUpperCase()}</label>
             <button onClick={() => handleRemoveFilter(filter)}>Remove</button>
           </div>
