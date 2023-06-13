@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Navbar from "../../components/organism/Navbar";
 import {
-  ButtonWrapperMain,
   ContentWrapper,
   IMCTable,
   IMCTableWrapper,
@@ -11,7 +10,6 @@ import {
 import { DietasIMC, IMCResult } from "./types";
 import { calculateIMC } from "./utils/calculate-imc";
 import { InputText } from "primereact/inputtext";
-import { Button } from "primereact/button";
 import TablesImc from "./utils/imc-table";
 import recipesToDay from "../../data/recipes-to-day.json";
 import { ReceitasIMCViewModel } from "../../api/view-model/receitas-imc-view-model";
@@ -19,6 +17,7 @@ import { ReceitasIMC } from "./imc-recepes";
 import { Card } from "primereact/card";
 import { ModalDietasIMC } from "./imc-dietas";
 import { Divider } from "primereact/divider";
+import { Button } from "../../components/molecules/button-custom";
 
 export const IMCPage = () => {
   const [height, setHeight] = useState("");
@@ -118,20 +117,29 @@ export const IMCPage = () => {
               </span>
             </div>
           </div>
-          <div className="grid">
-            <ButtonWrapperMain className="col-12 flex justify-content-between gap-3">
+          <div
+            className="grid p-3 flex"
+            style={{
+              width: "20vw",
+            }}
+          >
+            <div className="col-6 justify-content-start">
               <Button
-                label="Calcular"
-                icon="pi pi-check"
+                text="Calcular"
+                icon="calculate"
                 onClick={handleCalculateClick}
+                color="success"
               />
+            </div>
+            <div className="col-6">
               <Button
-                label="Limpar"
-                icon="pi pi-times"
+                text="Limpar"
+                icon="close"
                 onClick={handleResetClick}
-                className="p-button-secondary p-ml-2"
+                className="justify-content-end"
+                color="danger"
               />
-            </ButtonWrapperMain>
+            </div>
           </div>
 
           {result && (

@@ -6,10 +6,6 @@ export const PageWrapper = styled.div`
   overflow: hidden;
 `;
 
-export const ButtonWrapperMain = styled.div`
-  margin-top: 2rem;
-`;
-
 export const IMCTableWrapper = styled.div`
   display: flex;
   justify-content: center;
