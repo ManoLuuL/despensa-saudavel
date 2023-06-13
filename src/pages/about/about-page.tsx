@@ -33,10 +33,6 @@ export const AboutPage = () => {
               uma alimentação equilibrada e saudável.
             </p>
             <Divider />
-            <h3 className="flex justify-content-center">Desenvolvedores:</h3>
-            <p>Luis Ricardo C. Couto</p>
-            <p>Vitor Molina Correia do Nascimento</p>
-            <Divider />
             <h3 className="flex justify-content-center">
               Tecnologias Utilizadas
             </h3>
@@ -48,9 +44,19 @@ export const AboutPage = () => {
 
             <Divider />
             <h3 className="flex justify-content-center">
-              Fontes nutricionais:
+              Fontes nutricionais das dietas:
             </h3>
             <p>https://vitat.com.br/dieta-detox/</p>
+            <p>
+              https://nutritotal.com.br/publico-geral/material/cardapio-para-emagrecer-barato/
+            </p>
+            <p>https://www.tuasaude.com/dieta-para-emagrecer/</p>
+            <p>https://farmanaturallis.com.br/tipos-de-dieta-para-emagrecer/</p>
+
+            <Divider />
+            <h3 className="flex justify-content-center">Desenvolvedores:</h3>
+            <p>Luis Ricardo C. Couto</p>
+            <p>Vitor Molina Correia do Nascimento</p>
           </>
         }
       />
