@@ -6,6 +6,8 @@ import { Button } from "../../../components/molecules/button-custom";
 import { FiltersListProps } from "./types";
 import newReceitas from "../../../data/search-recipes.json";
 import { Receitas } from "../../../api/view-model/receitas-imc-view-model";
+import { Divider } from "primereact/divider";
+import { getRestricoes } from "./get-restricoes";
 
 const Filters: FC<FiltersListProps> = (props) => {
   const { setNewReceips } = props;
@@ -38,6 +40,8 @@ const Filters: FC<FiltersListProps> = (props) => {
     );
   };
 
+  const restricoes = getRestricoes();
+
   return (
     <FiltersWrapper>
       <FiltersTitle>Ingredientes</FiltersTitle>
@@ -66,6 +70,22 @@ const Filters: FC<FiltersListProps> = (props) => {
             />
             <label className="m-1">{filter.toUpperCase()}</label>
             <button onClick={() => handleRemoveFilter(filter)}>Remove</button>
+          </div>
+        ))}
+      </FiltersList>
+
+      <Divider />
+      <FiltersTitle>Restrições</FiltersTitle>
+      <FiltersList>
+        {restricoes.map((itens) => (
+          <div key={itens.id} className="mb-1">
+            <Checkbox
+              checked={false}
+              value={itens.description}
+              onChange={() => {}}
+              disabled={true}
+            />
+            <label className="m-1">{itens.description.toUpperCase()}</label>
           </div>
         ))}
       </FiltersList>

@@ -18,6 +18,7 @@ import { Card } from "primereact/card";
 import { ModalDietasIMC } from "./imc-dietas";
 import { Divider } from "primereact/divider";
 import { Button } from "../../components/molecules/button-custom";
+import { getRecommendations } from "./utils/get-recommendations";
 
 export const IMCPage = () => {
   const [height, setHeight] = useState("");
@@ -70,20 +71,6 @@ export const IMCPage = () => {
     setHeight("");
     setWeight("");
     setResult(null);
-  };
-
-  const getRecommendations = (): string => {
-    if (result && result.value < 18.5) {
-      return "Você está abaixo do peso. Considere consultar um nutricionista para desenvolver um plano de alimentação saudável.";
-    } else if (result && result.value >= 18.5 && result.value < 24.9) {
-      return "Parabéns! Você está dentro de uma faixa de peso saudável. Manter uma alimentação equilibrada e atividade física regular.";
-    } else if (result && result.value >= 25 && result.value < 29.9) {
-      return "Você está acima do peso. Concentre-se em uma dieta equilibrada e aumente a atividade física. Considere consultar um profissional de saúde.";
-    } else if (result && result.value >= 30) {
-      return "Você é obeso. É importante consultar um profissional de saúde para orientação e apoio.";
-    } else {
-      return "";
-    }
   };
 
   return (
@@ -147,7 +134,7 @@ export const IMCPage = () => {
               <div className="col-12">
                 IMC: {result.value.toFixed(2)} - {result.label}
               </div>
-              <div className="col-12">{getRecommendations()}</div>
+              <div className="col-12">{getRecommendations(result)}</div>
               <div className="col-12">
                 <IMCTableWrapper>
                   <IMCTable>
