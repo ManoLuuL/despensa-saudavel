@@ -1,44 +1,41 @@
-# Desenvolvimento de Website de Cardápio Nutricional Personalizado
-Este é um projeto de desenvolvimento de um website de cardápio nutricional personalizado, que visa fornecer aos usuários um plano alimentar personalizado com base em seu perfil e preferências alimentares. Além disso, o site permitirá que os usuários criem receitas utilizando ingredientes disponíveis em suas despensas.
+# Projeto de Desenvolvimento de Website de Buscas por Receitas
+Este projeto tem como objetivo criar um website de buscas por receitas, que oferece uma variedade de recursos para os usuários, incluindo cálculo de IMC (Índice de Massa Corporal), busca de todas as receitas disponíveis, pesquisa por ingredientes específicos e a capacidade de favoritar receitas favoritas.
 
 ## Tecnologias Utilizadas
-Este website será desenvolvido utilizando as seguintes tecnologias:
+React: Biblioteca JavaScript de código aberto para construir interfaces de usuário dinâmicas e reativas.
 <br/>
-Front-end: HTML, CSS, TypeScript e React
+TypeScript: Linguagem de programação que adiciona tipagem estática ao JavaScript.
 <br/>
-Back-end: indefinido
+HTML: Linguagem de marcação padrão para criar a estrutura e o conteúdo da página web.
 <br/>
-Funcionalidades do Website
+CSS: Linguagem de estilo que permite definir a aparência e o layout da página web.
 <br/>
-## O website terá as seguintes funcionalidades:
+Styled Components: Biblioteca para escrever estilos CSS de forma mais intuitiva e componentizada.
+<br/>
+Python: Linguagem de programação utilizada para desenvolver a API do projeto.
+<br/>
+PostgreSQL (PSQL): Sistema de gerenciamento de banco de dados relacional robusto e escalável.
+<br/>
 
-1. Perfil do Usuário
-O usuário poderá criar uma conta e preencher seu perfil com informações como idade, peso, altura, sexo, nível de atividade física e objetivo (perder peso, ganhar massa muscular, manter o peso). Com base nessas informações, o website irá calcular o número de calorias que o usuário deve consumir por dia e irá criar um cardápio nutricional personalizado.
+## Recursos do Projeto
+1. Cálculo de IMC: Os usuários poderão calcular seu Índice de Massa Corporal fornecendo seu peso e altura. O sistema fornecerá o resultado e uma avaliação do IMC com base nos valores inseridos.
 
-2. Cardápio Nutricional Personalizado
-O cardápio nutricional será criado com base nas informações do perfil do usuário e em suas preferências alimentares. O usuário poderá escolher os alimentos que gostaria de comer, bem como os alimentos que não gosta ou não pode comer por motivos de saúde. O cardápio será atualizado diariamente com base nas escolhas do usuário e em suas necessidades nutricionais.
+2. Busca de Todas as Receitas: Os usuários poderão explorar todas as receitas disponíveis no banco de dados. Eles poderão filtrar e classificar as receitas de acordo com suas preferências, como tipo de prato, tempo de preparo e dificuldade.
 
-3. Receitas Personalizadas
-Além do cardápio nutricional, o website permitirá que o usuário crie suas próprias receitas utilizando os ingredientes disponíveis em sua despensa. O website irá fornecer sugestões de receitas com base nos ingredientes disponíveis e nas preferências alimentares do usuário. O usuário poderá salvar suas receitas e compartilhá-las com outros usuários.
+3. Busca por Ingredientes: Os usuários poderão pesquisar receitas com base nos ingredientes disponíveis em sua despensa. O sistema retornará uma lista de receitas que incluem os ingredientes fornecidos.
 
-4. Controle de Desperdício de Alimentos
-O website irá ajudar o usuário a controlar o desperdício de alimentos, sugerindo receitas com base nos ingredientes disponíveis em sua despensa. O usuário poderá cadastrar os alimentos que possui em sua despensa e o website irá fornecer sugestões de receitas com base nesses alimentos.
+4. Favoritar Receitas: Os usuários poderão criar uma lista personalizada de receitas favoritas, permitindo que acessem facilmente suas receitas preferidas no futuro.
+<br/>
 
-## Como Executar o Projeto
-Para executar o projeto, siga as seguintes etapas:
+## Como Contribuir
 
-Clone o repositório em sua máquina local.
-Instale as dependências do projeto com o comando npm install.
-Inicie o servidor com o comando npm start.
-Acesse o website em seu navegador, através do endereço http://localhost:3000/.
-Contribuição
-Este projeto é aberto a contribuições. Se você gostaria de contribuir para o desenvolvimento deste website, siga as seguintes etapas:
+Faça um fork deste repositório e faça o clone em sua máquina local.
+Certifique-se de ter as versões mais recentes do Node.js e Python instaladas.
+Execute npm install no diretório raiz para instalar as dependências do projeto.
+Configure o ambiente de desenvolvimento local, incluindo a configuração do banco de dados PostgreSQL.
+Execute npm start para iniciar o servidor de desenvolvimento local.
+Faça as alterações desejadas e envie um pull request com uma descrição clara do que foi implementado ou corrigido.
+<br/>
 
-Fork este repositório.
-Crie um branch com suas alterações (git checkout -b minha-branch).
-Faça suas alterações e adicione testes, se possível.
-Faça o commit de suas alterações (git commit -am 'Adicionando uma nova funcionalidade').
-Faça o push para o branch (git push origin minha-branch).
-Crie um novo Pull Request.
-## Conclusão
-Este website irá fornecer aos usuários um plano alimentar personalizado com base
+## Licença
+Este projeto é licenciado sob a MIT License. Sinta-se à vontade para usar, modificar e distribuir o código conforme necessário.

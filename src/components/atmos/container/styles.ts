@@ -14,4 +14,7 @@ export const Content = styled.div`
   padding: 1rem;
   height: auto;
   width: 100%;
+  background-color: ${(p) => p.theme.surface.content};
+  border-radius: ${(p) => p.theme.borderRadii.md};
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Navbar from "../../components/organism/Navbar";
 import {
-  ButtonWrapperMain,
   ContentWrapper,
   IMCTable,
   IMCTableWrapper,
@@ -11,13 +10,15 @@ import {
 import { DietasIMC, IMCResult } from "./types";
 import { calculateIMC } from "./utils/calculate-imc";
 import { InputText } from "primereact/inputtext";
-import { Button } from "primereact/button";
 import TablesImc from "./utils/imc-table";
 import recipesToDay from "../../data/recipes-to-day.json";
 import { ReceitasIMCViewModel } from "../../api/view-model/receitas-imc-view-model";
 import { ReceitasIMC } from "./imc-recepes";
 import { Card } from "primereact/card";
 import { ModalDietasIMC } from "./imc-dietas";
+import { Divider } from "primereact/divider";
+import { Button } from "../../components/molecules/button-custom";
+import { getRecommendations } from "./utils/get-recommendations";
 
 export const IMCPage = () => {
   const [height, setHeight] = useState("");
@@ -72,20 +73,6 @@ export const IMCPage = () => {
     setResult(null);
   };
 
-  const getRecommendations = (): string => {
-    if (result && result.value < 18.5) {
-      return "Você está abaixo do peso. Considere consultar um nutricionista para desenvolver um plano de alimentação saudável.";
-    } else if (result && result.value >= 18.5 && result.value < 24.9) {
-      return "Parabéns! Você está dentro de uma faixa de peso saudável. Manter uma alimentação equilibrada e atividade física regular.";
-    } else if (result && result.value >= 25 && result.value < 29.9) {
-      return "Você está acima do peso. Concentre-se em uma dieta equilibrada e aumente a atividade física. Considere consultar um profissional de saúde.";
-    } else if (result && result.value >= 30) {
-      return "Você é obeso. É importante consultar um profissional de saúde para orientação e apoio.";
-    } else {
-      return "";
-    }
-  };
-
   return (
     <>
       <Navbar />
@@ -117,20 +104,29 @@ export const IMCPage = () => {
               </span>
             </div>
           </div>
-          <div className="grid">
-            <ButtonWrapperMain className="col-12 flex justify-content-between gap-3">
+          <div
+            className="grid p-3 flex"
+            style={{
+              width: "20vw",
+            }}
+          >
+            <div className="col-6 justify-content-start">
               <Button
-                label="Calcular"
-                icon="pi pi-check"
+                text="Calcular"
+                icon="calculate"
                 onClick={handleCalculateClick}
+                color="success"
               />
+            </div>
+            <div className="col-6">
               <Button
-                label="Limpar"
-                icon="pi pi-times"
+                text="Limpar"
+                icon="close"
                 onClick={handleResetClick}
-                className="p-button-secondary p-ml-2"
+                className="justify-content-end"
+                color="danger"
               />
-            </ButtonWrapperMain>
+            </div>
           </div>
 
           {result && (
@@ -138,7 +134,7 @@ export const IMCPage = () => {
               <div className="col-12">
                 IMC: {result.value.toFixed(2)} - {result.label}
               </div>
-              <div className="col-12">{getRecommendations()}</div>
+              <div className="col-12">{getRecommendations(result)}</div>
               <div className="col-12">
                 <IMCTableWrapper>
                   <IMCTable>
@@ -166,6 +162,12 @@ export const IMCPage = () => {
                   ))}
                 </div>
               </div>
+              <Divider />
+              <p>
+                Todas as dietas fornecidas foram retiradas de sites de nutrição,
+                para saber mais acesse a pagina sobre ou consulte um
+                nutricionista
+              </p>
             </div>
           )}
         </ContentWrapper>

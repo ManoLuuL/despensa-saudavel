@@ -15,17 +15,18 @@ export const RecipeSearch: FC = () => {
 
   const [showRecipe, setShowRecipe] = useState(false);
   const [recipeSelected, setRecipeSelected] = useState<Receitas>();
-  console.log(newData.receitas);
+  const [receips, setReceips] = useState<Receitas[]>(newData.receitas);
+
   return (
     <>
       <Navbar />
       <PageWrapper>
         <FiltersWrapper>
-          <Filters />
+          <Filters setNewReceips={setReceips} />
         </FiltersWrapper>
 
         <CardsWrapper>
-          {newData.receitas.map((itens, index) => (
+          {receips.map((itens, index) => (
             <Card
               className="md:w-14rem m-2"
               style={{ height: "104px", cursor: "pointer" }}
