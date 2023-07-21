@@ -1,2 +1,1 @@
-export const BASE_API_URL =
-  "https://api-frgcore-homolog.ops.fullcontrol.com.br/";
+export const BASE_API_URL = "http://localhost:8030/";
