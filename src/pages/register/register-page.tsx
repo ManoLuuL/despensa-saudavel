@@ -10,15 +10,34 @@ import { Button } from "../../components/molecules/button";
 import { NavLink, useNavigate } from "react-router-dom";
 import { RegisterForm } from "./types";
 import { useToast } from "../../globals/hooks/use-toast";
+import { UserRegisterViewModel } from "../../api/services/user/view-models/user-register-view-model";
 
 export const RegisterPage: FC = () => {
   const navigate = useNavigate();
   const { showSuccess, showError } = useToast();
 
+  let isSubmit = false;
+
   let LoginValues: RegisterForm = {
     registerName: "",
     email: "",
     password: "",
+  };
+
+  const validateLoginForm = async (values: UserRegisterViewModel) => {
+    const response = await fetch("http://localhost:8030/users", {
+      method: "POST",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message);
+    }
   };
 
   const formik = useFormik({
@@ -45,14 +64,28 @@ export const RegisterPage: FC = () => {
 
       return errors;
     },
-    onSubmit: () => {
+
+    onSubmit: async (data) => {
+      isSubmit = true;
       try {
+        const newData: UserRegisterViewModel = {
+          ...data,
+          nome: data.registerName,
+          senha: data.password,
+          diabetico: false,
+          idade: 23,
+          lactose: false,
+          pressao: false,
+          vegetariano: false,
+        };
+        await validateLoginForm(newData);
+
         navigate("/login");
         showSuccess("Registrado com sucesso");
       } catch (e) {
         showError("Erro ao registrar no sistema");
         console.error(e);
-        formik.resetForm();
+        isSubmit = false;
       }
     },
   });
@@ -177,7 +210,12 @@ export const RegisterPage: FC = () => {
                   <Button content="Voltar" fontSize={1} type="button" />
                 </NavLink>
 
-                <Button content="Confirmar" fontSize={1} type="submit" />
+                <Button
+                  content="Confirmar"
+                  fontSize={1}
+                  type="submit"
+                  disabled={isSubmit}
+                />
               </div>
             </form>
           </div>

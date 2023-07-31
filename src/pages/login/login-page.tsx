@@ -22,7 +22,7 @@ export const LoginPage: FC = () => {
   const navigate = useNavigate();
 
   const validateLoginForm = async (values: LoginFormType) => {
-    const response = await fetch("https://api.example.com/login", {
+    const response = await fetch("http://localhost:8030/users/login", {
       method: "POST",
       body: JSON.stringify(values),
       headers: {
@@ -58,17 +58,9 @@ export const LoginPage: FC = () => {
     },
     onSubmit: (data) => {
       try {
-        if (
-          data.email === "luis.couto@hotmail.com" &&
-          data.password === "Senha123"
-        ) {
-          navigate("/main");
-          showSuccess("Logado com sucesso");
-        } else {
-          showError("Login invalido");
-        }
-
-        // validateLoginForm(data);
+        validateLoginForm(data);
+        showSuccess("Logado com sucesso!");
+        navigate("/main");
       } catch (error) {
         showError("Erro ao logar no sistema");
         console.error(error);

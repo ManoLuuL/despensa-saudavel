@@ -5,8 +5,6 @@ import { Container } from "../../components/atmos/container";
 import { Button } from "../../components/molecules/button-custom";
 
 export const UserPage = () => {
-  const { getAllUsers } = useUserService();
-
   return (
     <>
       <Navbar />
