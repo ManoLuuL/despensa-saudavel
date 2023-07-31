@@ -5,7 +5,7 @@ export const useAuthService = () => {
   const { post } = api;
 
   const login = useCallback(
-    async (data: LoginViewModel) => (await post(``, data)).data,
+    async (data: LoginViewModel) => (await post(`login`, data)).data,
     [post]
   );
 

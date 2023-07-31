@@ -15,7 +15,7 @@ import { useAuthService } from "../../api/services";
 export const LoginPage: FC = () => {
   let LoginValues: LoginFormType = {
     email: "",
-    password: "",
+    senha: "",
   };
 
   const { login } = useAuthService();
@@ -24,21 +24,7 @@ export const LoginPage: FC = () => {
 
   const navigate = useNavigate();
 
-  // const validateLoginForm = async (values: LoginFormType) => {
-  //   const response = await fetch("http://localhost:8030/users/login", {
-  //     method: "POST",
-  //     body: JSON.stringify(values),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-
-  //   const data = await response.json();
-
-  //   if (!response.ok) {
-  //     throw new Error(data.message);
-  //   }
-  // };
+  let isSubmit = false;
 
   const formik = useFormik({
     initialValues: LoginValues,
@@ -54,20 +40,22 @@ export const LoginPage: FC = () => {
           "Endereço de E-mail invalido, verifique se preencheu corretamente!";
       }
 
-      if (!data.password) {
+      if (!data.senha) {
         errors.password = "Senha é obrigatorio!";
       }
       return errors;
     },
-    onSubmit: (data) => {
+    onSubmit: async (data) => {
+      isSubmit = true;
       try {
-        login(data);
+        await login(data);
         showSuccess("Logado com sucesso!");
         navigate("/main");
       } catch (error) {
         showError("Erro ao logar no sistema");
         console.error(error);
       }
+      isSubmit = false;
     },
   });
 
@@ -122,33 +110,38 @@ export const LoginPage: FC = () => {
               <PasswordDiv className="field w-full">
                 <span className="p-float-label">
                   <Password
-                    id="password"
+                    id="senha"
                     style={{ width: "100%" }}
-                    name="password"
-                    value={formik.values.password}
+                    name="senha"
+                    value={formik.values.senha}
                     onChange={formik.handleChange}
                     feedback={false}
                     toggleMask
                     className={classNames({
-                      "p-invalid": isFormFieldValid("password"),
+                      "p-invalid": isFormFieldValid("senha"),
                     })}
                   />
                   <label
-                    htmlFor="password"
+                    htmlFor="senha"
                     className={classNames({
-                      "p-error": isFormFieldValid("password"),
+                      "p-error": isFormFieldValid("senha"),
                     })}
                   >
                     Password*
                   </label>
                 </span>
-                {getFormErrorMessage("password")}
+                {getFormErrorMessage("senha")}
               </PasswordDiv>
               <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
                 <NavLink to={"/"}>
                   <Button content="Voltar" fontSize={1} type="button" />
                 </NavLink>
-                <Button content="Acessar" fontSize={1} type="submit" />
+                <Button
+                  content="Acessar"
+                  fontSize={1}
+                  type="submit"
+                  disabled={isSubmit}
+                />
               </div>
             </form>
           </div>
