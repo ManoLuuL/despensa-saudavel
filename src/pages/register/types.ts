@@ -4,7 +4,8 @@ export type DefaultItemSelect = {
 };
 
 export type RegisterForm = {
-  registerName: string;
+  nome: string;
   email: string;
-  password: string;
+  senha: string;
+  idade: number;
 };

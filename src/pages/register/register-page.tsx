@@ -11,34 +11,38 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { RegisterForm } from "./types";
 import { useToast } from "../../globals/hooks/use-toast";
 import { UserRegisterViewModel } from "../../api/services/user/view-models/user-register-view-model";
+import { InputNumber } from "primereact/inputnumber";
+import { useUserService } from "../../api/services";
 
 export const RegisterPage: FC = () => {
   const navigate = useNavigate();
   const { showSuccess, showError } = useToast();
 
   let isSubmit = false;
+  const { registerUser } = useUserService();
 
   let LoginValues: RegisterForm = {
-    registerName: "",
+    nome: "",
     email: "",
-    password: "",
+    senha: "",
+    idade: 0,
   };
 
-  const validateLoginForm = async (values: UserRegisterViewModel) => {
-    const response = await fetch("http://localhost:8030/users", {
-      method: "POST",
-      body: JSON.stringify(values),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  // const validateLoginForm = async (values: UserRegisterViewModel) => {
+  //   const response = await fetch("http://localhost:8030/users", {
+  //     method: "POST",
+  //     body: JSON.stringify(values),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
 
-    const data = await response.json();
+  //   const data = await response.json();
 
-    if (!response.ok) {
-      throw new Error(data.message);
-    }
-  };
+  //   if (!response.ok) {
+  //     throw new Error(data.message);
+  //   }
+  // };
 
   const formik = useFormik({
     initialValues: LoginValues,
@@ -54,12 +58,16 @@ export const RegisterPage: FC = () => {
           "Endereço de E-mail invalido, verifique se preencheu corretamente!";
       }
 
-      if (!data.password) {
+      if (!data.senha) {
         errors.password = "Senha é obrigatorio!";
       }
 
-      if (!data.registerName) {
+      if (!data.nome) {
         errors.registerName = "Nome é obrigatorio!";
+      }
+
+      if (!data.idade) {
+        errors.registerName = "Idade é obrigatorio!";
       }
 
       return errors;
@@ -70,15 +78,12 @@ export const RegisterPage: FC = () => {
       try {
         const newData: UserRegisterViewModel = {
           ...data,
-          nome: data.registerName,
-          senha: data.password,
           diabetico: false,
-          idade: 23,
           lactose: false,
           pressao: false,
           vegetariano: false,
         };
-        await validateLoginForm(newData);
+        await registerUser(newData);
 
         navigate("/login");
         showSuccess("Registrado com sucesso");
@@ -136,7 +141,7 @@ export const RegisterPage: FC = () => {
                     id="registerName"
                     name="registerName"
                     style={{ width: "100%" }}
-                    value={formik.values.registerName}
+                    value={formik.values.nome}
                     onChange={formik.handleChange}
                   />
                   <label
@@ -180,7 +185,7 @@ export const RegisterPage: FC = () => {
                     id="password"
                     style={{ width: "100%" }}
                     name="password"
-                    value={formik.values.password}
+                    value={formik.values.senha}
                     onChange={formik.handleChange}
                     toggleMask
                     className={classNames({
@@ -204,6 +209,27 @@ export const RegisterPage: FC = () => {
                 </span>
                 {getFormErrorMessage("password")}
               </PasswordDiv>
+
+              <div className="field">
+                <span className="p-float-label p-input-icon-right w-full">
+                  <InputNumber
+                    id="idade"
+                    name="idade"
+                    style={{ width: "100%" }}
+                    value={formik.values.idade}
+                    onChange={formik.handleChange}
+                  />
+                  <label
+                    htmlFor="idade"
+                    className={classNames({
+                      "p-error": isFormFieldValid("idade"),
+                    })}
+                  >
+                    Idade*
+                  </label>
+                </span>
+                {getFormErrorMessage("idade")}
+              </div>
 
               <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
                 <NavLink to={"/"}>

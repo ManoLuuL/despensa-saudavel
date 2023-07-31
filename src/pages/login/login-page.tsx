@@ -10,6 +10,7 @@ import { NavLink } from "react-router-dom";
 import { LoginFormType } from "./types";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../../globals/hooks/use-toast";
+import { useAuthService } from "../../api/services";
 
 export const LoginPage: FC = () => {
   let LoginValues: LoginFormType = {
@@ -17,25 +18,27 @@ export const LoginPage: FC = () => {
     password: "",
   };
 
+  const { login } = useAuthService();
+
   const { showSuccess, showError } = useToast();
 
   const navigate = useNavigate();
 
-  const validateLoginForm = async (values: LoginFormType) => {
-    const response = await fetch("http://localhost:8030/users/login", {
-      method: "POST",
-      body: JSON.stringify(values),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  // const validateLoginForm = async (values: LoginFormType) => {
+  //   const response = await fetch("http://localhost:8030/users/login", {
+  //     method: "POST",
+  //     body: JSON.stringify(values),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
 
-    const data = await response.json();
+  //   const data = await response.json();
 
-    if (!response.ok) {
-      throw new Error(data.message);
-    }
-  };
+  //   if (!response.ok) {
+  //     throw new Error(data.message);
+  //   }
+  // };
 
   const formik = useFormik({
     initialValues: LoginValues,
@@ -58,13 +61,12 @@ export const LoginPage: FC = () => {
     },
     onSubmit: (data) => {
       try {
-        validateLoginForm(data);
+        login(data);
         showSuccess("Logado com sucesso!");
         navigate("/main");
       } catch (error) {
         showError("Erro ao logar no sistema");
         console.error(error);
-        formik.resetForm();
       }
     },
   });
