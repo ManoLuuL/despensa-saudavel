@@ -48,9 +48,8 @@ export const LoginPage: FC = () => {
     onSubmit: async (data) => {
       isSubmit = true;
       try {
-        await login(data).then((resp) => {
-          localStorage.setItem("userLogin", resp);
-        });
+        const loginData = await login(data);
+        localStorage.setItem("userData", JSON.stringify(loginData));
         showSuccess("Logado com sucesso!");
         navigate("/main");
       } catch (error) {

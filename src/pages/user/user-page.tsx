@@ -3,8 +3,14 @@ import Navbar from "../../components/organism/Navbar";
 import { InputText } from "primereact/inputtext";
 import { Container } from "../../components/atmos/container";
 import { Button } from "../../components/molecules/button-custom";
+import { FC, useMemo } from "react";
 
-export const UserPage = () => {
+export const UserPage: FC = () => {
+  const data = useMemo(() => {
+    const local = localStorage.getItem("userData");
+    return JSON.parse(local ?? "");
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -18,7 +24,7 @@ export const UserPage = () => {
                 <span className="p-float-label">
                   <InputText
                     id="userName"
-                    defaultValue={"Luis Ricardo"}
+                    defaultValue={data.data.nome}
                     style={{ width: "100%" }}
                   />
                   <label htmlFor="userName">Nome:</label>
@@ -28,10 +34,20 @@ export const UserPage = () => {
                 <span className="p-float-label">
                   <InputText
                     id="emailUser"
-                    defaultValue={"teste@teste.com"}
+                    defaultValue={data.data.email}
                     style={{ width: "100%" }}
                   />
                   <label htmlFor="emailUser">E-mail:</label>
+                </span>
+              </div>
+              <div className="col-6">
+                <span className="p-float-label">
+                  <InputText
+                    id="idadeUser"
+                    defaultValue={data.data.idade}
+                    style={{ width: "100%" }}
+                  />
+                  <label htmlFor="idadeUser">Idade:</label>
                 </span>
               </div>
               <div className="col-6">
