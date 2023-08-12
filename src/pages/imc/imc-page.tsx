@@ -19,6 +19,7 @@ import { ModalDietasIMC } from "./imc-dietas";
 import { Divider } from "primereact/divider";
 import { Button } from "../../components/molecules/button-custom";
 import { getRecommendations } from "./utils/get-recommendations";
+import { InputMask } from "primereact/inputmask";
 
 export const IMCPage = () => {
   const [height, setHeight] = useState("");
@@ -43,17 +44,21 @@ export const IMCPage = () => {
       const result = imcResult.value;
       if (result < 18.5) {
         setDietas([
-          { title: "Dieta 1", id: 1, category: "low" },
-          { title: "Dieta 2", id: 2, category: "low" },
-          { title: "Dieta 3", id: 3, category: "low" },
+          { title: "Dieta do crescimento acelerado", id: 1, category: "low" },
+          { title: "Dieta ganho de massa", id: 2, category: "low" },
+          { title: "Dieta de mega ganho de massa", id: 3, category: "low" },
         ]);
       } else if (result && result >= 18.5 && result < 24.9) {
         setDietas([
-          { title: "Dieta 1", id: 1, category: "medium" },
-          { title: "Dieta 2", id: 2, category: "medium" },
-          { title: "Dieta 3", id: 3, category: "medium" },
+          {
+            title: "Dieta do crescimento acelerado",
+            id: 1,
+            category: "medium",
+          },
+          { title: "Dieta ganho de massa", id: 2, category: "medium" },
+          { title: "Dieta de mega ganho de massa", id: 3, category: "medium" },
         ]);
-      } else if (result && result >= 25 && result >= 29.9) {
+      } else if (result && result > 25) {
         setDietas([
           {
             title: "Dieta para emagrecer gastando pouco",
@@ -61,7 +66,7 @@ export const IMCPage = () => {
             category: "high",
           },
           { title: "Dieta para redução de gordura", id: 2, category: "high" },
-          { title: "Dieta geral", id: 3, category: "high" },
+          { title: "Dieta detox", id: 3, category: "high" },
         ]);
       }
     }
@@ -82,13 +87,18 @@ export const IMCPage = () => {
         </ReceitasWrapper>
         <ContentWrapper>
           <h1 style={{ textAlign: "center" }}>Calculadora de IMC</h1>
+          <p>
+            O cálculo feito é de modo geral, para todos os gêneros, sempre
+            recomendamos orientações de nutricionistas.
+          </p>
           <div className="grid">
             <div className="col-6">
               <span className="p-float-label p-input-icon-right w-full">
-                <InputText
+                <InputMask
                   id="heightInput"
                   value={height}
-                  onChange={(e) => setHeight(e.target.value)}
+                  onChange={(e) => setHeight(e.target.value ?? "")}
+                  mask="9.99"
                 />
                 <label htmlFor="heightInput">Altura (m)</label>
               </span>
@@ -129,46 +139,58 @@ export const IMCPage = () => {
             </div>
           </div>
 
-          {result && (
-            <div className="grid align-items-center justify-content-center text-center">
-              <div className="col-12">
-                IMC: {result.value.toFixed(2)} - {result.label}
-              </div>
-              <div className="col-12">{getRecommendations(result)}</div>
-              <div className="col-12">
-                <IMCTableWrapper>
-                  <IMCTable>
-                    <TablesImc />
-                  </IMCTable>
-                </IMCTableWrapper>
-              </div>
-
-              <div className="col-12">Recomendações:</div>
-              <div className="col-12 justify-content-center">
-                <div className="grid justify-content-center align-items-center">
-                  {dietas.map((itens) => (
-                    <div key={itens.title} className="col-4">
-                      <Card
-                        title={itens.title}
-                        style={{
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          setShowDietasModal(true);
-                          setContentDieta(itens);
-                        }}
-                      />
-                    </div>
-                  ))}
+          {result ? (
+            result?.label === "Valores inválidos" ? (
+              <div className="grid align-items-center justify-content-center text-center">
+                <div className="col-12">
+                  IMC: {result?.value.toFixed(2)} - {result?.label}
                 </div>
               </div>
-              <Divider />
-              <p>
-                Todas as dietas fornecidas foram retiradas de sites de nutrição,
-                para saber mais acesse a pagina sobre ou consulte um
-                nutricionista
-              </p>
-            </div>
+            ) : (
+              <div className="grid align-items-center justify-content-center text-center">
+                <div className="col-12">
+                  IMC: {result?.value.toFixed(2)} - {result?.label}
+                </div>
+                <div className="col-12">
+                  {getRecommendations(result ?? undefined)}
+                </div>
+                <div className="col-12">
+                  <IMCTableWrapper>
+                    <IMCTable>
+                      <TablesImc />
+                    </IMCTable>
+                  </IMCTableWrapper>
+                </div>
+
+                <div className="col-12">Recomendações:</div>
+                <div className="col-12 justify-content-center">
+                  <div className="grid justify-content-center align-items-center">
+                    {dietas.map((itens) => (
+                      <div key={itens.title} className="col-4">
+                        <Card
+                          title={itens.title}
+                          style={{
+                            cursor: "pointer",
+                          }}
+                          onClick={() => {
+                            setShowDietasModal(true);
+                            setContentDieta(itens);
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <Divider />
+                <p className="font-semibold">
+                  Todas as dietas fornecidas foram retiradas de sites de
+                  nutrição, caso queira saber mais sobre as receitas, vá na
+                  pagina sobre do site ou consulte um profissional.
+                </p>
+              </div>
+            )
+          ) : (
+            <></>
           )}
         </ContentWrapper>
       </PageWrapper>

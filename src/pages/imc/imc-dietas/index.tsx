@@ -4,6 +4,8 @@ import { Modal } from "../../../components/organism/modal";
 import {
   DietDetox,
   DietGanhoDeMassa,
+  DietHighMass,
+  DietOther,
   DietReducerGordura,
   DietaObesoBaixoCusto,
 } from "./diets";
@@ -16,8 +18,10 @@ export const ModalDietasIMC: FC<IMCDietasProps> = (props) => {
     if (category === "low") {
       if (id === 1) {
         return <DietGanhoDeMassa />;
+      } else if (id === 2) {
+        return <DietHighMass />;
       } else {
-        return <DietDetox />;
+        return <DietOther />;
       }
     } else if (category === "medium") {
       if (id === 1) {
