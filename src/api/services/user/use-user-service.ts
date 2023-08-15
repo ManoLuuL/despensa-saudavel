@@ -8,7 +8,7 @@ export const useUserService = () => {
   const getAllUsers = useCallback(async () => (await get(`users`)).data, [get]);
 
   const registerUser = useCallback(
-    async (data: UserRegisterViewModel) => (await post(``, data)).data,
+    async (data: UserRegisterViewModel) => (await post(`users`, data)).data,
     [post]
   );
 

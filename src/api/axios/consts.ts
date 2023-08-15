@@ -1,1 +1,1 @@
-export const BASE_API_URL = "http://localhost:8030/";
+export const BASE_API_URL = "https://api-sigma-orcin.vercel.app/";

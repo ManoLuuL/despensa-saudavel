@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { FC, Fragment } from "react";
+import { FC, Fragment, useState } from "react";
 import img from "./assets/salada.jpg";
 import { Container, LeftContent, PasswordDiv } from "./styles";
 import { InputText } from "primereact/inputtext";
@@ -17,6 +17,7 @@ import { useUserService } from "../../api/services";
 export const RegisterPage: FC = () => {
   const navigate = useNavigate();
   const { showSuccess, showError } = useToast();
+  const [idade, setIdade] = useState<number>(0);
 
   let isSubmit = false;
   const { registerUser } = useUserService();
@@ -27,22 +28,6 @@ export const RegisterPage: FC = () => {
     senha: "",
     idade: 0,
   };
-
-  // const validateLoginForm = async (values: UserRegisterViewModel) => {
-  //   const response = await fetch("http://localhost:8030/users", {
-  //     method: "POST",
-  //     body: JSON.stringify(values),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-
-  //   const data = await response.json();
-
-  //   if (!response.ok) {
-  //     throw new Error(data.message);
-  //   }
-  // };
 
   const formik = useFormik({
     initialValues: LoginValues,
@@ -63,11 +48,11 @@ export const RegisterPage: FC = () => {
       }
 
       if (!data.nome) {
-        errors.registerName = "Nome é obrigatorio!";
+        errors.nome = "Nome é obrigatorio!";
       }
 
       if (!data.idade) {
-        errors.registerName = "Idade é obrigatorio!";
+        errors.idade = "Idade é obrigatorio!";
       }
 
       return errors;
@@ -78,10 +63,6 @@ export const RegisterPage: FC = () => {
       try {
         const newData: UserRegisterViewModel = {
           ...data,
-          diabetico: false,
-          lactose: false,
-          pressao: false,
-          vegetariano: false,
         };
         await registerUser(newData);
 
@@ -138,22 +119,22 @@ export const RegisterPage: FC = () => {
               <div className="field">
                 <span className="p-float-label p-input-icon-right w-full">
                   <InputText
-                    id="registerName"
-                    name="registerName"
+                    id="nome"
+                    name="nome"
                     style={{ width: "100%" }}
                     value={formik.values.nome}
                     onChange={formik.handleChange}
                   />
                   <label
-                    htmlFor="registerName"
+                    htmlFor="nome"
                     className={classNames({
-                      "p-error": isFormFieldValid("registerName"),
+                      "p-error": isFormFieldValid("nome"),
                     })}
                   >
                     Nome*
                   </label>
                 </span>
-                {getFormErrorMessage("registerName")}
+                {getFormErrorMessage("nome")}
               </div>
               <div className="field">
                 <span className="p-float-label p-input-icon-right w-full">
@@ -182,14 +163,14 @@ export const RegisterPage: FC = () => {
               <PasswordDiv className="field w-full">
                 <span className="p-float-label">
                   <Password
-                    id="password"
+                    id="senha"
                     style={{ width: "100%" }}
-                    name="password"
+                    name="senha"
                     value={formik.values.senha}
                     onChange={formik.handleChange}
                     toggleMask
                     className={classNames({
-                      "p-invalid": isFormFieldValid("password"),
+                      "p-invalid": isFormFieldValid("senha"),
                     })}
                     header={passwordHeader}
                     footer={passwordFooter}
@@ -199,15 +180,15 @@ export const RegisterPage: FC = () => {
                     strongLabel="Senha excelente"
                   />
                   <label
-                    htmlFor="password"
+                    htmlFor="senha"
                     className={classNames({
-                      "p-error": isFormFieldValid("password"),
+                      "p-error": isFormFieldValid("senha"),
                     })}
                   >
                     Senha*
                   </label>
                 </span>
-                {getFormErrorMessage("password")}
+                {getFormErrorMessage("senha")}
               </PasswordDiv>
 
               <div className="field">
@@ -216,8 +197,10 @@ export const RegisterPage: FC = () => {
                     id="idade"
                     name="idade"
                     style={{ width: "100%" }}
-                    value={formik.values.idade}
-                    onChange={formik.handleChange}
+                    value={(formik.values.idade = idade)}
+                    onChange={(data) => {
+                      if (data) setIdade(data.value ?? 0);
+                    }}
                   />
                   <label
                     htmlFor="idade"
