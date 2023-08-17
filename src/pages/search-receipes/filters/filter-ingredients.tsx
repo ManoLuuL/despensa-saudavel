@@ -4,40 +4,30 @@ import { InputText } from "primereact/inputtext";
 import { FiltersList, FiltersTitle, FiltersWrapper } from "./styles";
 import { Button } from "../../../components/molecules/button-custom";
 import { FiltersListProps } from "./types";
-import newReceitas from "../../../data/search-recipes.json";
-import { Receitas } from "../../../api/view-model/receitas-imc-view-model";
 import { Divider } from "primereact/divider";
 import { getRestricoes } from "./get-restricoes";
+import { useEffectOnce } from "../../../globals/hooks";
+import {
+  IngredientesViewModel,
+  useReceipsService,
+} from "../../../api/services";
 
-const Filters: FC<FiltersListProps> = (props) => {
-  const { setNewReceips } = props;
-  const [filters, setFilters] = useState<string[]>([]);
+const Filters: FC<FiltersListProps> = () => {
+  const [data, setData] = useState<IngredientesViewModel[]>([]);
+
+  const { getIngredientes } = useReceipsService();
+
+  useEffectOnce(() => {
+    (async () => {
+      const ingred = await getIngredientes();
+      setData(ingred);
+    })();
+  });
+
   const [currentFilter, setCurrentFilter] = useState<string>("");
 
   const handleFilterChange = (event: ChangeEvent<HTMLInputElement>) => {
     setCurrentFilter(event.target.value);
-  };
-
-  const handleAddFilter = () => {
-    if (currentFilter && !filters.includes(currentFilter)) {
-      setFilters([...filters, currentFilter]);
-      setCurrentFilter("");
-      const newValues = buscaObjetos(currentFilter, newReceitas.receitas);
-      setNewReceips(newValues);
-    }
-  };
-
-  const handleRemoveFilter = (filter: string) => {
-    setFilters(filters.filter((f) => f !== filter));
-    setNewReceips(newReceitas.receitas);
-  };
-
-  const buscaObjetos = (ingrediente: string, objetos: Receitas[]) => {
-    return objetos.filter((objeto) =>
-      Object.values(objeto).some((value) =>
-        value.toString().toLowerCase().includes(ingrediente.toLowerCase())
-      )
-    );
   };
 
   const restricoes = getRestricoes();
@@ -56,20 +46,18 @@ const Filters: FC<FiltersListProps> = (props) => {
           icon={{
             name: "add",
           }}
-          onClick={handleAddFilter}
         />
       </div>
       <FiltersList>
-        {filters.map((filter) => (
-          <div key={filter}>
+        {data.map((data, index) => (
+          <div key={index}>
             <Checkbox
               checked
-              value={filter}
+              value={data.descricao}
               onChange={() => {}}
               disabled={true}
             />
-            <label className="m-1">{filter.toUpperCase()}</label>
-            <button onClick={() => handleRemoveFilter(filter)}>Remove</button>
+            <label className="m-1">{data.descricao.toUpperCase()}</label>
           </div>
         ))}
       </FiltersList>
