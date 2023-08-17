@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import "primereact/resources/themes/mdc-dark-indigo/theme.css";
-import "primereact/resources/primereact.min.css";
-import "primeicons/primeicons.css";
-import "primeflex/primeflex.css";
-import "react-toastify/dist/ReactToastify.css";
 import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { DarkTheme } from "./styles";
 import { pagesRoutes } from "./routes/pages-routes";
 import { ToastContainer } from "react-toastify";
+import "./index.css";
+import "primereact/resources/themes/mdc-dark-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "primeflex/primeflex.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

@@ -3,10 +3,10 @@ import {
   AboutPage,
   ErrorPage,
   FavoriteRecipe,
-  HomePage,
+  MainPage,
   IMCPage,
   LoginPage,
-  MainPage,
+  HomePage,
   RecipeSearch,
   RegisterPage,
   UserPage,
@@ -15,7 +15,7 @@ import {
 export const pagesRoutes = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <MainPage />,
     errorElement: <ErrorPage />,
   },
   {
@@ -27,8 +27,8 @@ export const pagesRoutes = createBrowserRouter([
     element: <RegisterPage />,
   },
   {
-    path: "Main",
-    element: <MainPage />,
+    path: "Home",
+    element: <HomePage />,
   },
   {
     path: "CalcularIMC",

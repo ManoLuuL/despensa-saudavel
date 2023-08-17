@@ -51,7 +51,7 @@ export const LoginPage: FC = () => {
         const loginData = await login(data);
         localStorage.setItem("userData", JSON.stringify(loginData));
         showSuccess("Logado com sucesso!");
-        navigate("/main");
+        navigate("/home");
       } catch (error) {
         showError("Erro ao logar no sistema");
         console.error(error);

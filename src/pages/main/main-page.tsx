@@ -1,31 +1,60 @@
 import { FC } from "react";
-import { BackgroundMain, CardsContainer, Container } from "./styles";
-import Navbar from "../../components/organism/Navbar";
-import { CardIMC } from "./cards/imc-card";
-import { ReceitasCard } from "./cards/receitas-card";
-import { ReceitasFavoritasCard } from "./cards/receitas-favoritas-card";
+import { NavLink } from "react-router-dom";
+import {
+  Buttons,
+  ContainerGlobalHome,
+  ContainerHome,
+  ContainerImg,
+  Description,
+  Overlay,
+  TitlePage,
+} from "./styles";
+import imgLogo from "./assets/logo_facul.png";
+import imgHome from "./assets/image.png";
+import { Button } from "../../components/molecules/button";
 
 export const MainPage: FC = () => {
   return (
-    <>
-      <Container>
-        <BackgroundMain>
-          <Navbar />
-          <CardsContainer>
-            <h1
-              className="justify-content-center flex"
-              style={{ color: "black" }}
-            >
-              Escolha uma opção:
-            </h1>
-            <div className="grid m-3 justify-content-center">
-              <CardIMC />
-              <ReceitasCard />
-              <ReceitasFavoritasCard />
-            </div>
-          </CardsContainer>
-        </BackgroundMain>
-      </Container>
-    </>
+    <ContainerGlobalHome>
+      <ContainerHome>
+        <Overlay>
+          <img
+            src={imgLogo}
+            alt=""
+            style={{
+              height: "5.5rem",
+            }}
+          />
+          <div>
+            <TitlePage>Despensa </TitlePage>
+            <TitlePage>Saudável</TitlePage>
+          </div>
+          <Description>
+            Aqui você pode criar refeições saudáveis com base no que já tem em
+            casa. Esqueça a necessidade de ir às compras toda vez que quiser
+            fazer uma refeição saudável. Nossa plataforma é fácil de usar e
+            oferece opções deliciosas e nutritivas para todas as refeições do
+            dia.
+          </Description>
+          <Buttons>
+            <NavLink to={"/Login"}>
+              <Button content="Login" />
+            </NavLink>
+            <NavLink to={"/Registrar"}>
+              <Button content="Cadastrar-se" />
+            </NavLink>
+          </Buttons>
+        </Overlay>
+        <ContainerImg>
+          <img
+            src={imgHome}
+            alt=""
+            style={{
+              height: "50rem",
+            }}
+          />
+        </ContainerImg>
+      </ContainerHome>
+    </ContainerGlobalHome>
   );
 };
