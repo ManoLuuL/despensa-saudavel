@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { FC } from "react";
+import { FC, useState } from "react";
 import img from "./assets/image.jpg";
 import { Container, LeftContent, PasswordDiv } from "./styles";
 import { InputText } from "primereact/inputtext";
@@ -24,7 +24,7 @@ export const LoginPage: FC = () => {
 
   const navigate = useNavigate();
 
-  let isSubmit = false;
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const formik = useFormik({
     initialValues: LoginValues,
@@ -46,17 +46,18 @@ export const LoginPage: FC = () => {
       return errors;
     },
     onSubmit: async (data) => {
-      isSubmit = true;
+      setIsSubmit(true);
       try {
         const loginData = await login(data);
         localStorage.setItem("userData", JSON.stringify(loginData));
         showSuccess("Logado com sucesso!");
         navigate("/home");
+        setIsSubmit(false);
       } catch (error) {
         showError("Erro ao logar no sistema");
         console.error(error);
+        setIsSubmit(false);
       }
-      isSubmit = false;
     },
   });
 
@@ -135,14 +136,9 @@ export const LoginPage: FC = () => {
               </PasswordDiv>
               <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
                 <NavLink to={"/"}>
-                  <Button content="Voltar" fontSize={1} type="button" />
+                  <Button content="Voltar" type="button" disabled={isSubmit} />
                 </NavLink>
-                <Button
-                  content="Acessar"
-                  fontSize={1}
-                  type="submit"
-                  disabled={isSubmit}
-                />
+                <Button content="Acessar" type="submit" disabled={isSubmit} />
               </div>
             </form>
           </div>

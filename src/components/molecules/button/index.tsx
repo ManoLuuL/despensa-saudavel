@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { ButtonStyled } from "./styles";
 import { ButtonProps } from "./types";
+import { ButtonStyled } from "./styles";
 
 export const Button: FC<ButtonProps> = (props) => {
-  const { content, fontSize, type, disabled } = props;
+  const { content, type, disabled } = props;
   return (
-    <ButtonStyled fontSize={fontSize} type={type} disabled={disabled}>
+    <ButtonStyled disabled={disabled} type={type}>
       {content}
     </ButtonStyled>
   );

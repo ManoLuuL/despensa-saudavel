@@ -19,7 +19,7 @@ export const RegisterPage: FC = () => {
   const { showSuccess, showError } = useToast();
   const [idade, setIdade] = useState<number>(0);
 
-  let isSubmit = false;
+  const [isSubmit, setIsSubmit] = useState(false);
   const { registerUser } = useUserService();
 
   let LoginValues: RegisterForm = {
@@ -59,7 +59,7 @@ export const RegisterPage: FC = () => {
     },
 
     onSubmit: async (data) => {
-      isSubmit = true;
+      setIsSubmit(true);
       try {
         const newData: UserRegisterViewModel = {
           ...data,
@@ -68,10 +68,11 @@ export const RegisterPage: FC = () => {
 
         navigate("/login");
         showSuccess("Registrado com sucesso");
+        setIsSubmit(false);
       } catch (e) {
         showError("Erro ao registrar no sistema");
         console.error(e);
-        isSubmit = false;
+        setIsSubmit(false);
       }
     },
   });
@@ -216,15 +217,10 @@ export const RegisterPage: FC = () => {
 
               <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
                 <NavLink to={"/"}>
-                  <Button content="Voltar" fontSize={1} type="button" />
+                  <Button content="Voltar" type="button" disabled={isSubmit} />
                 </NavLink>
 
-                <Button
-                  content="Confirmar"
-                  fontSize={1}
-                  type="submit"
-                  disabled={isSubmit}
-                />
+                <Button content="Confirmar" type="submit" disabled={isSubmit} />
               </div>
             </form>
           </div>
