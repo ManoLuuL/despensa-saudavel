@@ -101,7 +101,7 @@ export const DietDetox: FC = () => {
       {showRecipesModal && (
         <RecipesModal
           onHide={() => setShowRecipesModal(false)}
-          recipes={recipeSelected}
+          recipesMock={recipeSelected}
         />
       )}
     </>

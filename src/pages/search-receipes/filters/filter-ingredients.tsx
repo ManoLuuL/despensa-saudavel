@@ -6,6 +6,7 @@ import { Divider } from "primereact/divider";
 import { useReceipsService } from "../../../api/services";
 import { useQuery } from "../../../globals/hooks/use-query";
 import { Skeleton } from "primereact/skeleton";
+import { Button } from "../../../components/molecules/button-custom";
 
 const Filters: FC<FiltersListProps> = () => {
   const { getIngredientes } = useReceipsService();
@@ -65,23 +66,9 @@ const Filters: FC<FiltersListProps> = () => {
             </FiltersList>
 
             <Divider />
-
-            {/* <FiltersTitle>Restrições</FiltersTitle>
-            <FiltersList>
-              {restricoes.map((itens) => (
-                <div key={itens.id} className="mb-1">
-                  <Checkbox
-                    checked={false}
-                    value={itens.description}
-                    onChange={() => {}}
-                    disabled={true}
-                  />
-                  <label className="m-1">
-                    {itens.description.toUpperCase()}
-                  </label>
-                </div>
-              ))}
-            </FiltersList> */}
+            <div className="flex justify-content-center">
+              <Button text="Filtrar" color="contrast" />
+            </div>
           </FiltersWrapper>
         </>
       )}

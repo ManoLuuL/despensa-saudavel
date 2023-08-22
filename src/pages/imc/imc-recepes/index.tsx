@@ -32,7 +32,7 @@ export const ReceitasIMC: FC<ReceitasIMCProps> = (props) => {
       </ReceitasWrapper>
       {showRecipesModal && (
         <RecipesModal
-          recipes={recipeSelected}
+          recipesMock={recipeSelected}
           onHide={() => setShowRecipesModal(false)}
         />
       )}

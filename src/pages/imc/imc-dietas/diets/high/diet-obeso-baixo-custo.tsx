@@ -110,7 +110,7 @@ export const DietaObesoBaixoCusto: FC = () => {
       {showRecipesModal && (
         <RecipesModal
           onHide={() => setShowRecipesModal(false)}
-          recipes={recipeSelected}
+          recipesMock={recipeSelected}
         />
       )}
     </>

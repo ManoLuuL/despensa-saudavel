@@ -2,42 +2,60 @@ import { FC, useState } from "react";
 import Filters from "./filters/filter-ingredients";
 import Navbar from "../../components/organism/Navbar";
 import { CardsWrapper, FiltersWrapper, PageWrapper } from "./styles";
-import {
-  Receitas,
-  ReceitasIMCViewModel,
-} from "../../api/view-model/receitas-imc-view-model";
 import { Card } from "primereact/card";
 import { RecipesModal } from "../../components/organism/pre-modals";
-import newReceitas from "../../data/search-recipes.json";
+import { useQuery } from "../../globals/hooks/use-query";
+import { ReceitasViewModel, useReceipsService } from "../../api/services";
+import { Skeleton } from "primereact/skeleton";
 
 export const RecipeSearch: FC = () => {
-  const newData: ReceitasIMCViewModel = newReceitas;
+  const { getAllReceitas } = useReceipsService();
 
   const [showRecipe, setShowRecipe] = useState(false);
-  const [recipeSelected, setRecipeSelected] = useState<Receitas>();
-  const [receips, setReceips] = useState<Receitas[]>(newData.receitas);
+  const [recipeSelected, setRecipeSelected] = useState<ReceitasViewModel>();
+
+  const { data, isLoading } = useQuery({
+    query: async () => await getAllReceitas(),
+  });
 
   return (
     <>
       <Navbar />
       <PageWrapper>
         <FiltersWrapper>
-          <Filters setNewReceips={setReceips} />
+          <Filters />
         </FiltersWrapper>
 
         <CardsWrapper>
-          {receips.map((itens, index) => (
-            <Card
-              className="md:w-14rem m-2"
-              style={{ height: "104px", cursor: "pointer" }}
-              title={itens.titulo}
-              key={index}
-              onClick={() => {
-                setShowRecipe(true);
-                setRecipeSelected(itens);
-              }}
-            />
-          ))}
+          {isLoading ? (
+            <>
+              {Array(24)
+                .fill(0)
+                .map((_, index) => (
+                  <Skeleton
+                    height="10rem"
+                    className="m-2"
+                    key={index}
+                    width="14rem"
+                  />
+                ))}
+            </>
+          ) : (
+            <>
+              {data?.map((item, index) => (
+                <Card
+                  className="md:w-14rem m-2"
+                  style={{ height: "104px", cursor: "pointer" }}
+                  title={item.nome}
+                  key={index}
+                  onClick={() => {
+                    setShowRecipe(true);
+                    setRecipeSelected(item);
+                  }}
+                />
+              ))}
+            </>
+          )}
         </CardsWrapper>
       </PageWrapper>
 

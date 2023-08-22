@@ -125,7 +125,7 @@ export const DietReducerGordura: FC = () => {
       {showRecipesModal && (
         <RecipesModal
           onHide={() => setShowRecipesModal(false)}
-          recipes={recipeSelected}
+          recipesMock={recipeSelected}
         />
       )}
     </>

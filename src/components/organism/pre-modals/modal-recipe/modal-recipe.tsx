@@ -8,14 +8,14 @@ import { useToast } from "../../../../globals/hooks/use-toast";
 export const RecipesModal: FC<RecipesModalProps> = (props) => {
   const { recipes, onHide } = props;
 
-  const modoPreparo = recipes?.modo_preparo.split("\n") ?? [];
+  const modoPreparo = recipes?.modo_de_preparo.split("\n") ?? [];
   const [favorite, setFavorite] = useState(false);
   const { showSuccess } = useToast();
 
   return (
     <Modal
       onHide={onHide}
-      title={recipes?.titulo}
+      title={recipes?.nome}
       width={{ default: "60vw", mobile: "80vw" }}
     >
       <Button
@@ -36,8 +36,7 @@ export const RecipesModal: FC<RecipesModalProps> = (props) => {
       <h2>Ingredientes:</h2>
       {recipes?.ingredientes.map((itens, index) => (
         <p key={index}>
-          {" "}
-          {itens.ingrediente} - {itens.quantidade}
+          - {`${itens.quantidade} ${itens.unidade_de_medida}`} de {itens.nome}
         </p>
       ))}
       <Divider />
