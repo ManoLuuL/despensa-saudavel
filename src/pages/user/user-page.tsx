@@ -4,7 +4,7 @@ import { InputText } from "primereact/inputtext";
 import { Container } from "../../components/atmos/container";
 import { Button } from "../../components/molecules/button-custom";
 import { FC, useState } from "react";
-import { useEffectOnce, useIsConnected } from "../../globals/hooks";
+import { useEffectOnce, useIsConnected, useToast } from "../../globals/hooks";
 import { useNavigate } from "react-router-dom";
 import { ProgressSpinner } from "primereact/progressspinner";
 
@@ -12,11 +12,15 @@ export const UserPage: FC = () => {
   const { connection } = useIsConnected();
   const navigate = useNavigate();
   const [conn, setConn] = useState(false);
+  const { showWarning } = useToast();
 
   useEffectOnce(() => {
-    console.log(connection);
-    if (connection === undefined) navigate("/login");
-    else setConn(true);
+    if (connection === undefined) {
+      navigate("/login");
+      showWarning(
+        "Usuario não identificado, por favor faça o login novamente!"
+      );
+    } else setConn(true);
   });
 
   return (

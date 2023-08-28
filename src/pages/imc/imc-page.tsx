@@ -20,6 +20,9 @@ import { Divider } from "primereact/divider";
 import { Button } from "../../components/molecules/button-custom";
 import { getRecommendations } from "./utils/get-recommendations";
 import { InputMask } from "primereact/inputmask";
+import { useEffectOnce, useIsConnected, useToast } from "../../globals/hooks";
+import { useNavigate } from "react-router-dom";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 export const IMCPage = () => {
   const [height, setHeight] = useState("");
@@ -35,6 +38,11 @@ export const IMCPage = () => {
   const receitasToDay: ReceitasIMCViewModel = recipesToDay;
 
   const [dietas, setDietas] = useState<DietasIMC[]>([]);
+
+  const { connection } = useIsConnected();
+  const navigate = useNavigate();
+  const [conn, setConn] = useState(false);
+  const { showWarning } = useToast();
 
   const handleCalculateClick = () => {
     const imcResult = calculateIMC(height, weight);
@@ -78,128 +86,147 @@ export const IMCPage = () => {
     setResult(null);
   };
 
+  useEffectOnce(() => {
+    if (connection === undefined) {
+      navigate("/login");
+      showWarning(
+        "Usuario não identificado, por favor faça o login novamente!"
+      );
+    } else setConn(true);
+  });
+
   return (
     <>
-      <Navbar />
-      <PageWrapper>
-        <ReceitasWrapper>
-          <ReceitasIMC content={receitasToDay} />
-        </ReceitasWrapper>
-        <ContentWrapper>
-          <h1 style={{ textAlign: "center" }}>Calculadora de IMC</h1>
-          <p>
-            O cálculo feito é de modo geral, para todos os gêneros, sempre
-            recomendamos orientações de nutricionistas.
-          </p>
-          <div className="grid">
-            <div className="col-6">
-              <span className="p-float-label p-input-icon-right w-full">
-                <InputMask
-                  id="heightInput"
-                  value={height}
-                  onChange={(e) => setHeight(e.target.value ?? "")}
-                  mask="9.99"
-                />
-                <label htmlFor="heightInput">Altura (m)</label>
-              </span>
-            </div>
-            <div className="col-6">
-              <span className="p-float-label p-input-icon-right w-full">
-                <InputText
-                  id="weightInput"
-                  value={weight}
-                  onChange={(e) => setWeight(e.target.value)}
-                />
-                <label htmlFor="weightInput">Peso (kg)</label>
-              </span>
-            </div>
-          </div>
-          <div
-            className="grid p-3 flex"
-            style={{
-              width: "20vw",
-            }}
-          >
-            <div className="col-6 justify-content-start">
-              <Button
-                text="Calcular"
-                icon="calculate"
-                onClick={handleCalculateClick}
-                color="success"
-              />
-            </div>
-            <div className="col-6">
-              <Button
-                text="Limpar"
-                icon="close"
-                onClick={handleResetClick}
-                className="justify-content-end"
-                color="danger"
-              />
-            </div>
-          </div>
-
-          {result ? (
-            result?.label === "Valores inválidos" ? (
-              <div className="grid align-items-center justify-content-center text-center">
-                <div className="col-12">
-                  IMC: {result?.value.toFixed(2)} - {result?.label}
+      {conn ? (
+        <>
+          <Navbar />
+          <PageWrapper>
+            <ReceitasWrapper>
+              <ReceitasIMC content={receitasToDay} />
+            </ReceitasWrapper>
+            <ContentWrapper>
+              <h1 style={{ textAlign: "center" }}>Calculadora de IMC</h1>
+              <p>
+                O cálculo feito é de modo geral, para todos os gêneros, sempre
+                recomendamos orientações de nutricionistas.
+              </p>
+              <div className="grid">
+                <div className="col-6">
+                  <span className="p-float-label p-input-icon-right w-full">
+                    <InputMask
+                      id="heightInput"
+                      value={height}
+                      onChange={(e) => setHeight(e.target.value ?? "")}
+                      mask="9.99"
+                    />
+                    <label htmlFor="heightInput">Altura (m)</label>
+                  </span>
+                </div>
+                <div className="col-6">
+                  <span className="p-float-label p-input-icon-right w-full">
+                    <InputText
+                      id="weightInput"
+                      value={weight}
+                      onChange={(e) => setWeight(e.target.value)}
+                    />
+                    <label htmlFor="weightInput">Peso (kg)</label>
+                  </span>
                 </div>
               </div>
-            ) : (
-              <div className="grid align-items-center justify-content-center text-center">
-                <div className="col-12">
-                  IMC: {result?.value.toFixed(2)} - {result?.label}
+              <div
+                className="grid p-3 flex"
+                style={{
+                  width: "20vw",
+                }}
+              >
+                <div className="col-6 justify-content-start">
+                  <Button
+                    text="Calcular"
+                    icon="calculate"
+                    onClick={handleCalculateClick}
+                    color="success"
+                  />
                 </div>
-                <div className="col-12">
-                  {getRecommendations(result ?? undefined)}
+                <div className="col-6">
+                  <Button
+                    text="Limpar"
+                    icon="close"
+                    onClick={handleResetClick}
+                    className="justify-content-end"
+                    color="danger"
+                  />
                 </div>
-                <div className="col-12">
-                  <IMCTableWrapper>
-                    <IMCTable>
-                      <TablesImc />
-                    </IMCTable>
-                  </IMCTableWrapper>
-                </div>
+              </div>
 
-                <div className="col-12">Recomendações:</div>
-                <div className="col-12 justify-content-center">
-                  <div className="grid justify-content-center align-items-center">
-                    {dietas.map((itens) => (
-                      <div key={itens.title} className="col-4">
-                        <Card
-                          title={itens.title}
-                          style={{
-                            cursor: "pointer",
-                          }}
-                          onClick={() => {
-                            setShowDietasModal(true);
-                            setContentDieta(itens);
-                          }}
-                        />
-                      </div>
-                    ))}
+              {result ? (
+                result?.label === "Valores inválidos" ? (
+                  <div className="grid align-items-center justify-content-center text-center">
+                    <div className="col-12">
+                      IMC: {result?.value.toFixed(2)} - {result?.label}
+                    </div>
                   </div>
-                </div>
-                <Divider />
-                <p className="font-semibold">
-                  Todas as dietas fornecidas foram retiradas de sites de
-                  nutrição, caso queira saber mais sobre as receitas, vá na
-                  pagina sobre do site ou consulte um profissional.
-                </p>
-              </div>
-            )
-          ) : (
-            <></>
-          )}
-        </ContentWrapper>
-      </PageWrapper>
+                ) : (
+                  <div className="grid align-items-center justify-content-center text-center">
+                    <div className="col-12">
+                      IMC: {result?.value.toFixed(2)} - {result?.label}
+                    </div>
+                    <div className="col-12">
+                      {getRecommendations(result ?? undefined)}
+                    </div>
+                    <div className="col-12">
+                      <IMCTableWrapper>
+                        <IMCTable>
+                          <TablesImc />
+                        </IMCTable>
+                      </IMCTableWrapper>
+                    </div>
 
-      {showDietasModal && (
-        <ModalDietasIMC
-          onHide={() => setShowDietasModal(false)}
-          {...contentDieta}
-        />
+                    <div className="col-12">Recomendações:</div>
+                    <div className="col-12 justify-content-center">
+                      <div className="grid justify-content-center align-items-center">
+                        {dietas.map((itens) => (
+                          <div key={itens.title} className="col-4">
+                            <Card
+                              title={itens.title}
+                              style={{
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                setShowDietasModal(true);
+                                setContentDieta(itens);
+                              }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <Divider />
+                    <p className="font-semibold">
+                      Todas as dietas fornecidas foram retiradas de sites de
+                      nutrição, caso queira saber mais sobre as receitas, vá na
+                      pagina sobre do site ou consulte um profissional.
+                    </p>
+                  </div>
+                )
+              ) : (
+                <></>
+              )}
+            </ContentWrapper>
+          </PageWrapper>
+
+          {showDietasModal && (
+            <ModalDietasIMC
+              onHide={() => setShowDietasModal(false)}
+              {...contentDieta}
+            />
+          )}
+        </>
+      ) : (
+        <>
+          <div className="card flex justify-content-center">
+            <ProgressSpinner />
+          </div>
+        </>
       )}
     </>
   );
