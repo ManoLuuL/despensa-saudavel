@@ -5,4 +5,5 @@ import { DefaultModalProps } from "../../modal";
 export type RecipesModalProps = DefaultModalProps & {
   recipes?: ReceitasViewModel;
   recipesMock?: Receitas;
+  showFavoriteButton?: boolean;
 };

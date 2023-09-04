@@ -34,6 +34,7 @@ export const ReceitasIMC: FC<ReceitasIMCProps> = (props) => {
         <RecipesModal
           recipesMock={recipeSelected}
           onHide={() => setShowRecipesModal(false)}
+          showFavoriteButton={false}
         />
       )}
     </>

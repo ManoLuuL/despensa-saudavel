@@ -9,7 +9,7 @@ import { useEffectOnce } from "../../../../globals/hooks";
 import { Skeleton } from "primereact/skeleton";
 
 export const RecipesModal: FC<RecipesModalProps> = (props) => {
-  const { recipes, onHide } = props;
+  const { recipes, onHide, showFavoriteButton = true, recipesMock } = props;
 
   const [isLoadingSubmit, setIsLoadingSubmit] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,6 +22,7 @@ export const RecipesModal: FC<RecipesModalProps> = (props) => {
   }, []);
 
   const modoPreparo = recipes?.modo_de_preparo.split("\n") ?? [];
+  const modoPreparoMock = recipesMock?.modo_preparo.split("\n") ?? [];
   const [favorite, setFavorite] = useState(false);
   const { showSuccess } = useToast();
 
@@ -67,7 +68,7 @@ export const RecipesModal: FC<RecipesModalProps> = (props) => {
   return (
     <Modal
       onHide={onHide}
-      title={recipes?.nome}
+      title={recipes ? recipes.nome : recipesMock?.titulo}
       width={{ default: "60vw", mobile: "80vw" }}
     >
       {isLoading ? (
@@ -82,34 +83,50 @@ export const RecipesModal: FC<RecipesModalProps> = (props) => {
         </>
       ) : (
         <>
-          <Button
-            text={!favorite ? "Favoritar Receita" : "Desfavoritar Receita"}
-            loading={isLoadingSubmit}
-            icon={{
-              name: "star",
-              size: 18,
-            }}
-            color={favorite ? "alert" : "secondary"}
-            onClick={handleFavorite}
-          />
+          {showFavoriteButton && (
+            <>
+              <Button
+                text={!favorite ? "Favoritar Receita" : "Desfavoritar Receita"}
+                loading={isLoadingSubmit}
+                icon={{
+                  name: "star",
+                  size: 18,
+                }}
+                color={favorite ? "alert" : "secondary"}
+                onClick={handleFavorite}
+              />
+              <Divider />
+            </>
+          )}
 
-          <Divider />
           <h2>Ingredientes:</h2>
-          {recipes?.ingredientes.map((itens, index) => (
-            <p key={index}>
-              - {`${itens.quantidade} ${itens.unidade_de_medida}`} de{" "}
-              {itens.nome}
-            </p>
-          ))}
+          {recipes
+            ? recipes.ingredientes.map((itens, index) => (
+                <p key={index}>
+                  - {`${itens.quantidade} ${itens.unidade_de_medida}`} de{" "}
+                  {itens.nome}
+                </p>
+              ))
+            : recipesMock?.ingredientes.map((itens, index) => (
+                <p key={index}>
+                  - {`${itens.quantidade} `} de {itens.ingrediente}
+                </p>
+              ))}
           <Divider />
           <h2>Modo de Preparo:</h2>
           <ol>
-            {modoPreparo.map((itens, index) => (
-              <li key={index}>{itens.trim().replace(/^\d+\. /, "")}</li>
-            ))}
+            {recipes
+              ? modoPreparo.map((itens, index) => (
+                  <li key={index}>{itens.trim().replace(/^\d+\. /, "")}</li>
+                ))
+              : modoPreparoMock.map((itens, index) => (
+                  <li key={index}>{itens.trim().replace(/^\d+\. /, "")}</li>
+                ))}
           </ol>
           <Divider />
-          <h2>Rendimento: {recipes?.rendimento}</h2>
+          <h2>
+            Rendimento: {recipes ? recipes.rendimento : recipesMock?.rendimento}
+          </h2>
         </>
       )}
     </Modal>
