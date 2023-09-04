@@ -10,6 +10,7 @@ import { Skeleton } from "primereact/skeleton";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { useEffectOnce, useIsConnected, useToast } from "../../globals/hooks";
 import { useNavigate } from "react-router-dom";
+import RecipeSearchInput from "../../components/molecules/search-input/search-input";
 
 export const RecipeSearch: FC = () => {
   const { getAllReceitas } = useReceipsService();
@@ -40,42 +41,49 @@ export const RecipeSearch: FC = () => {
       {conn ? (
         <>
           <Navbar />
+          <div className="grid">
+            <div className="col-12 flex justify-content-center">
+              <RecipeSearchInput />
+            </div>
+          </div>
           <PageWrapper>
             <FiltersWrapper>
               <Filters />
             </FiltersWrapper>
 
-            <CardsWrapper>
-              {isLoading ? (
-                <>
-                  {Array(24)
-                    .fill(0)
-                    .map((_, index) => (
-                      <Skeleton
-                        height="10rem"
-                        className="m-2"
+            <div>
+              <CardsWrapper>
+                {isLoading ? (
+                  <>
+                    {Array(24)
+                      .fill(0)
+                      .map((_, index) => (
+                        <Skeleton
+                          height="10rem"
+                          className="m-2"
+                          key={index}
+                          width="14rem"
+                        />
+                      ))}
+                  </>
+                ) : (
+                  <>
+                    {data?.map((item, index) => (
+                      <Card
+                        className="md:w-14rem m-2"
+                        style={{ height: "104px", cursor: "pointer" }}
+                        title={item.nome}
                         key={index}
-                        width="14rem"
+                        onClick={() => {
+                          setShowRecipe(true);
+                          setRecipeSelected(item);
+                        }}
                       />
                     ))}
-                </>
-              ) : (
-                <>
-                  {data?.map((item, index) => (
-                    <Card
-                      className="md:w-14rem m-2"
-                      style={{ height: "104px", cursor: "pointer" }}
-                      title={item.nome}
-                      key={index}
-                      onClick={() => {
-                        setShowRecipe(true);
-                        setRecipeSelected(item);
-                      }}
-                    />
-                  ))}
-                </>
-              )}
-            </CardsWrapper>
+                  </>
+                )}
+              </CardsWrapper>
+            </div>
           </PageWrapper>
 
           {showRecipe && (

@@ -65,8 +65,49 @@ const Filters: FC<FiltersListProps> = () => {
                 ))}
             </FiltersList>
 
+            <div className="flex justify-content-center mt-2">
+              <Button text="Filtrar" color="contrast" />
+            </div>
+
             <Divider />
-            <div className="flex justify-content-center">
+            <FiltersTitle>Restrições</FiltersTitle>
+            <FiltersList>
+              <div>
+                <Checkbox
+                  checked={false}
+                  onChange={onIngredientsChange}
+                  value={false}
+                />
+                <label className="m-1">{`Diabetico`.toUpperCase()}</label>
+              </div>
+              <div>
+                <Checkbox
+                  checked={false}
+                  onChange={onIngredientsChange}
+                  value={false}
+                />
+                <label className="m-1">
+                  {`Alergico a Lactose`.toUpperCase()}
+                </label>
+              </div>
+              <div>
+                <Checkbox
+                  checked={false}
+                  onChange={onIngredientsChange}
+                  value={false}
+                />
+                <label className="m-1">{`Vegetariano`.toUpperCase()}</label>
+              </div>
+              <div>
+                <Checkbox
+                  checked={false}
+                  onChange={onIngredientsChange}
+                  value={false}
+                />
+                <label className="m-1">{`Vegano`.toUpperCase()}</label>
+              </div>
+            </FiltersList>
+            <div className="flex justify-content-center mt-2">
               <Button text="Filtrar" color="contrast" />
             </div>
           </FiltersWrapper>
