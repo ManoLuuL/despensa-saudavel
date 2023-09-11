@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const SearchContainer = styled.div`
-  width: 50%; /* Defina a largura que desejar */
-  margin: 0 auto; /* Centralize o componente */
+  width: 50%;
+  margin: 0 auto;
 `;
 
 export const SearchInput = styled.input`

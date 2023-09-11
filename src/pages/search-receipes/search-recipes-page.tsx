@@ -41,8 +41,8 @@ export const RecipeSearch: FC = () => {
       {conn ? (
         <>
           <Navbar />
-          <div className="grid">
-            <div className="col-12 flex justify-content-center">
+          <div className="flex">
+            <div className="col-12 flex justify-content-center mt-2">
               <RecipeSearchInput />
             </div>
           </div>

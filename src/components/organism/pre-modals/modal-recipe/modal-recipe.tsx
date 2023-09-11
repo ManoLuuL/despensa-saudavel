@@ -33,7 +33,7 @@ export const RecipesModal: FC<RecipesModalProps> = (props) => {
         id_receita: recipes?.id ?? 0,
       });
 
-      setFavorite(fav);
+      setFavorite(fav.favorita);
       setIsLoading(false);
     })();
   });

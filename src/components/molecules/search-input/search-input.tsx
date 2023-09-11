@@ -40,7 +40,7 @@ const RecipeSearchInput: React.FC = () => {
         type="text"
         value={searchValue}
         onChange={handleInputChange}
-        placeholder="Digite sua pesquisa de receita aqui"
+        placeholder="Buscar receita"
       />
       <SearchResults>
         {searchResults.map((result, index) => (

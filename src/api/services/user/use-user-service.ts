@@ -21,7 +21,8 @@ export const useUserService = () => {
 
   const getFavorite = useCallback(
     async (data: SaveFavoriteDTO) =>
-      (await post(`verificar_receita_favorita`, data)).data,
+      (await post<{ favorita: boolean }>(`verificar_receita_favorita`, data))
+        .data,
     [post]
   );
 
