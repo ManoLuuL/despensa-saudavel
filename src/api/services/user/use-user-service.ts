@@ -2,15 +2,27 @@ import { useCallback } from "react";
 import api from "../../axios/axios";
 import { UserRegisterViewModel } from "./view-models/user-register-view-model";
 import { SaveFavoriteDTO } from "./dto/save-favorite-dto";
+import { UserDTO } from "./dto/user-dto";
 
 export const useUserService = () => {
-  const { get, post } = api;
+  const { get, post, put } = api;
 
   const getAllUsers = useCallback(async () => (await get(`users`)).data, [get]);
 
   const registerUser = useCallback(
     async (data: UserRegisterViewModel) => (await post(`users`, data)).data,
     [post]
+  );
+
+  const updateUser = useCallback(
+    async (data: UserDTO, id: number) => (await put(`users/${id}`, data)).data,
+    [put]
+  );
+
+  const updatePassword = useCallback(
+    async (data: { nova_senha: string }, id: number) =>
+      (await put(`/users/${id}/change-password`, data)).data,
+    [put]
   );
 
   const saveFavorite = useCallback(
@@ -38,5 +50,7 @@ export const useUserService = () => {
     saveFavorite,
     getFavorite,
     deleteFavorite,
+    updateUser,
+    updatePassword,
   };
 };
