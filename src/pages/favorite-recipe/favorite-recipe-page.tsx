@@ -1,40 +1,22 @@
 import { Divider } from "primereact/divider";
 import { Container } from "../../components/atmos/container";
 import Navbar from "../../components/organism/Navbar";
-import { ReceitasIMCViewModel } from "../../api/view-model/receitas-imc-view-model";
-import recipesRecomend from "../../data/search-recipes.json";
 import { Card } from "primereact/card";
 import { useEffectOnce, useIsConnected, useToast } from "../../globals/hooks";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { FC, useState } from "react";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { ReceitasViewModel, useReceipsService } from "../../api/services";
+import { useQuery } from "../../globals/hooks/use-query";
+import { RecipesModal } from "../../components/organism/pre-modals";
+import { Skeleton } from "primereact/skeleton";
 
-export const FavoriteRecipe = () => {
-  const amount = 6;
-
-  // Função para selecionar dados aleatórios
-  const getRandomData = () => {
-    const randomData: ReceitasIMCViewModel = { receitas: [] };
-    const jsonLength = recipesRecomend.receitas.length;
-
-    while (randomData.receitas.length < amount) {
-      const randomIndex = Math.floor(Math.random() * jsonLength);
-      const randomItem = recipesRecomend.receitas[randomIndex];
-
-      if (!randomData.receitas.includes(randomItem)) {
-        randomData.receitas.push(randomItem);
-      }
-    }
-
-    return randomData;
-  };
-
-  const randomData = getRandomData();
-
+export const FavoriteRecipe: FC = () => {
   const { connection } = useIsConnected();
   const navigate = useNavigate();
   const [conn, setConn] = useState(false);
   const { showWarning } = useToast();
+  const { getAllFavoriteReceitas } = useReceipsService();
 
   useEffectOnce(() => {
     if (connection === undefined) {
@@ -44,6 +26,12 @@ export const FavoriteRecipe = () => {
       );
     } else setConn(true);
   });
+  const { data, isLoading } = useQuery({
+    query: async () => await getAllFavoriteReceitas(connection.data.id),
+  });
+
+  const [showRecipe, setShowRecipe] = useState(false);
+  const [recipeSelected, setRecipeSelected] = useState<ReceitasViewModel>();
 
   return (
     <>
@@ -57,21 +45,47 @@ export const FavoriteRecipe = () => {
                   Receitas favoritadas
                 </h3>
                 <Divider />
-                <div className="grid">
-                  {randomData.receitas.map((itens) => (
-                    <div key={itens.titulo} className="col-4">
-                      <Card
-                        title={itens.titulo}
-                        style={{
-                          cursor: "pointer",
-                        }}
-                      />
-                    </div>
-                  ))}
+                <div className="grid align-items-center flex">
+                  {isLoading ? (
+                    <>
+                      {Array(28)
+                        .fill(0)
+                        .map((_, index) => (
+                          <Skeleton
+                            height="10rem"
+                            className="m-2"
+                            key={index}
+                            width="14rem"
+                          />
+                        ))}
+                    </>
+                  ) : (
+                    <>
+                      {data?.map((item, index) => (
+                        <Card
+                          className="md:w-14rem m-2"
+                          style={{ height: "104px", cursor: "pointer" }}
+                          title={item.nome}
+                          key={index}
+                          onClick={() => {
+                            setShowRecipe(true);
+                            setRecipeSelected(item);
+                          }}
+                        />
+                      ))}
+                    </>
+                  )}
                 </div>
               </>
             }
           />
+
+          {showRecipe && (
+            <RecipesModal
+              recipes={recipeSelected}
+              onHide={() => setShowRecipe(false)}
+            />
+          )}
         </>
       ) : (
         <>

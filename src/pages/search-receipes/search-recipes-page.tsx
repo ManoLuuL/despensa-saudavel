@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import Filters from "./filters/filter-ingredients";
 import Navbar from "../../components/organism/Navbar";
 import { CardsWrapper, FiltersWrapper, PageWrapper } from "./styles";
@@ -13,13 +13,17 @@ import { useNavigate } from "react-router-dom";
 import RecipeSearchInput from "../../components/molecules/search-input/search-input";
 
 export const RecipeSearch: FC = () => {
-  const { getAllReceitas } = useReceipsService();
+  const { getAllReceitas, getSearchReceitas } = useReceipsService();
 
   const [showRecipe, setShowRecipe] = useState(false);
   const [recipeSelected, setRecipeSelected] = useState<ReceitasViewModel>();
+  const [receipesData, setReceipesData] = useState<ReceitasViewModel[]>();
 
   const { data, isLoading } = useQuery({
     query: async () => await getAllReceitas(),
+    onSuccess(data) {
+      setReceipesData(data);
+    },
   });
 
   const { connection } = useIsConnected();
@@ -36,6 +40,17 @@ export const RecipeSearch: FC = () => {
     } else setConn(true);
   });
 
+  const handleSearchInput = async (
+    searchValue: ChangeEvent<HTMLInputElement>
+  ) => {
+    if (searchValue.target.value !== "") {
+      const newData = await getSearchReceitas(searchValue.target.value);
+      setReceipesData(newData);
+    } else {
+      setReceipesData(data);
+    }
+  };
+
   return (
     <>
       {conn ? (
@@ -43,7 +58,7 @@ export const RecipeSearch: FC = () => {
           <Navbar />
           <div className="flex">
             <div className="col-12 flex justify-content-center mt-2">
-              <RecipeSearchInput />
+              <RecipeSearchInput onChange={handleSearchInput} />
             </div>
           </div>
           <PageWrapper>
@@ -68,7 +83,7 @@ export const RecipeSearch: FC = () => {
                   </>
                 ) : (
                   <>
-                    {data?.map((item, index) => (
+                    {receipesData?.map((item, index) => (
                       <Card
                         className="md:w-14rem m-2"
                         style={{ height: "104px", cursor: "pointer" }}

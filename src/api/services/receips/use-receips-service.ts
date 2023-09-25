@@ -21,9 +21,23 @@ export const useReceipsService = () => {
     [post]
   );
 
+  const getAllFavoriteReceitas = useCallback(
+    async (id: number) =>
+      (await get<ReceitasViewModel[]>(`receitas_favoritas/${id}`)).data,
+    [get]
+  );
+
+  const getSearchReceitas = useCallback(
+    async (name: string) =>
+      (await get<ReceitasViewModel[]>(`receitas/buscar?nome=${name}`)).data,
+    [get]
+  );
+
   return {
     getIngredientes,
     getAllReceitas,
     getReceitaIngrediente,
+    getAllFavoriteReceitas,
+    getSearchReceitas,
   };
 };
