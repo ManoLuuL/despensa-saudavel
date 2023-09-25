@@ -65,10 +65,6 @@ const Filters: FC<FiltersListProps> = () => {
                 ))}
             </FiltersList>
 
-            <div className="flex justify-content-center mt-2">
-              <Button text="Filtrar" color="contrast" />
-            </div>
-
             <Divider />
             <FiltersTitle>Restrições</FiltersTitle>
             <FiltersList>
