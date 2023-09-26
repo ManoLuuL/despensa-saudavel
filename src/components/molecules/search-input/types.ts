@@ -1,5 +1,9 @@
-import { ChangeEvent } from "react";
+import { SetStateAction } from "react";
+import { ReceitasViewModel } from "../../../api/services";
 
 export type SearchInputProps = {
-  onChange(searchValue: ChangeEvent<HTMLInputElement>): void;
+  setReceipesData: (
+    value: SetStateAction<ReceitasViewModel[] | undefined>
+  ) => void;
+  data: ReceitasViewModel[] | [];
 };
