@@ -21,7 +21,7 @@ export const BntSearch = styled.button`
 
 export const PageWrapper = styled.div`
   display: flex;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
 `;
 
@@ -30,10 +30,13 @@ export const FiltersWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 325px;
+  width: 370px;
   border-right: 1px solid grey;
-  height: 100vh;
+  height: 90%;
   margin: 15px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 5px;
 `;
 
 export const CardsWrapper = styled.div`

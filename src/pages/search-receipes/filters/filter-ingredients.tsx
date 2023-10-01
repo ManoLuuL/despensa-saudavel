@@ -3,27 +3,78 @@ import { Checkbox, CheckboxChangeEvent } from "primereact/checkbox";
 import { FiltersList, FiltersTitle, FiltersWrapper } from "./styles";
 import { FiltersListProps } from "./types";
 import { Divider } from "primereact/divider";
-import { useReceipsService } from "../../../api/services";
+import {
+  IngredientesViewModel,
+  useReceipsService,
+} from "../../../api/services";
 import { useQuery } from "../../../globals/hooks/use-query";
 import { Skeleton } from "primereact/skeleton";
 import { Button } from "../../../components/molecules/button-custom";
+import { ReceitaIngredienteDTO } from "../../../api/services/receips/dto";
+import { useToast } from "../../../globals/hooks";
+import { getRestricoes } from "./get-restricoes";
 
-const Filters: FC<FiltersListProps> = () => {
-  const { getIngredientes } = useReceipsService();
+const Filters: FC<FiltersListProps> = ({ setReceipesData, setLoading }) => {
+  const { getIngredientes, getReceitaIngrediente } = useReceipsService();
+  const { showError } = useToast();
 
   const { data: filtro, isLoading } = useQuery({
     query: async () => await getIngredientes(),
   });
 
+  const { dataRestricoes } = getRestricoes();
+
   const [ingredients, setIngredients] = useState<string[]>([]);
+  const [restricoes, setRestricoes] = useState<string[]>([]);
+  const [ids, setIds] = useState<number[]>([]);
 
-  const onIngredientsChange = (e: CheckboxChangeEvent) => {
+  const onIngredientsChange = (
+    e: CheckboxChangeEvent,
+    data: IngredientesViewModel
+  ) => {
     let _ingredients = [...ingredients];
+    let _ids = [...ids];
 
-    if (e.checked) _ingredients.push(e.value);
-    else _ingredients.splice(_ingredients.indexOf(e.value), 1);
+    if (e.checked) {
+      _ingredients.push(e.value);
+      _ids.push(data.id);
+    } else {
+      _ingredients.splice(_ingredients.indexOf(e.value), 1);
+      _ids.splice(_ids.indexOf(data.id), 1);
+    }
 
     setIngredients(_ingredients);
+    setIds(_ids);
+  };
+
+  const onRestritChange = (e: CheckboxChangeEvent) => {
+    let _restricoes = [...restricoes];
+
+    if (e.checked) {
+      _restricoes.push(e.value);
+    } else {
+      _restricoes.splice(_restricoes.indexOf(e.value), 1);
+    }
+
+    setRestricoes(_restricoes);
+  };
+
+  const handleFilterSubmit = async () => {
+    setLoading(true);
+    try {
+      const newData: ReceitaIngredienteDTO = {
+        ingredientes_ids: ids,
+        restricoes: restricoes,
+      };
+
+      const newReceitas = await getReceitaIngrediente(newData);
+      setReceipesData(newReceitas);
+    } catch (e) {
+      showError("Erro ao buscar receitas pelos filtros selecionados!");
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -55,7 +106,7 @@ const Filters: FC<FiltersListProps> = () => {
                   <div key={index}>
                     <Checkbox
                       checked={ingredients.includes(data.descricao)}
-                      onChange={onIngredientsChange}
+                      onChange={(check) => onIngredientsChange(check, data)}
                       value={data.descricao}
                     />
                     <label className="m-1">
@@ -68,43 +119,26 @@ const Filters: FC<FiltersListProps> = () => {
             <Divider />
             <FiltersTitle>Restrições</FiltersTitle>
             <FiltersList>
-              <div>
-                <Checkbox
-                  checked={false}
-                  onChange={onIngredientsChange}
-                  value={false}
-                />
-                <label className="m-1">{`Diabetico`.toUpperCase()}</label>
-              </div>
-              <div>
-                <Checkbox
-                  checked={false}
-                  onChange={onIngredientsChange}
-                  value={false}
-                />
-                <label className="m-1">
-                  {`Alergico a Lactose`.toUpperCase()}
-                </label>
-              </div>
-              <div>
-                <Checkbox
-                  checked={false}
-                  onChange={onIngredientsChange}
-                  value={false}
-                />
-                <label className="m-1">{`Vegetariano`.toUpperCase()}</label>
-              </div>
-              <div>
-                <Checkbox
-                  checked={false}
-                  onChange={onIngredientsChange}
-                  value={false}
-                />
-                <label className="m-1">{`Vegano`.toUpperCase()}</label>
-              </div>
+              {dataRestricoes &&
+                dataRestricoes.map((data, index) => (
+                  <div key={index}>
+                    <Checkbox
+                      checked={restricoes.includes(data.description)}
+                      onChange={onRestritChange}
+                      value={data.description}
+                    />
+                    <label className="m-1">
+                      {data.description.toUpperCase()}
+                    </label>
+                  </div>
+                ))}
             </FiltersList>
             <div className="flex justify-content-center mt-2">
-              <Button text="Filtrar" color="contrast" />
+              <Button
+                text="Buscar"
+                color="contrast"
+                onClick={handleFilterSubmit}
+              />
             </div>
           </FiltersWrapper>
         </>

@@ -17,7 +17,8 @@ export const useReceipsService = () => {
   );
 
   const getReceitaIngrediente = useCallback(
-    async (data: ReceitaIngredienteDTO) => (await post(`receitas`, data)).data,
+    async (data: ReceitaIngredienteDTO) =>
+      (await post(`/receitas/buscar_por_ingredientes_e_restricoes`, data)).data,
     [post]
   );
 

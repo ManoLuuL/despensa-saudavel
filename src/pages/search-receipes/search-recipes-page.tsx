@@ -26,6 +26,7 @@ export const RecipeSearch: FC = () => {
     },
   });
 
+  const [loading, setLoading] = useState<boolean>(isLoading);
   const { connection } = useIsConnected();
   const navigate = useNavigate();
   const [conn, setConn] = useState(false);
@@ -55,12 +56,15 @@ export const RecipeSearch: FC = () => {
           </div>
           <PageWrapper>
             <FiltersWrapper>
-              <Filters />
+              <Filters
+                setReceipesData={setReceipesData}
+                setLoading={setLoading}
+              />
             </FiltersWrapper>
 
             <div>
               <CardsWrapper>
-                {isLoading ? (
+                {isLoading ?? loading ? (
                   <>
                     {Array(24)
                       .fill(0)
