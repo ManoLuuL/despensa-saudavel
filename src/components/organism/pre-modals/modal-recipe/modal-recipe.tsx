@@ -103,8 +103,10 @@ export const RecipesModal: FC<RecipesModalProps> = (props) => {
           {recipes
             ? recipes.ingredientes.map((itens, index) => (
                 <p key={index}>
-                  - {`${itens.quantidade} ${itens.unidade_de_medida}`} de{" "}
-                  {itens.nome}
+                  -{" "}
+                  {itens.quantidade !== "0"
+                    ? `${itens.quantidade} ${itens.unidade_de_medida} de ${itens.nome}`
+                    : `${itens.nome} ${itens.unidade_de_medida}`}
                 </p>
               ))
             : recipesMock?.ingredientes.map((itens, index) => (
