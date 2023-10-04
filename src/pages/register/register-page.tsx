@@ -221,7 +221,7 @@ export const RegisterPage: FC = () => {
                 {getFormErrorMessage("idade")}
               </div>
 
-              <div className="flex flex-wrap justify-content-  gap-3 mt-2 mb-4">
+              <div className="flex flex-wrap justify-content-between  gap-3 mt-2 mb-4">
                 <div className="flex align-items-center">
                   <Checkbox
                     inputId="Diabetico"
