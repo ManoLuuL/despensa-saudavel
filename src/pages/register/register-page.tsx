@@ -13,6 +13,7 @@ import { useToast } from "../../globals/hooks/use-toast";
 import { UserRegisterViewModel } from "../../api/services/user/view-models/user-register-view-model";
 import { InputNumber } from "primereact/inputnumber";
 import { useUserService } from "../../api/services";
+import { Checkbox } from "primereact/checkbox";
 
 export const RegisterPage: FC = () => {
   const navigate = useNavigate();
@@ -26,7 +27,11 @@ export const RegisterPage: FC = () => {
     nome: "",
     email: "",
     senha: "",
-    idade: 0,
+    idade: undefined,
+    alergico_a_lactose: false,
+    diabetico: false,
+    vegano: false,
+    vegetariano: false,
   };
 
   const formik = useFormik({
@@ -63,6 +68,7 @@ export const RegisterPage: FC = () => {
       try {
         const newData: UserRegisterViewModel = {
           ...data,
+          idade: data.idade ?? 0,
         };
         await registerUser(newData);
 
@@ -213,6 +219,63 @@ export const RegisterPage: FC = () => {
                   </label>
                 </span>
                 {getFormErrorMessage("idade")}
+              </div>
+
+              <div className="flex flex-wrap justify-content-  gap-3 mt-2 mb-4">
+                <div className="flex align-items-center">
+                  <Checkbox
+                    inputId="Diabetico"
+                    name="Diabetico"
+                    value="Diabetico"
+                    checked={formik.values.diabetico}
+                    onChange={(e) =>
+                      formik.setFieldValue("diabetico", e.checked)
+                    }
+                  />
+                  <label htmlFor="Diabetico" className="ml-2">
+                    Diabetico
+                  </label>
+                </div>
+                <div className="flex align-items-center">
+                  <Checkbox
+                    inputId="Vegetariano"
+                    name="Vegetariano"
+                    value="Vegetariano"
+                    checked={formik.values.vegetariano}
+                    onChange={(e) =>
+                      formik.setFieldValue("vegetariano", e.checked)
+                    }
+                  />
+                  <label htmlFor="Vegetariano" className="ml-2">
+                    Vegetariano
+                  </label>
+                </div>
+                <div className="flex align-items-center">
+                  <Checkbox
+                    inputId="Vegano"
+                    name="Vegano"
+                    value="Vegano"
+                    checked={formik.values.vegano}
+                    onChange={(e) => formik.setFieldValue("vegano", e.checked)}
+                  />
+                  <label htmlFor="Vegano" className="ml-2">
+                    Vegano
+                  </label>
+                </div>
+                <div className="flex align-items-center">
+                  <Checkbox
+                    inputId="alergico_a_lactose"
+                    name="alergico_a_lactose"
+                    value="alergico_a_lactose"
+                    checked={formik.values.alergico_a_lactose}
+                    onChange={(e) =>
+                      formik.setFieldValue("alergico_a_lactose", e.checked)
+                    }
+                  />
+                  <label htmlFor="alergico_a_lactose" className="ml-2">
+                    Alergico a lactose
+                  </label>
+                </div>
               </div>
 
               <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
