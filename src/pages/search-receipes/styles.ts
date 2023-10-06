@@ -30,8 +30,7 @@ export const FiltersWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 670px;
-  /* max-width: 400px; */
+  width: 480px;
   border-right: 1px solid grey;
   height: 90%;
   margin: 15px;

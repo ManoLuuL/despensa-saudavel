@@ -92,7 +92,7 @@ const Filters: FC<FiltersListProps> = ({ setReceipesData, setLoading }) => {
                 height="2rem"
                 className="mb-2"
                 key={index}
-                width="18rem"
+                width="12rem"
               />
             ))}
         </FiltersWrapper>
