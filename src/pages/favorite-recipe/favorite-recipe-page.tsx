@@ -45,10 +45,10 @@ export const FavoriteRecipe: FC = () => {
                   Receitas favoritadas
                 </h3>
                 <Divider />
-                <div className="grid align-items-center flex">
+                <div className="grid align-items-center flex justify-content-center">
                   {isLoading ? (
                     <>
-                      {Array(28)
+                      {Array(20)
                         .fill(0)
                         .map((_, index) => (
                           <Skeleton

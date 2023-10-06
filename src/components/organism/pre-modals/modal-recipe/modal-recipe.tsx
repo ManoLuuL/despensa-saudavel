@@ -5,8 +5,9 @@ import { Modal } from "../../modal";
 import { Button } from "../../../molecules/button-custom";
 import { useToast } from "../../../../globals/hooks/use-toast";
 import { useUserService } from "../../../../api/services";
-import { useEffectOnce } from "../../../../globals/hooks";
 import { Skeleton } from "primereact/skeleton";
+import { Checkbox } from "primereact/checkbox";
+import { useEffectOnce } from "../../../../globals";
 
 export const RecipesModal: FC<RecipesModalProps> = (props) => {
   const { recipes, onHide, showFavoriteButton = true, recipesMock } = props;
@@ -98,6 +99,58 @@ export const RecipesModal: FC<RecipesModalProps> = (props) => {
               <Divider />
             </>
           )}
+
+          <h2>Restrições:</h2>
+          <div className="flex flex-wrap justify-content-between  gap-3 mt-2 mb-4">
+            <div className="flex align-items-center">
+              <Checkbox
+                inputId="Diabetico"
+                name="Diabetico"
+                value="Diabetico"
+                checked={recipes?.diabetico ?? false}
+                disabled
+              />
+              <label htmlFor="Diabetico" className="ml-2">
+                Diabetico
+              </label>
+            </div>
+            <div className="flex align-items-center">
+              <Checkbox
+                inputId="Vegetariano"
+                name="Vegetariano"
+                value="Vegetariano"
+                checked={recipes?.vegetariano ?? false}
+                disabled
+              />
+              <label htmlFor="Vegetariano" className="ml-2">
+                Vegetariano
+              </label>
+            </div>
+            <div className="flex align-items-center">
+              <Checkbox
+                inputId="Vegano"
+                name="Vegano"
+                value="Vegano"
+                checked={recipes?.vegano ?? false}
+                disabled
+              />
+              <label htmlFor="Vegano" className="ml-2">
+                Vegano
+              </label>
+            </div>
+            <div className="flex align-items-center">
+              <Checkbox
+                inputId="alergico_a_lactose"
+                name="alergico_a_lactose"
+                value="alergico_a_lactose"
+                checked={recipes?.alergico_a_lactose ?? false}
+                disabled
+              />
+              <label htmlFor="alergico_a_lactose" className="ml-2">
+                Alergico a lactose
+              </label>
+            </div>
+          </div>
 
           <h2>Ingredientes:</h2>
           {recipes

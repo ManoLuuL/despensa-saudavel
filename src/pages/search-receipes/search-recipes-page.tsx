@@ -66,14 +66,13 @@ export const RecipeSearch: FC = () => {
               <CardsWrapper>
                 {isLoading ?? loading ? (
                   <>
-                    {Array(24)
+                    {Array(receipesData?.length ?? 16)
                       .fill(0)
                       .map((_, index) => (
                         <Skeleton
-                          height="10rem"
-                          className="m-2"
+                          height="104px"
+                          className="md:w-14rem m-2"
                           key={index}
-                          width="14rem"
                         />
                       ))}
                   </>

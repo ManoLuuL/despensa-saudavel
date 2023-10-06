@@ -80,7 +80,7 @@ const Filters: FC<FiltersListProps> = ({ setReceipesData, setLoading }) => {
   return (
     <>
       {isLoading ? (
-        <>
+        <FiltersWrapper>
           <FiltersTitle>
             <Skeleton height="2rem" className="mb-2" width="12rem" />
           </FiltersTitle>
@@ -95,7 +95,7 @@ const Filters: FC<FiltersListProps> = ({ setReceipesData, setLoading }) => {
                 width="18rem"
               />
             ))}
-        </>
+        </FiltersWrapper>
       ) : (
         <>
           <FiltersWrapper>
