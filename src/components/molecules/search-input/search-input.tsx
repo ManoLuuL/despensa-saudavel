@@ -1,5 +1,10 @@
 import { FC, useState } from "react";
-import { SearchButton, SearchContainer, SearchInput } from "./styles";
+import {
+  RemoveSearchButton,
+  SearchButton,
+  SearchContainer,
+  SearchInput,
+} from "./styles";
 import { SearchInputProps } from "./types";
 import { Icon } from "../../atmos/icon";
 import { useReceipsService } from "../../../api/services";
@@ -18,6 +23,11 @@ const RecipeSearchInput: FC<SearchInputProps> = (props) => {
     }
   };
 
+  const handleRemoveSearchInput = async () => {
+    setSearchValue("");
+    setReceipesData(data);
+  };
+
   return (
     <SearchContainer>
       <SearchInput
@@ -31,6 +41,11 @@ const RecipeSearchInput: FC<SearchInputProps> = (props) => {
       <SearchButton type="button" onClick={handleSearchInput}>
         <Icon name="search" size={25} />
       </SearchButton>
+      {searchValue && (
+        <RemoveSearchButton type="button" onClick={handleRemoveSearchInput}>
+          <Icon name="close" size={25} />
+        </RemoveSearchButton>
+      )}
     </SearchContainer>
   );
 };

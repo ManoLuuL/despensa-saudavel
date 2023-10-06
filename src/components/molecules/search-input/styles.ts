@@ -30,3 +30,18 @@ export const SearchButton = styled.button`
   align-items: center;
   justify-content: center;
 `;
+
+export const RemoveSearchButton = styled.button`
+  position: absolute;
+  top: -15px;
+  right: 35px !important;
+  bottom: 0;
+  padding: 0 10px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

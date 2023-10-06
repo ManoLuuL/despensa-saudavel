@@ -44,6 +44,6 @@ export const CardsWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 16px;
+  padding-top: 16px;
   flex: 1;
 `;
