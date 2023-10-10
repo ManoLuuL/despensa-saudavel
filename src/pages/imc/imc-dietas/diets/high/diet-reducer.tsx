@@ -8,7 +8,7 @@ import recipesRecomend from "../../../../../data/sujestions.json";
 import { Card } from "primereact/card";
 import { RecipesModal } from "../../../../../components/organism/pre-modals";
 
-export const DietReducerGordura: FC = () => {
+export const DietReducer: FC = () => {
   const receitasRecomendadas: ReceitasIMCViewModel = recipesRecomend;
 
   const [showRecipesModal, setShowRecipesModal] = useState(false);
@@ -126,6 +126,7 @@ export const DietReducerGordura: FC = () => {
         <RecipesModal
           onHide={() => setShowRecipesModal(false)}
           recipesMock={recipeSelected}
+          showFavoriteButton={false}
         />
       )}
     </>

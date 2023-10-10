@@ -76,6 +76,7 @@ export const DietHighMass: FC = () => {
         <RecipesModal
           onHide={() => setShowRecipesModal(false)}
           recipesMock={recipeSelected}
+          showFavoriteButton={false}
         />
       )}
     </>

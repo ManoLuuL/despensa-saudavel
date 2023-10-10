@@ -3,11 +3,11 @@ import { IMCDietasProps } from "./types";
 import { Modal } from "../../../components/organism/modal";
 import {
   DietDetox,
-  DietGanhoDeMassa,
+  DietAddMass,
   DietHighMass,
   DietOther,
-  DietReducerGordura,
-  DietaObesoBaixoCusto,
+  DietReducer,
+  DietaLowPrice,
 } from "./diets";
 import { Divider } from "primereact/divider";
 
@@ -17,7 +17,7 @@ export const ModalDietasIMC: FC<IMCDietasProps> = (props) => {
   const getDiets = (category: "low" | "high" | "medium", id: number) => {
     if (category === "low") {
       if (id === 1) {
-        return <DietGanhoDeMassa />;
+        return <DietAddMass />;
       } else if (id === 2) {
         return <DietHighMass />;
       } else {
@@ -25,17 +25,17 @@ export const ModalDietasIMC: FC<IMCDietasProps> = (props) => {
       }
     } else if (category === "medium") {
       if (id === 1) {
-        return <DietGanhoDeMassa />;
+        return <DietAddMass />;
       } else if (id === 2) {
-        return <DietReducerGordura />;
+        return <DietReducer />;
       } else {
         return <DietDetox />;
       }
     } else {
       if (id === 1) {
-        return <DietaObesoBaixoCusto />;
+        return <DietaLowPrice />;
       } else if (id === 2) {
-        return <DietReducerGordura />;
+        return <DietReducer />;
       } else {
         return <DietDetox />;
       }

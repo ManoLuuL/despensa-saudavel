@@ -83,6 +83,7 @@ export const DietOther: FC = () => {
         <RecipesModal
           onHide={() => setShowRecipesModal(false)}
           recipesMock={recipeSelected}
+          showFavoriteButton={false}
         />
       )}
     </>

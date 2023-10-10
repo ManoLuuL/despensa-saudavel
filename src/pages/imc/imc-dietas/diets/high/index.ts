@@ -1,3 +1,3 @@
-export * from "./diet-obeso-baixo-custo";
-export * from "./diet-reducer-gordura";
+export * from "./diet-low-price";
+export * from "./diet-reducer";
 export * from "./diet-detox";
