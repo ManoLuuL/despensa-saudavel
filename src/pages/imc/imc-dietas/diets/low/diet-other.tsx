@@ -61,7 +61,7 @@ export const DietOther: FC = () => {
 
       <Divider />
 
-      <h3>Pode ser utilizado as seguintes receitas:</h3>
+      <h3>Algumas receitas que possam ajudar:</h3>
       <div className="grid">
         {receitasRecomendadas.receitas.map((itens) => (
           <div key={itens.titulo} className="col-4">

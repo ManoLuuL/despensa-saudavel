@@ -1,8 +1,8 @@
 import { IMCResult } from "../types";
 
-export function calculateIMC(height: string, weight: string): IMCResult {
+export function calculateIMC(height: string, weight: number): IMCResult {
   const heightInMeters = parseFloat(height);
-  const weightInKg = parseFloat(weight);
+  const weightInKg = weight;
 
   if (heightInMeters <= 0 || weightInKg <= 0) {
     return { label: "Valores inválidos", value: 0, color: "red !important" };

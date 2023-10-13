@@ -80,7 +80,7 @@ export const DietDetox: FC = () => {
       </p>
       <Divider />
 
-      <h3>Pode ser utilizado as seguintes receitas:</h3>
+      <h3>Algumas receitas que possam ajudar:</h3>
       <div className="grid">
         {randomData.receitas.map((itens) => (
           <div key={itens.titulo} className="col-4">

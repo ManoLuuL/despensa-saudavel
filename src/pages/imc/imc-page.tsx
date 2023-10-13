@@ -9,7 +9,7 @@ import {
 } from "./styles";
 import { DietasIMC, IMCResult } from "./types";
 import { calculateIMC } from "./utils/calculate-imc";
-import { InputText } from "primereact/inputtext";
+import { InputNumber } from "primereact/inputnumber";
 import TablesImc from "./utils/imc-table";
 import recipesToDay from "../../data/recipes-to-day.json";
 import { ReceitasIMCViewModel } from "../../api/view-model/receitas-imc-view-model";
@@ -26,7 +26,7 @@ import { ProgressSpinner } from "primereact/progressspinner";
 
 export const IMCPage = () => {
   const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
+  const [weight, setWeight] = useState<number>();
   const [result, setResult] = useState<IMCResult | null>(null);
   const [showDietasModal, setShowDietasModal] = useState(false);
   const [contentDieta, setContentDieta] = useState<DietasIMC>({
@@ -45,7 +45,7 @@ export const IMCPage = () => {
   const { showWarning } = useToast();
 
   const handleCalculateClick = () => {
-    const imcResult = calculateIMC(height, weight);
+    const imcResult = calculateIMC(height, weight ?? 0);
     setResult(imcResult);
 
     if (imcResult.value) {
@@ -82,7 +82,7 @@ export const IMCPage = () => {
 
   const handleResetClick = () => {
     setHeight("");
-    setWeight("");
+    setWeight(undefined);
     setResult(null);
   };
 
@@ -108,7 +108,8 @@ export const IMCPage = () => {
               <h1 style={{ textAlign: "center" }}>Calculadora de IMC</h1>
               <p>
                 O cálculo feito é de modo geral, para todos os gêneros, sempre
-                recomendamos orientações de nutricionistas.
+                recomendamos orientações de nutricionistas e outros
+                profissionais da área.
               </p>
               <div className="grid">
                 <div className="col-6">
@@ -124,10 +125,12 @@ export const IMCPage = () => {
                 </div>
                 <div className="col-6">
                   <span className="p-float-label p-input-icon-right w-full">
-                    <InputText
+                    <InputNumber
                       id="weightInput"
                       value={weight}
-                      onChange={(e) => setWeight(e.target.value)}
+                      onChange={(e) => {
+                        setWeight(e.value ?? undefined);
+                      }}
                     />
                     <label htmlFor="weightInput">Peso (kg)</label>
                   </span>

@@ -1,13 +1,10 @@
-import {
-  Nav,
-  NavBtn,
-  NavBtnLink,
-  NavLink,
-  NavMenu,
-  TitlePageNavBar,
-} from "./styles";
+import { useNavigate } from "react-router-dom";
+import { Nav, NavBtn, NavLink, NavMenu, TitlePageNavBar } from "./styles";
+import { SplitButton } from "primereact/splitbutton";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   return (
     <Nav>
       <TitlePageNavBar>Despensa Saudável</TitlePageNavBar>
@@ -19,9 +16,25 @@ const Navbar = () => {
         <NavLink to="/Sobre">Sobre nós</NavLink>
       </NavMenu>
       <NavBtn>
-        <NavBtnLink to="/DadosUsuario">
+        <SplitButton
+          label=""
+          icon="pi pi-user"
+          model={[
+            {
+              label: "Logoof",
+              icon: "pi pi-power-off",
+              command: () => {
+                localStorage.clear();
+                navigate("/");
+              },
+            },
+          ]}
+          text
+          onClick={() => navigate("/DadosUsuario")}
+        />
+        {/* <NavBtnLink to="/DadosUsuario">
           <span className="pi pi-user"></span>
-        </NavBtnLink>
+        </NavBtnLink> */}
       </NavBtn>
     </Nav>
   );
