@@ -3,11 +3,16 @@ import api from "../../axios/axios";
 import { UserRegisterViewModel } from "./view-models/user-register-view-model";
 import { SaveFavoriteDTO } from "./dto/save-favorite-dto";
 import { UserDTO } from "./dto/user-dto";
+import { UserViewModel } from "./view-models/user-view-model";
 
 export const useUserService = () => {
   const { get, post, put } = api;
 
   const getAllUsers = useCallback(async () => (await get(`users`)).data, [get]);
+  const getUser = useCallback(
+    async (id: number) => (await get<UserViewModel>(`users/${id}`)).data,
+    [get]
+  );
 
   const registerUser = useCallback(
     async (data: UserRegisterViewModel) => (await post(`users`, data)).data,
@@ -51,6 +56,7 @@ export const useUserService = () => {
     getFavorite,
     deleteFavorite,
     updateUser,
+    getUser,
     updatePassword,
   };
 };

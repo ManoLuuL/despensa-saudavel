@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react";
+import { FC, Fragment, useState } from "react";
 import { Password } from "primereact/password";
 import { useFormik } from "formik";
 import { useUserService } from "../../../api/services";
@@ -12,6 +12,7 @@ import { PasswordDiv } from "../../register/styles";
 const ModalRedefinirSenha: FC<ModalRedefinirSenhaProps> = (props) => {
   const { onHide, width, id } = props;
   const { showSuccess, showError } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
 
   const { updatePassword } = useUserService();
 
@@ -30,6 +31,7 @@ const ModalRedefinirSenha: FC<ModalRedefinirSenhaProps> = (props) => {
     },
 
     onSubmit: async (data) => {
+      setIsLoading(true);
       try {
         const newData = {
           ...data,
@@ -41,18 +43,20 @@ const ModalRedefinirSenha: FC<ModalRedefinirSenhaProps> = (props) => {
       } catch (e) {
         showError("Erro ao Alterar Senha!");
         console.error(e);
+      } finally {
+        setIsLoading(false);
       }
     },
   });
 
-  const isFormFieldValid = (name: string) =>
+  const isFormFieldValid = () =>
     // @ts-ignore
-    !!(formik.touched[name] && formik.errors[name]);
-  const getFormErrorMessage = (name: string) => {
+    !!(formik.touched["nova_senha"] && formik.errors["nova_senha"]);
+  const getFormErrorMessage = () => {
     return (
-      isFormFieldValid(name) && (
+      isFormFieldValid() && (
         //@ts-ignore
-        <small className="p-error">{formik.errors[name]}</small>
+        <small className="p-error">{formik.errors["nova_senha"]}</small>
       )
     );
   };
@@ -70,49 +74,64 @@ const ModalRedefinirSenha: FC<ModalRedefinirSenhaProps> = (props) => {
       </ul>
     </Fragment>
   );
-
+  console.log(formik.values.nova_senha);
   return (
     <Modal
       onHide={onHide}
       width={width}
       title="Alterar Senha"
       onConfirm={() => {
+        if (!formik.values.nova_senha) {
+          showError("Campo de Senha não informado!");
+          return false;
+        }
+
         formik.handleSubmit();
         return false;
       }}
+      confirmButtonConfig={{
+        content: "Modificar Senha",
+        disabled: isLoading,
+      }}
     >
-      <form>
-        <PasswordDiv className="field w-full">
-          <span className="p-float-label">
-            <Password
-              id="nova_senha"
-              style={{ width: "100%" }}
-              name="nova_senha"
-              value={formik.values.nova_senha}
-              onChange={formik.handleChange}
-              toggleMask
-              className={classNames({
-                "p-invalid": isFormFieldValid("nova_senha"),
-              })}
-              header={passwordHeader}
-              footer={passwordFooter}
-              promptLabel="Insira a senha"
-              weakLabel="Muito simples"
-              mediumLabel="Senha aceitavel"
-              strongLabel="Senha excelente"
-            />
-            <label
-              htmlFor="nova_senha"
-              className={classNames({
-                "p-error": isFormFieldValid("nova_senha"),
-              })}
-            >
-              * Nova Senha
-            </label>
-          </span>
-          {getFormErrorMessage("nova_senha")}
-        </PasswordDiv>
-      </form>
+      <>
+        <h4>
+          Ao confirmar a senha atual será modificada para nova senha informada
+          no campo a baixo.
+        </h4>
+        <form>
+          <PasswordDiv className="field w-full">
+            <span className="p-float-label">
+              <Password
+                id="nova_senha"
+                style={{ width: "100%" }}
+                name="nova_senha"
+                value={formik.values.nova_senha}
+                onChange={formik.handleChange}
+                toggleMask
+                className={classNames({
+                  "p-invalid": isFormFieldValid(),
+                })}
+                header={passwordHeader}
+                footer={passwordFooter}
+                promptLabel="Insira a senha"
+                weakLabel="Muito simples"
+                mediumLabel="Senha aceitavel"
+                strongLabel="Senha excelente"
+              />
+              <label
+                htmlFor="nova_senha"
+                className={classNames({
+                  "p-error": isFormFieldValid(),
+                })}
+              >
+                * Nova Senha
+              </label>
+            </span>
+            {getFormErrorMessage()}
+          </PasswordDiv>
+        </form>
+      </>
     </Modal>
   );
 };

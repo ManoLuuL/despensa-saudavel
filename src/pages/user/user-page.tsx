@@ -33,7 +33,8 @@ export const UserPage: FC = () => {
   });
 
   const formik = useFormik({
-    initialValues: connection.data,
+    initialValues: connection,
+
     validate: (data) => {
       let errors: Record<string, string> = {};
 
@@ -63,7 +64,9 @@ export const UserPage: FC = () => {
         const newData: UserDTO = {
           ...data,
         };
-        await updateUser(newData, connection.data.id);
+        await updateUser(newData, connection.id);
+
+        localStorage.setItem("userData", JSON.stringify(newData));
 
         showSuccess("Registro Alterado com Sucesso");
         setIsSubmit(false);
@@ -93,7 +96,7 @@ export const UserPage: FC = () => {
                       <span className="p-float-label">
                         <InputText
                           id="userName"
-                          defaultValue={connection.data.nome}
+                          defaultValue={connection.nome}
                           style={{ width: "100%" }}
                         />
                         <label htmlFor="userName">Nome:</label>
@@ -103,7 +106,7 @@ export const UserPage: FC = () => {
                       <span className="p-float-label">
                         <InputText
                           id="emailUser"
-                          defaultValue={connection.data.email}
+                          defaultValue={connection.email}
                           style={{ width: "100%" }}
                         />
                         <label htmlFor="emailUser">E-mail:</label>
@@ -113,7 +116,7 @@ export const UserPage: FC = () => {
                       <span className="p-float-label">
                         <InputText
                           id="idadeUser"
-                          defaultValue={connection.data.idade}
+                          defaultValue={connection.idade}
                           style={{ width: "100%" }}
                         />
                         <label htmlFor="idadeUser">Idade:</label>
@@ -202,16 +205,23 @@ export const UserPage: FC = () => {
           />
           {isNewPassword && (
             <ModalRedefinirSenha
-              id={connection.data.id}
+              id={connection.id}
               onHide={() => setNewPassword(false)}
-              width={{ default: "80rem", mobile: "80vw" }}
+              width={{ default: "30vw", mobile: "80vw" }}
             />
           )}
         </>
       ) : (
-        <div className="card flex justify-content-center">
-          <ProgressSpinner />
-        </div>
+        <>
+          <Navbar />
+          <Container
+            content={
+              <div className="card flex justify-content-center align-items-center">
+                <ProgressSpinner />
+              </div>
+            }
+          />
+        </>
       )}
     </>
   );

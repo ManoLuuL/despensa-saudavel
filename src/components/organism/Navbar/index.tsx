@@ -21,7 +21,7 @@ const Navbar = () => {
           icon="pi pi-user"
           model={[
             {
-              label: "Logoof",
+              label: "Logoff",
               icon: "pi pi-power-off",
               command: () => {
                 localStorage.clear();
@@ -32,9 +32,6 @@ const Navbar = () => {
           text
           onClick={() => navigate("/DadosUsuario")}
         />
-        {/* <NavBtnLink to="/DadosUsuario">
-          <span className="pi pi-user"></span>
-        </NavBtnLink> */}
       </NavBtn>
     </Nav>
   );

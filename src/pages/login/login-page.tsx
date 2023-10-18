@@ -49,7 +49,7 @@ export const LoginPage: FC = () => {
       setIsSubmit(true);
       try {
         const loginData = await login(data);
-        localStorage.setItem("userData", JSON.stringify(loginData));
+        localStorage.setItem("userData", JSON.stringify(loginData.data));
         showSuccess("Logado com sucesso!");
         navigate("/home");
         setIsSubmit(false);
