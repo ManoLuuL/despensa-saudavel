@@ -6,7 +6,7 @@ import { ReceitaIngredienteDTO } from "./dto";
 export const useReceipsService = () => {
   const { get, post } = api;
 
-  const getIngredientes = useCallback(
+  const getIngredients = useCallback(
     async () => (await get<IngredientesViewModel[]>(`ingredientes`)).data,
     [get]
   );
@@ -16,29 +16,29 @@ export const useReceipsService = () => {
     [get]
   );
 
-  const getReceitaIngrediente = useCallback(
+  const getReceipIngredient = useCallback(
     async (data: ReceitaIngredienteDTO) =>
       (await post(`/receitas/buscar_por_ingredientes_e_restricoes`, data)).data,
     [post]
   );
 
-  const getAllFavoriteReceitas = useCallback(
+  const getAllFavoriteReceips = useCallback(
     async (id: number) =>
       (await get<ReceitasViewModel[]>(`receitas_favoritas/${id}`)).data,
     [get]
   );
 
-  const getSearchReceitas = useCallback(
+  const getSearchReceips = useCallback(
     async (name: string) =>
       (await get<ReceitasViewModel[]>(`receitas/buscar?nome=${name}`)).data,
     [get]
   );
 
   return {
-    getIngredientes,
+    getIngredients,
     getAllReceitas,
-    getReceitaIngrediente,
-    getAllFavoriteReceitas,
-    getSearchReceitas,
+    getReceipIngredient,
+    getAllFavoriteReceips,
+    getSearchReceips,
   };
 };

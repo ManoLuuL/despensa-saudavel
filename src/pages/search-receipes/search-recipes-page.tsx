@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import Filters from "./filters/filter-ingredients";
 import Navbar from "../../components/organism/Navbar";
-import { CardsWrapper, FiltersWrapper, PageWrapper } from "./styles";
+import { CardsWrapper, PageWrapper } from "./styles";
 import { Card } from "primereact/card";
 import { RecipesModal } from "../../components/organism/pre-modals";
 import { useQuery } from "../../globals/hooks/use-query";
@@ -26,7 +26,7 @@ export const RecipeSearch: FC = () => {
     },
   });
 
-  const [loading, setLoading] = useState<boolean>(isLoading);
+  const [loading, setLoading] = useState<boolean>(false);
   const { connection } = useIsConnected();
   const navigate = useNavigate();
   const [conn, setConn] = useState(false);
@@ -55,16 +55,14 @@ export const RecipeSearch: FC = () => {
             </div>
           </div>
           <PageWrapper>
-            <FiltersWrapper>
-              <Filters
-                setReceipesData={setReceipesData}
-                setLoading={setLoading}
-              />
-            </FiltersWrapper>
+            <Filters
+              setReceipesData={setReceipesData}
+              setLoading={setLoading}
+            />
 
             <div>
               <CardsWrapper>
-                {isLoading ?? loading ? (
+                {isLoading || loading ? (
                   <>
                     {Array(receipesData?.length ?? 16)
                       .fill(0)

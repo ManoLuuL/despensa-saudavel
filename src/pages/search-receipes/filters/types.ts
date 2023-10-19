@@ -5,8 +5,3 @@ export type FiltersListProps = {
   setReceipesData(value: SetStateAction<ReceitasViewModel[] | undefined>): void;
   setLoading(value: SetStateAction<boolean>): void;
 };
-
-export type Restricoes = {
-  id: number;
-  description: string;
-};

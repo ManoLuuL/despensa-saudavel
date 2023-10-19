@@ -16,7 +16,7 @@ export const FavoriteRecipe: FC = () => {
   const navigate = useNavigate();
   const [conn, setConn] = useState(false);
   const { showWarning } = useToast();
-  const { getAllFavoriteReceitas } = useReceipsService();
+  const { getAllFavoriteReceips } = useReceipsService();
 
   useEffectOnce(() => {
     if (connection === undefined) {
@@ -27,7 +27,7 @@ export const FavoriteRecipe: FC = () => {
     } else setConn(true);
   });
   const { data, isLoading } = useQuery({
-    query: async () => await getAllFavoriteReceitas(connection.data.id),
+    query: async () => await getAllFavoriteReceips(connection.data.id),
   });
 
   const [showRecipe, setShowRecipe] = useState(false);

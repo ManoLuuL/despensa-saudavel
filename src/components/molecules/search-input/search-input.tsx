@@ -12,11 +12,11 @@ import { useReceipsService } from "../../../api/services";
 const RecipeSearchInput: FC<SearchInputProps> = (props) => {
   const { setReceipesData, data } = props;
   const [searchValue, setSearchValue] = useState<string>("");
-  const { getSearchReceitas } = useReceipsService();
+  const { getSearchReceips } = useReceipsService();
 
   const handleSearchInput = async () => {
     if (searchValue !== "") {
-      const newData = await getSearchReceitas(searchValue);
+      const newData = await getSearchReceips(searchValue);
       setReceipesData(newData);
     } else {
       setReceipesData(data);

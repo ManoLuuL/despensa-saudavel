@@ -1,7 +1,7 @@
-import { Restricoes } from "./types";
+import { Restrictions } from "./types";
 
-export const getRestricoes = () => {
-  const dataRestricoes: Restricoes[] = [
+export const useRestrictions = () => {
+  const dataRestricoes: Restrictions[] = [
     {
       id: 1,
       description: "Diabetico",

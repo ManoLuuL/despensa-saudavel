@@ -1,6 +1,12 @@
 import { FC, useState } from "react";
 import { Checkbox, CheckboxChangeEvent } from "primereact/checkbox";
-import { FiltersList, FiltersTitle, FiltersWrapper } from "./styles";
+import {
+  FiltersList,
+  FiltersTitle,
+  FiltersWrapper,
+  FilterContent,
+  FilterContainer,
+} from "./styles";
 import { FiltersListProps } from "./types";
 import { Divider } from "primereact/divider";
 import {
@@ -11,52 +17,51 @@ import { useQuery } from "../../../globals/hooks/use-query";
 import { Skeleton } from "primereact/skeleton";
 import { Button } from "../../../components/molecules/button-custom";
 import { ReceitaIngredienteDTO } from "../../../api/services/receips/dto";
-import { useToast } from "../../../globals/hooks";
-import { getRestricoes } from "./get-restricoes";
+import { useRestrictions, useToast } from "../../../globals/hooks";
 
 const Filters: FC<FiltersListProps> = ({ setReceipesData, setLoading }) => {
-  const { getIngredientes, getReceitaIngrediente } = useReceipsService();
+  const { getIngredients, getReceipIngredient } = useReceipsService();
   const { showError } = useToast();
 
   const { data: filtro, isLoading } = useQuery({
-    query: async () => await getIngredientes(),
+    query: async () => await getIngredients(),
   });
 
-  const { dataRestricoes } = getRestricoes();
+  const { dataRestricoes } = useRestrictions();
 
   const [ingredients, setIngredients] = useState<string[]>([]);
-  const [restricoes, setRestricoes] = useState<string[]>([]);
+  const [restrictions, setRestrictions] = useState<string[]>([]);
   const [ids, setIds] = useState<number[]>([]);
 
-  const onIngredientsChange = (
+  const handleIngredientsChange = (
     e: CheckboxChangeEvent,
     data: IngredientesViewModel
   ) => {
-    let _ingredients = [...ingredients];
-    let _ids = [...ids];
+    let newIngredients = [...ingredients];
+    let newIds = [...ids];
 
     if (e.checked) {
-      _ingredients.push(e.value);
-      _ids.push(data.id);
+      newIngredients.push(e.value);
+      newIds.push(data.id);
     } else {
-      _ingredients.splice(_ingredients.indexOf(e.value), 1);
-      _ids.splice(_ids.indexOf(data.id), 1);
+      newIngredients.splice(newIngredients.indexOf(e.value), 1);
+      newIds.splice(newIds.indexOf(data.id), 1);
     }
 
-    setIngredients(_ingredients);
-    setIds(_ids);
+    setIngredients(newIngredients);
+    setIds(newIds);
   };
 
   const onRestritChange = (e: CheckboxChangeEvent) => {
-    let _restricoes = [...restricoes];
+    let newRestrictions = [...restrictions];
 
     if (e.checked) {
-      _restricoes.push(e.value);
+      newRestrictions.push(e.value);
     } else {
-      _restricoes.splice(_restricoes.indexOf(e.value), 1);
+      newRestrictions.splice(newRestrictions.indexOf(e.value), 1);
     }
 
-    setRestricoes(_restricoes);
+    setRestrictions(newRestrictions);
   };
 
   const handleFilterSubmit = async () => {
@@ -64,10 +69,31 @@ const Filters: FC<FiltersListProps> = ({ setReceipesData, setLoading }) => {
     try {
       const newData: ReceitaIngredienteDTO = {
         ingredientes_ids: ids,
-        restricoes: restricoes,
+        restrictions: restrictions,
       };
 
-      const newReceitas = await getReceitaIngrediente(newData);
+      const newReceitas = await getReceipIngredient(newData);
+      setReceipesData(newReceitas);
+    } catch (e) {
+      showError("Erro ao buscar receitas pelos filtros selecionados!");
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleClearFilter = async () => {
+    setIngredients([]);
+    setIds([]);
+    setRestrictions([]);
+    setLoading(true);
+    try {
+      const newData: ReceitaIngredienteDTO = {
+        ingredientes_ids: [],
+        restrictions: [],
+      };
+
+      const newReceitas = await getReceipIngredient(newData);
       setReceipesData(newReceitas);
     } catch (e) {
       showError("Erro ao buscar receitas pelos filtros selecionados!");
@@ -78,72 +104,84 @@ const Filters: FC<FiltersListProps> = ({ setReceipesData, setLoading }) => {
   };
 
   return (
-    <>
-      {isLoading ? (
-        <FiltersWrapper>
-          <FiltersTitle>
-            <Skeleton height="2rem" className="mb-2" width="12rem" />
-          </FiltersTitle>
+    <FilterContainer>
+      <FiltersWrapper>
+        {isLoading ? (
+          <FilterContent>
+            <FiltersTitle>
+              <Skeleton height="2rem" className="mb-2" width="14rem" />
+            </FiltersTitle>
 
-          {Array(8)
-            .fill(0)
-            .map((_, index) => (
-              <Skeleton
-                height="2rem"
-                className="mb-2"
-                key={index}
-                width="12rem"
-              />
-            ))}
-        </FiltersWrapper>
-      ) : (
-        <>
-          <FiltersWrapper>
-            <FiltersTitle>Ingredientes</FiltersTitle>
-            <FiltersList>
-              {filtro &&
-                filtro.map((data, index) => (
-                  <div key={index}>
-                    <Checkbox
-                      checked={ingredients.includes(data.descricao)}
-                      onChange={(check) => onIngredientsChange(check, data)}
-                      value={data.descricao}
-                    />
-                    <label className="m-1">
-                      {data.descricao.toUpperCase()}
-                    </label>
-                  </div>
-                ))}
-            </FiltersList>
+            {Array(20)
+              .fill(0)
+              .map((_, index) => (
+                <Skeleton
+                  height="2rem"
+                  className="mb-2"
+                  key={index}
+                  width="14rem"
+                />
+              ))}
+          </FilterContent>
+        ) : (
+          <>
+            <FilterContent>
+              <FiltersTitle>Ingredientes</FiltersTitle>
+              <FiltersList>
+                {filtro &&
+                  filtro.map((data, index) => (
+                    <div key={index} className="mb-1">
+                      <Checkbox
+                        checked={ingredients.includes(data.descricao)}
+                        onChange={(check) =>
+                          handleIngredientsChange(check, data)
+                        }
+                        value={data.descricao}
+                      />
+                      <label className="m-1">
+                        {data.descricao.toUpperCase()}
+                      </label>
+                    </div>
+                  ))}
+              </FiltersList>
 
-            <Divider />
-            <FiltersTitle>Restrições</FiltersTitle>
-            <FiltersList>
-              {dataRestricoes &&
-                dataRestricoes.map((data, index) => (
-                  <div key={index}>
-                    <Checkbox
-                      checked={restricoes.includes(data.description)}
-                      onChange={onRestritChange}
-                      value={data.description}
-                    />
-                    <label className="m-1">
-                      {data.description.toUpperCase()}
-                    </label>
-                  </div>
-                ))}
-            </FiltersList>
-            <div className="flex justify-content-center mt-2">
-              <Button
-                text="Buscar"
-                color="contrast"
-                onClick={handleFilterSubmit}
-              />
-            </div>
-          </FiltersWrapper>
-        </>
-      )}
-    </>
+              <Divider />
+              <FiltersTitle>Restrições</FiltersTitle>
+              <FiltersList>
+                {dataRestricoes &&
+                  dataRestricoes.map((data, index) => (
+                    <div key={index} className="mb-1">
+                      <Checkbox
+                        checked={restrictions.includes(data.description)}
+                        onChange={onRestritChange}
+                        value={data.description}
+                      />
+                      <label className="m-1">
+                        {data.description.toUpperCase()}
+                      </label>
+                    </div>
+                  ))}
+              </FiltersList>
+              <Divider />
+            </FilterContent>
+          </>
+        )}
+      </FiltersWrapper>
+      <div className="flex justify-content-center mt-3 gap-2">
+        <Button
+          text="Limpar Filtros"
+          color="danger"
+          onClick={handleClearFilter}
+          disabled={isLoading}
+        />
+        <Button
+          text="Buscar"
+          color="contrast"
+          onClick={handleFilterSubmit}
+          disabled={isLoading}
+        />
+      </div>
+    </FilterContainer>
   );
 };
 
