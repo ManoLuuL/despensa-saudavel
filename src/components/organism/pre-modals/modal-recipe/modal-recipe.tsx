@@ -12,6 +12,8 @@ import { useEffectOnce } from "../../../../globals";
 export const RecipesModal: FC<RecipesModalProps> = (props) => {
   const { recipes, onHide, showFavoriteButton = true, recipesMock } = props;
 
+  console.log(recipes);
+
   const [isLoadingSubmit, setIsLoadingSubmit] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -30,7 +32,7 @@ export const RecipesModal: FC<RecipesModalProps> = (props) => {
   useEffectOnce(() => {
     (async () => {
       const fav = await getFavorite({
-        id_usuario: data.data.id ?? 0,
+        id_usuario: data.id ?? 0,
         id_receita: recipes?.id ?? 0,
       });
 
@@ -44,7 +46,7 @@ export const RecipesModal: FC<RecipesModalProps> = (props) => {
     try {
       if (favorite) {
         await deleteFavorite({
-          id_usuario: data.data.id ?? 0,
+          id_usuario: data.id ?? 0,
           id_receita: recipes?.id ?? 0,
         });
         setFavorite(false);
@@ -52,7 +54,7 @@ export const RecipesModal: FC<RecipesModalProps> = (props) => {
         setIsLoadingSubmit(false);
       } else {
         await saveFavorite({
-          id_usuario: data.data.id ?? 0,
+          id_usuario: data.id ?? 0,
           id_receita: recipes?.id ?? 0,
         });
         setFavorite(true);

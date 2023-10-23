@@ -27,7 +27,7 @@ export const FavoriteRecipe: FC = () => {
     } else setConn(true);
   });
   const { data, isLoading } = useQuery({
-    query: async () => await getAllFavoriteReceips(connection.data.id),
+    query: async () => await getAllFavoriteReceips(connection.id),
   });
 
   const [showRecipe, setShowRecipe] = useState(false);
