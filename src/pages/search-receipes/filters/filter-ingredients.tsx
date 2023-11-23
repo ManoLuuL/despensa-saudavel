@@ -1,23 +1,24 @@
-import { FC, useState } from "react";
 import { Checkbox, CheckboxChangeEvent } from "primereact/checkbox";
+import { FC, useState } from "react";
 import {
+  FilterContainer,
+  FilterContent,
   FiltersList,
   FiltersTitle,
   FiltersWrapper,
-  FilterContent,
-  FilterContainer,
 } from "./styles";
-import { FiltersListProps } from "./types";
-import { Divider } from "primereact/divider";
 import {
   IngredientesViewModel,
   useReceipsService,
 } from "../../../api/services";
-import { useQuery } from "../../../globals/hooks/use-query";
-import { Skeleton } from "primereact/skeleton";
-import { Button } from "../../../components/molecules/button-custom";
-import { ReceitaIngredienteDTO } from "../../../api/services/receips/dto";
 import { useRestrictions, useToast } from "../../../globals/hooks";
+
+import { Button } from "../../../components/molecules/button-custom";
+import { Divider } from "primereact/divider";
+import { FiltersListProps } from "./types";
+import { ReceitaIngredienteDTO } from "../../../api/services/receips/dto";
+import { Skeleton } from "primereact/skeleton";
+import { useQuery } from "../../../globals/hooks/use-query";
 
 const Filters: FC<FiltersListProps> = ({ setReceipesData, setLoading }) => {
   const { getIngredients, getReceipIngredient } = useReceipsService();
@@ -129,38 +130,44 @@ const Filters: FC<FiltersListProps> = ({ setReceipesData, setLoading }) => {
               <FiltersTitle>Ingredientes</FiltersTitle>
               <FiltersList>
                 {filtro &&
-                  filtro.map((data, index) => (
-                    <div key={index} className="mb-1">
-                      <Checkbox
-                        checked={ingredients.includes(data.descricao)}
-                        onChange={(check) =>
-                          handleIngredientsChange(check, data)
-                        }
-                        value={data.descricao}
-                      />
-                      <label className="m-1">
-                        {data.descricao.toUpperCase()}
-                      </label>
-                    </div>
-                  ))}
+                  filtro
+                    .slice()
+                    .sort((a, b) => a.descricao.localeCompare(b.descricao))
+                    .map((data, index) => (
+                      <div key={index} className="mb-1">
+                        <Checkbox
+                          checked={ingredients.includes(data.descricao)}
+                          onChange={(check) =>
+                            handleIngredientsChange(check, data)
+                          }
+                          value={data.descricao}
+                        />
+                        <label className="m-1">
+                          {data.descricao.toUpperCase()}
+                        </label>
+                      </div>
+                    ))}
               </FiltersList>
 
               <Divider />
               <FiltersTitle>Restrições</FiltersTitle>
               <FiltersList>
                 {dataRestricoes &&
-                  dataRestricoes.map((data, index) => (
-                    <div key={index} className="mb-1">
-                      <Checkbox
-                        checked={restrictions.includes(data.description)}
-                        onChange={onRestritChange}
-                        value={data.description}
-                      />
-                      <label className="m-1">
-                        {data.description.toUpperCase()}
-                      </label>
-                    </div>
-                  ))}
+                  dataRestricoes
+                    .slice()
+                    .sort((a, b) => a.description.localeCompare(b.description))
+                    .map((data, index) => (
+                      <div key={index} className="mb-1">
+                        <Checkbox
+                          checked={restrictions.includes(data.description)}
+                          onChange={onRestritChange}
+                          value={data.description}
+                        />
+                        <label className="m-1">
+                          {data.description.toUpperCase()}
+                        </label>
+                      </div>
+                    ))}
               </FiltersList>
               <Divider />
             </FilterContent>
