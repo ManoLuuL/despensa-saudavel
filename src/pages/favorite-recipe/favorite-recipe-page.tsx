@@ -1,15 +1,16 @@
-import { Divider } from "primereact/divider";
-import { Container } from "../../components/atmos/container";
-import Navbar from "../../components/organism/Navbar";
-import { Card } from "primereact/card";
-import { useEffectOnce, useIsConnected, useToast } from "../../globals/hooks";
-import { useNavigate } from "react-router-dom";
 import { FC, useState } from "react";
-import { ProgressSpinner } from "primereact/progressspinner";
 import { ReceitasViewModel, useReceipsService } from "../../api/services";
-import { useQuery } from "../../globals/hooks/use-query";
+import { useEffectOnce, useIsConnected, useToast } from "../../globals/hooks";
+
+import { Card } from "primereact/card";
+import { Container } from "../../components/atmos/container";
+import { Divider } from "primereact/divider";
+import Navbar from "../../components/organism/Navbar";
+import { ProgressSpinner } from "primereact/progressspinner";
 import { RecipesModal } from "../../components/organism/pre-modals";
 import { Skeleton } from "primereact/skeleton";
+import { useNavigate } from "react-router-dom";
+import { useQuery } from "../../globals/hooks/use-query";
 
 export const FavoriteRecipe: FC = () => {
   const { connection } = useIsConnected();
@@ -61,18 +62,21 @@ export const FavoriteRecipe: FC = () => {
                     </>
                   ) : (
                     <>
-                      {data?.map((item, index) => (
-                        <Card
-                          className="md:w-14rem m-2"
-                          style={{ height: "104px", cursor: "pointer" }}
-                          title={item.nome}
-                          key={index}
-                          onClick={() => {
-                            setShowRecipe(true);
-                            setRecipeSelected(item);
-                          }}
-                        />
-                      ))}
+                      {data
+                        ?.slice()
+                        .sort((a, b) => a.nome.localeCompare(b.nome))
+                        .map((item, index) => (
+                          <Card
+                            className="md:w-14rem m-2"
+                            style={{ height: "104px", cursor: "pointer" }}
+                            title={item.nome}
+                            key={index}
+                            onClick={() => {
+                              setShowRecipe(true);
+                              setRecipeSelected(item);
+                            }}
+                          />
+                        ))}
                     </>
                   )}
                 </div>
