@@ -1,5 +1,3 @@
-import { useState } from "react";
-import Navbar from "../../components/organism/Navbar";
 import {
   ContentWrapper,
   IMCTable,
@@ -8,21 +6,24 @@ import {
   ReceitasWrapper,
 } from "./styles";
 import { DietasIMC, IMCResult } from "./types";
-import { calculateIMC } from "./utils/calculate-imc";
-import { InputNumber } from "primereact/inputnumber";
-import TablesImc from "./utils/imc-table";
-import recipesToDay from "../../data/recipes-to-day.json";
-import { ReceitasIMCViewModel } from "../../api/view-model/receitas-imc-view-model";
-import { ReceitasIMC } from "./imc-recepes";
-import { Card } from "primereact/card";
-import { ModalDietasIMC } from "./imc-dietas";
-import { Divider } from "primereact/divider";
-import { Button } from "../../components/molecules/button-custom";
-import { getRecommendations } from "./utils/get-recommendations";
-import { InputMask } from "primereact/inputmask";
 import { useEffectOnce, useIsConnected, useToast } from "../../globals/hooks";
-import { useNavigate } from "react-router-dom";
+
+import { Button } from "../../components/molecules/button-custom";
+import { Card } from "primereact/card";
+import { Divider } from "primereact/divider";
+import { InputMask } from "primereact/inputmask";
+import { InputNumber } from "primereact/inputnumber";
+import { ModalDietasIMC } from "./imc-dietas";
+import Navbar from "../../components/organism/Navbar";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { ReceitasIMC } from "./imc-recepes";
+import { ReceitasIMCViewModel } from "../../api/view-model/receitas-imc-view-model";
+import TablesImc from "./utils/imc-table";
+import { calculateIMC } from "./utils/calculate-imc";
+import { getRecommendations } from "./utils/get-recommendations";
+import recipesToDay from "../../data/recipes-to-day.json";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export const IMCPage = () => {
   const [height, setHeight] = useState("");
@@ -112,7 +113,7 @@ export const IMCPage = () => {
                 profissionais da área.
               </p>
               <div className="grid">
-                <div className="col-6">
+                <div className="col-5">
                   <span className="p-float-label p-input-icon-right w-full">
                     <InputMask
                       id="heightInput"
@@ -123,7 +124,8 @@ export const IMCPage = () => {
                     <label htmlFor="heightInput">Altura (m)</label>
                   </span>
                 </div>
-                <div className="col-6">
+                <div className="col-1" />
+                <div className="col-5">
                   <span className="p-float-label p-input-icon-right w-full">
                     <InputNumber
                       id="weightInput"
@@ -142,14 +144,6 @@ export const IMCPage = () => {
                   width: "20vw",
                 }}
               >
-                <div className="col-6 justify-content-start">
-                  <Button
-                    text="Calcular"
-                    icon="calculate"
-                    onClick={handleCalculateClick}
-                    color="success"
-                  />
-                </div>
                 <div className="col-6">
                   <Button
                     text="Limpar"
@@ -157,6 +151,14 @@ export const IMCPage = () => {
                     onClick={handleResetClick}
                     className="justify-content-end"
                     color="danger"
+                  />
+                </div>
+                <div className="col-6">
+                  <Button
+                    text="Calcular"
+                    icon="calculate"
+                    onClick={handleCalculateClick}
+                    color="success"
                   />
                 </div>
               </div>
