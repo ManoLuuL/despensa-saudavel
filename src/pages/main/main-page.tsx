@@ -1,5 +1,3 @@
-import { FC } from "react";
-import { NavLink } from "react-router-dom";
 import {
   Buttons,
   ContainerGlobalHome,
@@ -9,9 +7,12 @@ import {
   Overlay,
   TitlePage,
 } from "./styles";
-import imgLogo from "./assets/logo_facul.png";
-import imgHome from "./assets/image.png";
+
 import { Button } from "../../components/molecules/button";
+import { FC } from "react";
+import { NavLink } from "react-router-dom";
+import imgHome from "./assets/image.png";
+import imgLogo from "./assets/logo_facul.png";
 
 export const MainPage: FC = () => {
   return (
@@ -37,10 +38,10 @@ export const MainPage: FC = () => {
             dia.
           </Description>
           <Buttons>
-            <NavLink to={"/Login"}>
+            <NavLink to={"/Login"} style={{ textDecoration: "none" }}>
               <Button content="Login" />
             </NavLink>
-            <NavLink to={"/Registrar"}>
+            <NavLink to={"/Registrar"} style={{ textDecoration: "none" }}>
               <Button content="Cadastrar-se" />
             </NavLink>
           </Buttons>

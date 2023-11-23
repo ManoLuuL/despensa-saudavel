@@ -1,16 +1,17 @@
-import { useFormik } from "formik";
-import { FC, useState } from "react";
-import img from "./assets/image.jpg";
 import { Container, LeftContent, PasswordDiv } from "./styles";
+import { FC, useState } from "react";
+
+import { Button } from "../../components/molecules/button";
 import { InputText } from "primereact/inputtext";
+import { LoginFormType } from "./types";
+import { NavLink } from "react-router-dom";
 import { Password } from "primereact/password";
 import { classNames } from "primereact/utils";
-import { Button } from "../../components/molecules/button";
-import { NavLink } from "react-router-dom";
-import { LoginFormType } from "./types";
+import img from "./assets/image.jpg";
+import { useAuthService } from "../../api/services";
+import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../../globals/hooks/use-toast";
-import { useAuthService } from "../../api/services";
 
 export const LoginPage: FC = () => {
   let LoginValues: LoginFormType = {
@@ -135,10 +136,11 @@ export const LoginPage: FC = () => {
                 {getFormErrorMessage("senha")}
               </PasswordDiv>
               <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
-                <NavLink to={"/"}>
+                <NavLink to={"/"} style={{ textDecoration: "none" }}>
                   <Button content="Voltar" type="button" disabled={isSubmit} />
                 </NavLink>
-                <Button content="Acessar" type="submit" disabled={isSubmit} />
+
+                <Button content="Acessar" type="submit" loading={isSubmit} />
               </div>
             </form>
           </div>

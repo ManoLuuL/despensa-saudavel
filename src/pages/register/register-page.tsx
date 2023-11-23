@@ -1,19 +1,20 @@
-import { useFormik } from "formik";
-import { FC, Fragment, useState } from "react";
-import img from "./assets/salada.jpg";
 import { Container, LeftContent, PasswordDiv } from "./styles";
+import { FC, Fragment, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+
+import { Button } from "../../components/molecules/button";
+import { Checkbox } from "primereact/checkbox";
+import { Divider } from "primereact/divider";
+import { InputNumber } from "primereact/inputnumber";
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
-import { classNames } from "primereact/utils";
-import { Divider } from "primereact/divider";
-import { Button } from "../../components/molecules/button";
-import { NavLink, useNavigate } from "react-router-dom";
 import { RegisterForm } from "./types";
-import { useToast } from "../../globals/hooks/use-toast";
 import { UserRegisterViewModel } from "../../api/services/user/view-models/user-register-view-model";
-import { InputNumber } from "primereact/inputnumber";
+import { classNames } from "primereact/utils";
+import img from "./assets/salada.jpg";
+import { useFormik } from "formik";
+import { useToast } from "../../globals/hooks/use-toast";
 import { useUserService } from "../../api/services";
-import { Checkbox } from "primereact/checkbox";
 
 export const RegisterPage: FC = () => {
   const navigate = useNavigate();
@@ -279,11 +280,11 @@ export const RegisterPage: FC = () => {
               </div>
 
               <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
-                <NavLink to={"/"}>
+                <NavLink to={"/"} style={{ textDecoration: "none" }}>
                   <Button content="Voltar" type="button" disabled={isSubmit} />
                 </NavLink>
 
-                <Button content="Confirmar" type="submit" disabled={isSubmit} />
+                <Button content="Confirmar" type="submit" loading={isSubmit} />
               </div>
             </form>
           </div>

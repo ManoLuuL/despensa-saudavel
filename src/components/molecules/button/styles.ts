@@ -1,10 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-interface ButtonProps {
-  disabled?: boolean; // Include the disabled prop in the component's props
-}
+import { ButtonStyledProps } from "./types";
 
-export const ButtonStyled = styled.button<ButtonProps>`
+const spinAnimation = keyframes`
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const ButtonStyled = styled.button<ButtonStyledProps>`
   margin: 0 1rem;
   width: 250px;
   padding: 0.75rem 1.5rem;
@@ -15,17 +19,20 @@ export const ButtonStyled = styled.button<ButtonProps>`
   color: white;
   cursor: pointer;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
 
   &:hover {
     background-color: #8000ff;
   }
+`;
 
-  /* Use a template literal to apply styles conditionally based on the disabled prop */
-  ${({ disabled }) =>
-    disabled &&
-    `
-      opacity: 0.6;
-      cursor: not-allowed;
-      pointer-events: none;
-    `}
+export const Loader = styled.div`
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: ${spinAnimation} 1s linear infinite;
 `;
