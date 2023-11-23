@@ -1,9 +1,9 @@
 import { ButtonProps, ButtonRef } from "./types";
+import { Container, Loader } from "./styles";
+import { Icon, IconProps } from "../../atmos/icon";
 
 import { Button as BaseButton } from "primereact/button";
-import { Container } from "./styles";
 import { forwardRef } from "react";
-import { Icon, IconProps } from "../../atmos/icon";
 
 export const Button = forwardRef<ButtonRef, ButtonProps>((props, ref) => {
   const {
@@ -21,7 +21,6 @@ export const Button = forwardRef<ButtonRef, ButtonProps>((props, ref) => {
     className = "",
     style = {},
     type = "button",
-    loadingIconConfig,
     onClick,
     children,
     elementAttributes,
@@ -35,14 +34,7 @@ export const Button = forwardRef<ButtonRef, ButtonProps>((props, ref) => {
   const iconSide = `icon-${iconPos}`;
 
   const ButtonIcon = loading ? (
-    <Icon
-      {...buttonIcon}
-      {...loadingIconConfig}
-      name="refresh"
-      className={`rotate ${text ? iconSide : ""} ${
-        loadingIconConfig?.className || ""
-      } ${buttonIcon?.className || ""}`}
-    />
+    <Loader />
   ) : (
     !!buttonIcon && (
       <Icon
@@ -74,6 +66,7 @@ export const Button = forwardRef<ButtonRef, ButtonProps>((props, ref) => {
         onClick={onClick}
         ref={ref}
         disabled={disabled}
+        loading={loading}
       >
         {children}
       </BaseButton>

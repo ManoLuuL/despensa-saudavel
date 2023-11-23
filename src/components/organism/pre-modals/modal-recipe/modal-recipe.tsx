@@ -1,18 +1,17 @@
 import { FC, useMemo, useState } from "react";
-import { RecipesModalProps } from "./types";
+
+import { Button } from "../../../molecules/button-custom";
+import { Checkbox } from "primereact/checkbox";
 import { Divider } from "primereact/divider";
 import { Modal } from "../../modal";
-import { Button } from "../../../molecules/button-custom";
+import { RecipesModalProps } from "./types";
+import { Skeleton } from "primereact/skeleton";
+import { useEffectOnce } from "../../../../globals";
 import { useToast } from "../../../../globals/hooks/use-toast";
 import { useUserService } from "../../../../api/services";
-import { Skeleton } from "primereact/skeleton";
-import { Checkbox } from "primereact/checkbox";
-import { useEffectOnce } from "../../../../globals";
 
 export const RecipesModal: FC<RecipesModalProps> = (props) => {
   const { recipes, onHide, showFavoriteButton = true, recipesMock } = props;
-
-  console.log(recipes);
 
   const [isLoadingSubmit, setIsLoadingSubmit] = useState(false);
   const [isLoading, setIsLoading] = useState(true);

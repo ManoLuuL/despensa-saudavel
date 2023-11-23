@@ -3,9 +3,10 @@ import {
   BUTTON_PADDINGS,
   ICON_BUTTON_PADDING_IN_PIXELS,
 } from "./consts";
-import styled, { css } from "styled-components";
-import { StyledButtonProps } from "./types";
+import styled, { css, keyframes } from "styled-components";
+
 import { Colors } from "../../../styles";
+import { StyledButtonProps } from "./types";
 
 const textColorCss = css<{ color?: Colors }>`
   ${(p) => (p.color === "contrast" ? p.theme.contrast.text : p.theme.textColor)}
@@ -180,4 +181,20 @@ export const Container = styled.div<StyledButtonProps>`
     margin-left: 4px;
     order: 3;
   }
+`;
+
+const spinAnimation = keyframes`
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const Loader = styled.div`
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: ${spinAnimation} 1s linear infinite;
+  margin-right: 5px;
 `;
