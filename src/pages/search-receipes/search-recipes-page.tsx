@@ -5,7 +5,7 @@ import { useEffectOnce, useIsConnected, useToast } from "../../globals/hooks";
 
 import { Card } from "primereact/card";
 import Filters from "./filters/filter-ingredients";
-import Navbar from "../../components/organism/Navbar";
+import { Navbar } from "../../components/organism";
 import { ProgressSpinner } from "primereact/progressspinner";
 import RecipeSearchInput from "../../components/molecules/search-input/search-input";
 import { RecipesModal } from "../../components/organism/pre-modals";

@@ -5,7 +5,7 @@ import { Icon, IconProps } from "../../atmos/icon";
 import { Button as BaseButton } from "primereact/button";
 import { forwardRef } from "react";
 
-export const Button = forwardRef<ButtonRef, ButtonProps>((props, ref) => {
+export const ButtonCustom = forwardRef<ButtonRef, ButtonProps>((props, ref) => {
   const {
     id,
     text,

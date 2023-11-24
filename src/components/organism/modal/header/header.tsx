@@ -1,7 +1,7 @@
+import { ButtonCustom } from "../../../molecules/button-custom";
 import { FC } from "react";
 import { HeaderTitle } from "./styles";
 import { InternalModalHeaderProps } from "./types";
-import { Button } from "../../../molecules/button-custom";
 
 export const ModalHeader: FC<InternalModalHeaderProps> = (props) => {
   const {
@@ -20,7 +20,7 @@ export const ModalHeader: FC<InternalModalHeaderProps> = (props) => {
     <div className="flex align-items-center justify-content-between p-2">
       {typeof title === "string" ? <HeaderTitle>{title}</HeaderTitle> : title}
       {hasCloseFunction && (
-        <Button
+        <ButtonCustom
           icon="close"
           onClick={handleClose}
           outlined={true}

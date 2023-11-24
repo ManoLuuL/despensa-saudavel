@@ -1,7 +1,7 @@
+import { ButtonCustom } from "../../../molecules/button-custom";
 import { Container } from "./styles";
 import { FC } from "react";
 import { InternalModalFooterProps } from "./types";
-import { Button } from "../../../molecules/button-custom";
 
 export const ModalFooter: FC<InternalModalFooterProps> = (props) => {
   const {
@@ -24,7 +24,7 @@ export const ModalFooter: FC<InternalModalFooterProps> = (props) => {
   return (
     <Container className="flex w-full justify-content-end align-items-center gap-2">
       {hasCloseFunction && (
-        <Button
+        <ButtonCustom
           text="Cancelar"
           color="secondary"
           icon={{
@@ -40,7 +40,7 @@ export const ModalFooter: FC<InternalModalFooterProps> = (props) => {
         />
       )}
       {hasConfirmFunction && (
-        <Button
+        <ButtonCustom
           icon={{
             name: "check_circle",
             size: 15,

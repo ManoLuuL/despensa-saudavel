@@ -13,7 +13,7 @@ import {
 } from "../../../api/services";
 import { useRestrictions, useToast } from "../../../globals/hooks";
 
-import { Button } from "../../../components/molecules/button-custom";
+import { ButtonCustom } from "../../../components/molecules/button-custom";
 import { Divider } from "primereact/divider";
 import { FiltersListProps } from "./types";
 import { ReceitaIngredienteDTO } from "../../../api/services/receips/dto";
@@ -175,13 +175,13 @@ const Filters: FC<FiltersListProps> = ({ setReceipesData, setLoading }) => {
         )}
       </FiltersWrapper>
       <div className="flex justify-content-center mt-3 gap-2">
-        <Button
+        <ButtonCustom
           text="Limpar Filtros"
           color="danger"
           onClick={handleClearFilter}
           disabled={isLoading}
         />
-        <Button
+        <ButtonCustom
           text="Buscar"
           color="contrast"
           onClick={handleFilterSubmit}

@@ -1,6 +1,6 @@
-import { Divider } from "primereact/divider";
 import { Container } from "../../components/atmos/container";
-import Navbar from "../../components/organism/Navbar";
+import { Divider } from "primereact/divider";
+import { Navbar } from "../../components/organism";
 
 export const AboutPage = () => {
   return (

@@ -5,7 +5,7 @@ import { useEffectOnce, useIsConnected, useToast } from "../../globals/hooks";
 import { Card } from "primereact/card";
 import { Container } from "../../components/atmos/container";
 import { Divider } from "primereact/divider";
-import Navbar from "../../components/organism/Navbar";
+import { Navbar } from "../../components/organism";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { RecipesModal } from "../../components/organism/pre-modals";
 import { Skeleton } from "primereact/skeleton";

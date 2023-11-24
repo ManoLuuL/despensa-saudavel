@@ -1,8 +1,9 @@
-import { useNavigate } from "react-router-dom";
 import { Nav, NavBtn, NavLink, NavMenu, TitlePageNavBar } from "./styles";
-import { SplitButton } from "primereact/splitbutton";
 
-const Navbar = () => {
+import { SplitButton } from "primereact/splitbutton";
+import { useNavigate } from "react-router-dom";
+
+export const Navbar = () => {
   const navigate = useNavigate();
 
   return (
@@ -36,5 +37,3 @@ const Navbar = () => {
     </Nav>
   );
 };
-
-export default Navbar;

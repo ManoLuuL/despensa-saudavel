@@ -1,6 +1,6 @@
 import { FC, useMemo, useState } from "react";
 
-import { Button } from "../../../molecules/button-custom";
+import { ButtonCustom } from "../../../molecules/button-custom";
 import { Checkbox } from "primereact/checkbox";
 import { Divider } from "primereact/divider";
 import { Modal } from "../../modal";
@@ -87,7 +87,7 @@ export const RecipesModal: FC<RecipesModalProps> = (props) => {
         <>
           {showFavoriteButton && (
             <>
-              <Button
+              <ButtonCustom
                 text={!favorite ? "Favoritar Receita" : "Desfavoritar Receita"}
                 loading={isLoadingSubmit}
                 icon={{

@@ -1,12 +1,13 @@
-import { FC, useState } from "react";
 import { BackgroundMain, CardsContainer, Container } from "./styles";
-import Navbar from "../../components/organism/Navbar";
+import { FC, useState } from "react";
+import { useEffectOnce, useIsConnected, useToast } from "../../globals/hooks";
+
 import { CardIMC } from "./cards/imc-card";
+import { Navbar } from "../../components/organism";
+import { ProgressSpinner } from "primereact/progressspinner";
 import { ReceitasCard } from "./cards/receitas-card";
 import { ReceitasFavoritasCard } from "./cards/receitas-favoritas-card";
-import { useEffectOnce, useIsConnected, useToast } from "../../globals/hooks";
 import { useNavigate } from "react-router-dom";
-import { ProgressSpinner } from "primereact/progressspinner";
 
 export const HomePage: FC = () => {
   const { connection } = useIsConnected();

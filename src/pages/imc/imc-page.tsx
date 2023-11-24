@@ -8,13 +8,13 @@ import {
 import { DietasIMC, IMCResult } from "./types";
 import { useEffectOnce, useIsConnected, useToast } from "../../globals/hooks";
 
-import { Button } from "../../components/molecules/button-custom";
+import { ButtonCustom } from "../../components/molecules";
 import { Card } from "primereact/card";
 import { Divider } from "primereact/divider";
 import { InputMask } from "primereact/inputmask";
 import { InputNumber } from "primereact/inputnumber";
 import { ModalDietasIMC } from "./imc-dietas";
-import Navbar from "../../components/organism/Navbar";
+import { Navbar } from "../../components/organism";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { ReceitasIMC } from "./imc-recepes";
 import { ReceitasIMCViewModel } from "../../api/view-model/receitas-imc-view-model";
@@ -145,7 +145,7 @@ export const IMCPage = () => {
                 }}
               >
                 <div className="col-6">
-                  <Button
+                  <ButtonCustom
                     text="Limpar"
                     icon="close"
                     onClick={handleResetClick}
@@ -154,7 +154,7 @@ export const IMCPage = () => {
                   />
                 </div>
                 <div className="col-6">
-                  <Button
+                  <ButtonCustom
                     text="Calcular"
                     icon="calculate"
                     onClick={handleCalculateClick}

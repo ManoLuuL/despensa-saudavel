@@ -1,17 +1,18 @@
-import { Divider } from "primereact/divider";
-import Navbar from "../../components/organism/Navbar";
-import { InputText } from "primereact/inputtext";
-import { Container } from "../../components/atmos/container";
-import { Button } from "../../components/molecules/button-custom";
 import { FC, useState } from "react";
 import { useEffectOnce, useIsConnected, useToast } from "../../globals/hooks";
-import { useNavigate } from "react-router-dom";
-import { ProgressSpinner } from "primereact/progressspinner";
-import { useFormik } from "formik";
-import { useUserService } from "../../api/services";
-import { UserDTO } from "../../api/services/user/dto/user-dto";
-import ModalRedefinirSenha from "./modal-redefinir-senha/modal-redefinir-senha";
+
+import { ButtonCustom } from "../../components/molecules";
 import { Checkbox } from "primereact/checkbox";
+import { Container } from "../../components/atmos";
+import { Divider } from "primereact/divider";
+import { InputText } from "primereact/inputtext";
+import ModalRedefinirSenha from "./modal-redefinir-senha/modal-redefinir-senha";
+import { Navbar } from "../../components/organism";
+import { ProgressSpinner } from "primereact/progressspinner";
+import { UserDTO } from "../../api/services/user/dto/user-dto";
+import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
+import { useUserService } from "../../api/services";
 
 export const UserPage: FC = () => {
   const { connection } = useIsConnected();
@@ -186,13 +187,13 @@ export const UserPage: FC = () => {
                     </div>
                   </div>
                   <div className="col-12 flex justify-content-between flex-column md:flex-row p-0 gap-2 md:gap-0">
-                    <Button
+                    <ButtonCustom
                       color="contrast"
                       text="Modificar senha"
                       disabled={isSubmit}
                       onClick={() => setNewPassword(true)}
                     />
-                    <Button
+                    <ButtonCustom
                       color="success"
                       text="Salvar"
                       type="submit"

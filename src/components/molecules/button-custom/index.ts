@@ -1,3 +1,3 @@
-export * from './button';
-export * from './types';
-export * from './consts';
+export * from "./button-custom";
+export * from "./types";
+export * from "./consts";
