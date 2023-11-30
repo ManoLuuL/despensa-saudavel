@@ -53,16 +53,11 @@ export const AboutPage = () => {
               usado para a criação e gerenciamento de formulários. O
               "react-router-dom" é utilizado para a navegação entre diferentes
               páginas do site, seguindo as melhores práticas do React Router v6.
-              A visualização de dados é enriquecida com gráficos interativos,
-              onde a biblioteca "chart.js" é integrada através do pacote
-              "react-chartjs-2", permitindo a exibição de informações de maneira
-              clara e visualmente atraente.
+              A visualização de dados é enriquecida com gráficos.
             </p>
             <p>
-              Além disso, a biblioteca "@radix-ui/react-tooltip" é incorporada
-              para fornecer dicas contextuais úteis e melhorar a usabilidade. A
-              integração com o servidor é realizada usando a biblioteca "axios"
-              para facilitar as solicitações HTTP e o "react-query" para
+              A integração com o servidor é realizada usando a biblioteca
+              "axios" para facilitar as solicitações HTTP e o "react-query" para
               gerenciamento de estado e cache de dados. A exibição de
               notificações ao usuário é tratada pela biblioteca
               "react-toastify", proporcionando uma experiência de usuário mais
