@@ -19,6 +19,9 @@ export const FavoriteRecipe: FC = () => {
   const { showWarning } = useToast();
   const { getAllFavoriteReceips } = useReceipsService();
 
+  const [recipes, setRecipes] = useState<ReceitasViewModel[]>();
+  const [loading, setLoading] = useState(false);
+
   useEffectOnce(() => {
     if (connection === undefined) {
       navigate("/login");
@@ -27,8 +30,9 @@ export const FavoriteRecipe: FC = () => {
       );
     } else setConn(true);
   });
-  const { data, isLoading } = useQuery({
+  const { isLoading } = useQuery({
     query: async () => await getAllFavoriteReceips(connection.id),
+    onSuccess: (data) => setRecipes(data),
   });
 
   const [showRecipe, setShowRecipe] = useState(false);
@@ -47,9 +51,9 @@ export const FavoriteRecipe: FC = () => {
                 </h3>
                 <Divider />
                 <div className="grid align-items-center flex justify-content-center">
-                  {isLoading ? (
+                  {isLoading || loading ? (
                     <>
-                      {Array(20)
+                      {Array(21)
                         .fill(0)
                         .map((_, index) => (
                           <Skeleton
@@ -62,7 +66,7 @@ export const FavoriteRecipe: FC = () => {
                     </>
                   ) : (
                     <>
-                      {data
+                      {recipes
                         ?.slice()
                         .sort((a, b) => a.nome.localeCompare(b.nome))
                         .map((item, index) => (
@@ -87,7 +91,19 @@ export const FavoriteRecipe: FC = () => {
           {showRecipe && (
             <RecipesModal
               recipes={recipeSelected}
-              onHide={() => setShowRecipe(false)}
+              onHide={async () => {
+                setLoading(true);
+                setShowRecipe(false);
+
+                try {
+                  const newData = await getAllFavoriteReceips(connection.id);
+                  setRecipes(newData);
+                } catch (error) {
+                  console.error(error);
+                } finally {
+                  setLoading(false);
+                }
+              }}
             />
           )}
         </>

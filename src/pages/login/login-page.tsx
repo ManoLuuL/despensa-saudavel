@@ -55,7 +55,7 @@ export const LoginPage: FC = () => {
         navigate("/home");
         setIsSubmit(false);
       } catch (error) {
-        showError("Erro ao logar no sistema");
+        showError("E-mail ou senha invalidos, tente novamente!");
         console.error(error);
         setIsSubmit(false);
       }

@@ -1,8 +1,9 @@
 import { FC, useState } from "react";
-import { ReceitasIMCProps } from "./types";
+import { ReceitasWrapper, Title } from "./styles";
+
 import { Card } from "primereact/card";
-import { Title, ReceitasWrapper } from "./styles";
 import { Receitas } from "../../../api/view-model/receitas-imc-view-model";
+import { ReceitasIMCProps } from "./types";
 import { RecipesModal } from "../../../components/organism/pre-modals";
 
 export const ReceitasIMC: FC<ReceitasIMCProps> = (props) => {
@@ -35,6 +36,7 @@ export const ReceitasIMC: FC<ReceitasIMCProps> = (props) => {
           recipesMock={recipeSelected}
           onHide={() => setShowRecipesModal(false)}
           showFavoriteButton={false}
+          showRestrictions={false}
         />
       )}
     </>

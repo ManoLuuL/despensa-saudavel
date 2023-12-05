@@ -1,38 +1,7 @@
 import { Divider } from "primereact/divider";
-import { FC, useState } from "react";
-import {
-  Receitas,
-  ReceitasIMCViewModel,
-} from "../../../../../api/view-model/receitas-imc-view-model";
-import recipesRecomend from "../../../../../data/search-recipes.json";
-import { Card } from "primereact/card";
-import { RecipesModal } from "../../../../../components/organism/pre-modals";
+import { FC } from "react";
 
 export const DietDetox: FC = () => {
-  const [showRecipesModal, setShowRecipesModal] = useState(false);
-  const [recipeSelected, setRecipeSelected] = useState<Receitas>();
-
-  const amount = 6;
-
-  // Função para selecionar dados aleatórios
-  const getRandomData = () => {
-    const randomData: ReceitasIMCViewModel = { receitas: [] };
-    const jsonLength = recipesRecomend.receitas.length;
-
-    while (randomData.receitas.length < amount) {
-      const randomIndex = Math.floor(Math.random() * jsonLength);
-      const randomItem = recipesRecomend.receitas[randomIndex];
-
-      if (!randomData.receitas.includes(randomItem)) {
-        randomData.receitas.push(randomItem);
-      }
-    }
-
-    return randomData;
-  };
-
-  const randomData = getRandomData();
-
   return (
     <>
       <p>
@@ -79,32 +48,6 @@ export const DietDetox: FC = () => {
         colher de sobremesa de geleia; Chá de maçã.
       </p>
       <Divider />
-
-      <h3>Algumas receitas que possam ajudar:</h3>
-      <div className="grid">
-        {randomData.receitas.map((itens) => (
-          <div key={itens.titulo} className="col-4">
-            <Card
-              title={itens.titulo}
-              style={{
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                setShowRecipesModal(true);
-                setRecipeSelected(itens);
-              }}
-            />
-          </div>
-        ))}
-      </div>
-
-      {showRecipesModal && (
-        <RecipesModal
-          onHide={() => setShowRecipesModal(false)}
-          recipesMock={recipeSelected}
-          showFavoriteButton={false}
-        />
-      )}
     </>
   );
 };
