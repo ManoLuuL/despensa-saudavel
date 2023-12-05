@@ -70,7 +70,7 @@ const Filters: FC<FiltersListProps> = ({ setReceipesData, setLoading }) => {
     try {
       const newData: ReceitaIngredienteDTO = {
         ingredientes_ids: ids,
-        restrictions: restrictions,
+        restricoes: restrictions,
       };
 
       const newReceitas = await getReceipIngredient(newData);
@@ -91,7 +91,7 @@ const Filters: FC<FiltersListProps> = ({ setReceipesData, setLoading }) => {
     try {
       const newData: ReceitaIngredienteDTO = {
         ingredientes_ids: [],
-        restrictions: [],
+        restricoes: [],
       };
 
       const newReceitas = await getReceipIngredient(newData);
